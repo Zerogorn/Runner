@@ -6,8 +6,8 @@ namespace Assets.src.ScrObj.Ui.interfaces
     public interface IUiPrefabs
     {
         Canvas Canvas();
-        MenuViewer Menu();
-        PopUpViewer Popup();
-        GameContainerViewer GameContainer();
+        MenuViewer Menu(RectTransform parent);
+        PopUpViewer Popup(RectTransform parent);
+        GameContainerViewer GameContainer(RectTransform parent);
     }
 }

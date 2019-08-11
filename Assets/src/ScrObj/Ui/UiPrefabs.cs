@@ -11,7 +11,6 @@ namespace Assets.src.ScrObj.Ui
         [SerializeField]
         private Canvas _canvas;
 
-
         [Header("Menu Window")]
         [SerializeField]
         private MenuViewer _menuViewer;
@@ -26,22 +25,22 @@ namespace Assets.src.ScrObj.Ui
 
         public Canvas Canvas()
         {
-            return _canvas;
+            return Instantiate(_canvas);
         }
 
-        public MenuViewer Menu()
+        public MenuViewer Menu(RectTransform parent)
         {
-            return _menuViewer;
+            return Instantiate(_menuViewer, parent);
         }
 
-        public PopUpViewer Popup()
+        public PopUpViewer Popup(RectTransform parent)
         {
-            return _popUpViewer;
+            return Instantiate(_popUpViewer, parent);
         }
 
-        public GameContainerViewer GameContainer()
+        public GameContainerViewer GameContainer(RectTransform parent)
         {
-            return _gameContainerViewer;
+            return Instantiate(_gameContainerViewer, parent);
         }
     }
 }
