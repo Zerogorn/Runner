@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using Assets.src.Managers.Ui.interfaces;
 using UnityEngine;
 
 namespace Assets.src.Viewers
 {
-    public class MenuViewer : MonoBehaviour
+    public class MenuViewer : MonoBehaviour, IWindow
     {
         [SerializeField]
         private RectTransform _content;
@@ -12,7 +13,7 @@ namespace Assets.src.Viewers
 
         private void Awake()
         {
-            Debug.Assert(_content is null);
+            Debug.Assert(!(_content is null));
 
             _items = new List<RectTransform>();
         }
@@ -20,6 +21,11 @@ namespace Assets.src.Viewers
         public void AddItem(RectTransform rect)
         {
             _items.Add(rect);
+        }
+
+        public void SetEnable(bool active)
+        {
+            gameObject.SetActive(active);
         }
     }
 }

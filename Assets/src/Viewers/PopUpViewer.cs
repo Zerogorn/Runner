@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Assets.src.Managers.Ui.interfaces;
 using TMPro;
 using UnityEngine;
 
 namespace Assets.src.Viewers
 {
-    public class PopUpViewer : MonoBehaviour
+    public class PopUpViewer : MonoBehaviour, IPopUp
     {
         [SerializeField]
         private TextMeshProUGUI _description;
@@ -16,8 +17,8 @@ namespace Assets.src.Viewers
 
         private void Awake()
         {
-            Debug.Assert(_description is  null);
-            Debug.Assert(_container is null);
+            Debug.Assert(!(_description is  null));
+            Debug.Assert(!(_container is null));
 
             _items = new List<RectTransform>();
         }
@@ -33,6 +34,11 @@ namespace Assets.src.Viewers
             rect.localScale = Vector3.one;
 
             _items.Add(rect);
+        }
+
+        public void SetEnable(bool active)
+        {
+            gameObject.SetActive(active);
         }
     }
 }

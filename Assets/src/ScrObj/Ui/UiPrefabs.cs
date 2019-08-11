@@ -23,24 +23,41 @@ namespace Assets.src.ScrObj.Ui
         [Header("Game Container")]
         private GameContainerViewer _gameContainerViewer;
 
+        [SerializeField]
+        [Header("Container")]
+        private RectTransform _container;
+
         public Canvas Canvas()
         {
             return Instantiate(_canvas);
         }
 
-        public MenuViewer Menu(RectTransform parent)
+        public MenuViewer Menu(Transform parent)
         {
-            return Instantiate(_menuViewer, parent);
+            return Instantiate(_menuViewer, 
+                               parent);
         }
 
-        public PopUpViewer Popup(RectTransform parent)
+        public PopUpViewer Popup(Transform parent)
         {
-            return Instantiate(_popUpViewer, parent);
+            return Instantiate(_popUpViewer, 
+                               parent);
         }
 
-        public GameContainerViewer GameContainer(RectTransform parent)
+        public GameContainerViewer GameContainer(Transform parent)
         {
-            return Instantiate(_gameContainerViewer, parent);
+            return Instantiate(_gameContainerViewer,
+                               parent);
+        }
+
+        public RectTransform Container(Transform parent, string containerCame)
+        {
+            RectTransform rect = Instantiate(_container,
+                                             parent);
+
+            rect.name = containerCame;
+
+            return rect;
         }
     }
 }
