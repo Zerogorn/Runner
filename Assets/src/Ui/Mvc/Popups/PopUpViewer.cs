@@ -1,7 +1,6 @@
 ﻿using Assets.src.ScrObj.Ui.interfaces;
 using Assets.src.Ui.Mvc.interfaces;
 using Assets.src.Ui.Mvc.Items;
-using src.ScrObj.Ui.interfaces;
 using TMPro;
 using UnityEngine;
 

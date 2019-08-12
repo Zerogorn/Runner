@@ -1,7 +1,6 @@
 ﻿using Assets.src.ScrObj.Ui;
 using Assets.src.ScrObj.Ui.interfaces;
 using src.Loaders.Resources;
-using src.ScrObj.Ui.interfaces;
 
 namespace Assets.src.Loaders.Resources
 {

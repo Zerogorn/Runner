@@ -4,7 +4,6 @@ using Assets.src.Ui.Mvc.Popups;
 using Assets.src.Ui.Mvc.Windows.Game;
 using Assets.src.Ui.Mvc.Windows.Menu;
 using Assets.src.Ui.Utils;
-using src.ScrObj.Ui.interfaces;
 using UnityEngine;
 using UnityEngine.Serialization;
 

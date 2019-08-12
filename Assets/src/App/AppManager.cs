@@ -4,7 +4,6 @@ using Assets.src.Ui;
 using Assets.src.Ui.Factory;
 using Assets.src.Ui.Models;
 using Assets.src.Ui.Utils;
-using src.ScrObj.Ui.interfaces;
 using UnityEngine;
 
 namespace Assets.src.App
