@@ -1,34 +1,38 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using src.Ui.interfaces;
+using System.Linq;
 using src.Ui.Layers.interfaces;
-using src.Ui.Viewers.Windows.interfaces;
 using UnityEngine;
 
 namespace src.Ui.Layers
 {
-	public class Layer<T> : ILayer
+	public class Layer <TK, TV>: ILayer
 	{
-		public const string LAYER = "window";
+		public LayersTypes Type { get;}
 		
-		private RectTransform _container;
-		private readonly IList<T> _windows;
+		private readonly RectTransform _container;
+		private readonly IList<KeyValuePair<TK, TV>> _windows;
 
 		private Layer()
 		{
-			_windows = new List<T>();
+			_windows = new List<KeyValuePair<TK, TV>>();
 		}
 		
-		public Layer(RectTransform container)
+		public Layer(LayersTypes type, RectTransform container)
 			: this()
 		{
-			
+			Type = type;
 			_container = container;
 		}
 
-		public void Add(T window)
+		public void Add(TK key, TV value)
 		{
-			_windows.Add(window);
-		}	
+			_windows.Add(new KeyValuePair<TK, TV>(key, value));
+		}
+
+		public void Show<TKey>(TKey key)
+			// where TKey : TK
+		{
+			// _windows.FirstOrDefault(x => x.Key.Equals(key)).Value.;
+		}
 	}
 }

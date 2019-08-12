@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
-using src.Ui.interfaces;
 using src.Ui.Viewers.Windows.interfaces;
 using UnityEngine;
 
-namespace src.Ui.Viewers
+namespace src.Ui.Viewers.Windows
 {
     public class MenuViewer : MonoBehaviour, IWindow
-    {
+    {        
         [SerializeField]
         private RectTransform _content;
-
+        
         private IList<RectTransform> _items;
 
         private void Awake()

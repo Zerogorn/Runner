@@ -1,4 +1,5 @@
 ﻿using src.Ui.Viewers;
+using src.Ui.Viewers.Windows;
 using UnityEngine;
 
 namespace src.ScrObj.Ui.interfaces

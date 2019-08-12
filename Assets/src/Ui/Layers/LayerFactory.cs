@@ -18,10 +18,10 @@ namespace src.Ui.Layers
         public ILayer GetWindows(Transform parent)
         {
             RectTransform container = _prefabs.Container(parent, UiConst.CONTAINER_WINDOW);
-            Layer<IWindow> windows = new Layer<IWindow>(container);
+            Layer<WindowTypes, IWindow> windows = new Layer<WindowTypes, IWindow>(LayersTypes.Windows, container);
 
-            windows.Add(_prefabs.Menu(container));
-            windows.Add(_prefabs.GameContainer(container));
+            windows.Add(WindowTypes.Menu, _prefabs.Menu(container));
+            windows.Add(WindowTypes.Game, _prefabs.GameContainer(container));
             
             return windows;
         }
@@ -29,9 +29,9 @@ namespace src.Ui.Layers
         public ILayer GetPopup(Transform parent)
         {
             RectTransform container = _prefabs.Container(parent, UiConst.CONTAINER_POPUP);
-            Layer<IPopUp> popup = new Layer<IPopUp>(container);
+            Layer<PopUpTypes, IPopUp> popup = new Layer<PopUpTypes, IPopUp>(LayersTypes.PopUp, container);
 
-            popup.Add(_prefabs.Popup(container));
+            popup.Add(PopUpTypes.Type1, _prefabs.Popup(container));
             
             return popup;
         }

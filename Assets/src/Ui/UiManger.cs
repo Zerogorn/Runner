@@ -33,5 +33,15 @@ namespace src.Ui
             _canvas = canvas;
             _canvas.worldCamera = Camera.main;
         }
+
+        public void ShowWindow(WindowTypes types)
+        {
+
+        }
+        
+        public void ShowPopup(PopUpTypes types)
+        {
+            
+        }
     }
 }

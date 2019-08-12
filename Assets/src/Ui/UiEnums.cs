@@ -1,13 +1,19 @@
 ﻿namespace src.Ui
 {
-    public enum Window
+    public enum LayersTypes
+    {
+        Windows,
+        PopUp
+    }
+    
+    public enum WindowTypes
     {
         Menu,
-        Game,
+        Game
     }
 
-    public enum PopUp
+    public enum PopUpTypes
     {
-        Popup
+        Type1
     }
 }
