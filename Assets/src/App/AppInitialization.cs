@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace src.App
+namespace Assets.src.App
 {
     public class AppInitialization : MonoBehaviour
     {

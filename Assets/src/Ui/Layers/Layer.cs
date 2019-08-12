@@ -1,31 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using src.Ui.Layers.interfaces;
-using src.Ui.Viewers.interfaces;
-using UnityEngine;
+using Assets.src.Ui.Layers.interfaces;
+using Assets.src.Ui.Mvc.interfaces;
+using Assets.src.Ui.Utils;
 
-namespace src.Ui.Layers
+namespace Assets.src.Ui.Layers
 {
 	public class Layer <T>: ILayer
 		where T : IComponent 
 	{
 		public LayersTypes Type { get;}
 
-		private readonly RectTransform _container;
-		private readonly IList<KeyValuePair<string, T>> _elements;
+        private readonly IList<KeyValuePair<string, T>> _elements;
+        private IComponent _active;
 
 		private Layer()
 		{
 			_elements = new List<KeyValuePair<string, T>>();
 		}
 		
-		public Layer(LayersTypes type, RectTransform container)
+		public Layer(LayersTypes type)
 			: this()
 		{
 			Type = type;
-			_container = container;
-		}
+        }
 
 		public void Add(string key, T value)
 		{
@@ -35,7 +33,9 @@ namespace src.Ui.Layers
 		public void SetEnable(string key
 							  , bool active)
 		{
-			_elements.FirstOrDefault(x => x.Key.Equals(key)).Value.SetActive(active);
-		}
+            _active?.SetActive(false);
+            _active = _elements.FirstOrDefault(x => x.Key.Equals(key)).Value;
+            _active.SetActive(active);
+        }
 	}
 }

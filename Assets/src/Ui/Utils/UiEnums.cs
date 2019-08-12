@@ -1,4 +1,4 @@
-﻿namespace src.Ui
+﻿namespace Assets.src.Ui.Utils
 {
     public enum LayersTypes
     {

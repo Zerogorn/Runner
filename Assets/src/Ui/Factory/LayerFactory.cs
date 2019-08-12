@@ -1,11 +1,11 @@
-﻿using src.ScrObj.Ui.interfaces;
-using src.Ui.Layers;
-using src.Ui.Layers.interfaces;
-using src.Ui.Utils;
-using src.Ui.Viewers.interfaces;
+﻿using Assets.src.ScrObj.Ui.interfaces;
+using Assets.src.Ui.Layers;
+using Assets.src.Ui.Layers.interfaces;
+using Assets.src.Ui.Mvc.interfaces;
+using Assets.src.Ui.Utils;
 using UnityEngine;
 
-namespace src.Ui.Factory
+namespace Assets.src.Ui.Factory
 {
     public class LayerFactory
     {   
@@ -26,7 +26,7 @@ namespace src.Ui.Factory
         {
             RectTransform container = _prefabs.Container(parent, UiConst.CONTAINER_WINDOW);
             container.gameObject.SetActive(true);
-            Layer<IComponent> windows = new Layer<IComponent>(LayersTypes.Windows, container);
+            Layer<IComponent> windows = new Layer<IComponent>(LayersTypes.Windows);
 
             windows.Add(UiConst.WINDOW_MAIN, _windowFactory.Menu(container));
             windows.Add(UiConst.WINDOW_GAME, _windowFactory.Game(container));
@@ -38,7 +38,7 @@ namespace src.Ui.Factory
         {
             RectTransform container = _prefabs.Container(parent, UiConst.CONTAINER_POPUP);
             container.gameObject.SetActive(true);
-            Layer<IComponent> popup = new Layer<IComponent>(LayersTypes.PopUp, container);
+            Layer<IComponent> popup = new Layer<IComponent>(LayersTypes.PopUp);
 
             popup.Add(UiConst.POPUP_TYPE1, _popUpFactory.PopUp(container));
             

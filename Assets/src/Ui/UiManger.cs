@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using src.ScrObj.Ui.interfaces;
-using src.Ui.Factory;
-using src.Ui.Layers;
-using src.Ui.Layers.interfaces;
+using Assets.src.Ui.Factory;
+using Assets.src.Ui.Layers.interfaces;
+using Assets.src.Ui.Models;
+using Assets.src.Ui.Utils;
 using UnityEngine;
 
-namespace src.Ui
+namespace Assets.src.Ui
 {
     public class UiManger
     {

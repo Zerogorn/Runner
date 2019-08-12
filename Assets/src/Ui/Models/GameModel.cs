@@ -1,4 +1,4 @@
-﻿namespace src.Ui.Models
+﻿namespace Assets.src.Ui.Models
 {
 	public class GameModel
 	{

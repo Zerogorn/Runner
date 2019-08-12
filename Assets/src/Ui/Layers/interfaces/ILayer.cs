@@ -1,4 +1,6 @@
-﻿namespace src.Ui.Layers.interfaces
+﻿using Assets.src.Ui.Utils;
+
+namespace Assets.src.Ui.Layers.interfaces
 {
 	public interface ILayer
 	{

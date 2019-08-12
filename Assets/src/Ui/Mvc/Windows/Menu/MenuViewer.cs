@@ -1,31 +1,27 @@
-﻿using System.Collections.Generic;
-using src.Ui.Viewers.interfaces;
+﻿using Assets.src.ScrObj.Ui.interfaces;
+using Assets.src.Ui.Mvc.interfaces;
+using Assets.src.Ui.Mvc.Items;
+using src.ScrObj.Ui.interfaces;
 using UnityEngine;
 
-namespace src.Ui.Mvc.Windows.Menu
+namespace Assets.src.Ui.Mvc.Windows.Menu
 {
     public class MenuViewer : MonoBehaviour, IWindow
     {        
         [SerializeField]
         private RectTransform _content;
-        
-        private IList<Transform> _items;
+
+        public ButtonDefaultViewer ButtonStart { get; private set; }
 
         private void Awake()
         {
             Debug.Assert(_content != null);
-
-            _items = new List<Transform>();
         }
 
-        public void AddItem(Transform rect)
+        public void Initialization(IUiPrefabs prefabs)
         {
-            _items.Add(rect);
-        }
-        
-        public void RemoveItem(Transform rect)
-        {
-            _items.Add(rect);
+            ButtonStart = prefabs.ButtonDefault(_content);
+            ButtonStart.gameObject.SetActive(true);
         }
 
         public void SetActive(bool active)

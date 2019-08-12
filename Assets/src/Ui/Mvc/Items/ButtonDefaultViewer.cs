@@ -4,7 +4,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace src.Ui.Mvc.Items
+namespace Assets.src.Ui.Mvc.Items
 {
     public class ButtonDefaultViewer : MonoBehaviour
     {

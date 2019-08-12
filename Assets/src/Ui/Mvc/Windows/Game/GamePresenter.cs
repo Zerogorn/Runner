@@ -1,6 +1,6 @@
-﻿using src.Ui.Models;
+﻿using Assets.src.Ui.Models;
 
-namespace src.Ui.Mvc.Windows.Game
+namespace Assets.src.Ui.Mvc.Windows.Game
 {
 	public class GamePresenter
 	{

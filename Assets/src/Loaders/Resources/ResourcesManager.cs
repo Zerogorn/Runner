@@ -1,7 +1,9 @@
-﻿using src.ScrObj.Ui;
+﻿using Assets.src.ScrObj.Ui;
+using Assets.src.ScrObj.Ui.interfaces;
+using src.Loaders.Resources;
 using src.ScrObj.Ui.interfaces;
 
-namespace src.Loaders.Resources
+namespace Assets.src.Loaders.Resources
 {
     public class ResourcesManager
     {

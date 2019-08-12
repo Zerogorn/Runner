@@ -1,7 +1,7 @@
-﻿using src.Ui.Viewers.interfaces;
+﻿using Assets.src.Ui.Mvc.interfaces;
 using UnityEngine;
 
-namespace src.Ui.Mvc.Windows
+namespace Assets.src.Ui.Mvc.Windows.Game
 {
     public class GameViewer : MonoBehaviour, IWindow
     {   

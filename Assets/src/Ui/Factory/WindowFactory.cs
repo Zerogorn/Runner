@@ -1,11 +1,11 @@
-﻿using src.ScrObj.Ui.interfaces;
-using src.Ui.Models;
-using src.Ui.Mvc.Windows;
-using src.Ui.Mvc.Windows.Game;
-using src.Ui.Mvc.Windows.Menu;
+﻿using Assets.src.ScrObj.Ui.interfaces;
+using Assets.src.Ui.Models;
+using Assets.src.Ui.Mvc.Windows.Game;
+using Assets.src.Ui.Mvc.Windows.Menu;
+using src.ScrObj.Ui.interfaces;
 using UnityEngine;
 
-namespace src.Ui.Factory
+namespace Assets.src.Ui.Factory
 {
 	public class WindowFactory
 	{
@@ -21,9 +21,10 @@ namespace src.Ui.Factory
 		public MenuViewer Menu(Transform parent)
 		{
 			MenuViewer menuViewer = _uiPrefabs.Menu(parent);
-			MenuModel menuModel = _modelContext.MenuModel;
-			
-			MenuPresenter presenter = new MenuPresenter(menuViewer, menuModel);
+            menuViewer.Initialization(_uiPrefabs);
+
+            MenuModel menuModel = _modelContext.MenuModel;
+            MenuPresenter presenter = new MenuPresenter(menuViewer, menuModel);
 			
 			return menuViewer;
 		}

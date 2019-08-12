@@ -1,14 +1,13 @@
-﻿using src.Loaders.Resources;
-using src.ScrObj.Ui;
+﻿using Assets.src.Loaders.Resources;
+using Assets.src.ScrObj.Ui.interfaces;
+using Assets.src.Ui;
+using Assets.src.Ui.Factory;
+using Assets.src.Ui.Models;
+using Assets.src.Ui.Utils;
 using src.ScrObj.Ui.interfaces;
-using src.Ui;
-using src.Ui.Factory;
-using src.Ui.Layers;
-using src.Ui.Models;
-using src.Ui.Utils;
 using UnityEngine;
 
-namespace src.App
+namespace Assets.src.App
 {
     public class AppManager
     {
@@ -40,6 +39,32 @@ namespace src.App
             Canvas canvas = uiPrefabs.Canvas();
             _uiManger = new UiManger(canvas, modelContext, layerFactory);
             _uiManger.SetActive(LayersTypes.Windows ,UiConst.WINDOW_MAIN, true);
+
+            modelContext.MenuModel.SubscribeStart(x =>
+            {
+                _uiManger.SetActive(LayersTypes.Windows,
+                                    UiConst.WINDOW_GAME,
+                                    true);
+            });
+
+            modelContext.PopUpModel.SubscribeToMenu(x =>
+            {
+                _uiManger.SetActive(LayersTypes.PopUp,
+                                    UiConst.POPUP_TYPE1,
+                                    false);
+                _uiManger.SetActive(LayersTypes.Windows,
+                                    UiConst.WINDOW_MAIN,
+                                    true);
+            });
+            modelContext.PopUpModel.SubscribeRepeat(x =>
+            {
+                _uiManger.SetActive(LayersTypes.PopUp,
+                                    UiConst.POPUP_TYPE1,
+                                    false);
+                _uiManger.SetActive(LayersTypes.Windows,
+                                    UiConst.WINDOW_GAME,
+                                    true);
+            });
         }
     }
 }

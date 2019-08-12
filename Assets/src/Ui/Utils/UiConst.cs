@@ -1,4 +1,4 @@
-﻿namespace src.Ui.Utils
+﻿namespace Assets.src.Ui.Utils
 {
     public static class UiConst
     {

@@ -1,6 +1,6 @@
-﻿using src.Ui.Models;
+﻿using Assets.src.Ui.Models;
 
-namespace src.Ui.Mvc.Popups
+namespace Assets.src.Ui.Mvc.Popups
 {
 	public class PopUpPresenter
 	{
@@ -12,6 +12,17 @@ namespace src.Ui.Mvc.Popups
 		{
 			_popUpViewer = popUpViewer;
 			_popUpModel = popUpModel;
-		}
+
+            Binding();
+        }
+
+        private void Binding()
+        {
+            _popUpViewer.Repeat.SetListener(_ =>_popUpModel.ExecuteRepeat());
+            _popUpModel.SubscribeRepeatText(_popUpViewer.Repeat.SetText);
+
+            _popUpViewer.ToMenu.SetListener(_ => _popUpModel.ExecuteToMenu());
+            _popUpModel.SubscribeToMenuText(_popUpViewer.ToMenu.SetText);
+        }
 	}
 }

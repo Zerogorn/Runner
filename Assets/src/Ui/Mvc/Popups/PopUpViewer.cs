@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
-using src.Ui.Viewers.interfaces;
+﻿using Assets.src.ScrObj.Ui.interfaces;
+using Assets.src.Ui.Mvc.interfaces;
+using Assets.src.Ui.Mvc.Items;
+using src.ScrObj.Ui.interfaces;
 using TMPro;
 using UnityEngine;
 
-namespace src.Ui.Mvc.Popups
+namespace Assets.src.Ui.Mvc.Popups
 {
     public class PopUpViewer : MonoBehaviour, IPopUp
     {        
@@ -13,27 +15,26 @@ namespace src.Ui.Mvc.Popups
         [SerializeField]
         private RectTransform _container;
 
-        private List<RectTransform> _items;
+        public ButtonDefaultViewer Repeat { get; private set; }
+        public ButtonDefaultViewer ToMenu { get; private set; }
 
         private void Awake()
         {
             Debug.Assert(_description != null);
             Debug.Assert(_container != null);
-
-            _items = new List<RectTransform>();
         }
 
-        public void SetText(string text)
+        public void Initialization(IUiPrefabs prefabs)
+        {
+            Repeat = prefabs.ButtonDefault(_container);
+            Repeat.gameObject.SetActive(true);
+            ToMenu = prefabs.ButtonDefault(_container);
+            ToMenu.gameObject.SetActive(true);
+        }
+
+        public void SetDescription(string text)
         {
             _description.SetText(text);
-        }
-
-        public void AddItemToContainer(RectTransform rect)
-        {
-            rect.SetParent(_container);
-            rect.localScale = Vector3.one;
-
-            _items.Add(rect);
         }
 
         public void SetActive(bool active)

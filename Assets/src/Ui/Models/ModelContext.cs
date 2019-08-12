@@ -1,6 +1,4 @@
-﻿using src.Ui.Models;
-
-namespace src.Ui
+﻿namespace Assets.src.Ui.Models
 {
 	public class ModelContext
 	{

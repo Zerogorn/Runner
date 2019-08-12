@@ -1,30 +1,32 @@
-﻿using System.Collections.Generic;
-using src.Ui.Mvc.Items;
+﻿using System;
 using UniRx;
 
-namespace src.Ui.Models
+namespace Assets.src.Ui.Models
 {
 	public class MenuModel
-	{
-		public readonly IReactiveCollection<ButtonDefaultViewer> ButtonDefault;
+    {
+        private readonly ReactiveCommand _star;
+        private readonly ReactiveProperty<string> _startText;
+        
+        public MenuModel()
+        {
+            _star = new ReactiveCommand();
+            _startText = new ReactiveProperty<string>("start");
+        }
 
-		public MenuModel()
-		{
-			ButtonDefault = new ReactiveCollection<ButtonDefaultViewer>();
-		}
+        public void StartExecute()
+        {
+            _star.Execute();
+        }
 
-		public void Buttons(IEnumerable<ButtonDefaultViewer> buttons)
-		{
-			IEnumerator<ButtonDefaultViewer> enumerator = buttons.GetEnumerator();
-			
-			while (enumerator.MoveNext())
-			{
-				ButtonDefaultViewer buttonDefaultViewer = enumerator.Current;
-				ButtonDefault.Add(buttonDefaultViewer);
-			}
-			
-			enumerator.Dispose();
+        public void SubscribeStart(Action<Unit> action)
+        {
+            _star.Subscribe(action);
+        }
 
-		}
-	}
+        public void SubscribeStartText(Action<string> action)
+        {
+            _startText.Subscribe(action);
+        }
+    }
 }

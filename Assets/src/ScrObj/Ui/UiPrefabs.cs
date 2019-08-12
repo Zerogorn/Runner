@@ -1,15 +1,14 @@
-﻿using src.ScrObj.Ui.interfaces;
-using src.Ui;
-using src.Ui.Mvc.Items;
-using src.Ui.Mvc.Popups;
-using src.Ui.Mvc.Windows;
-using src.Ui.Mvc.Windows.Menu;
-using src.Ui.Utils;
-using src.Ui.Viewers;
+﻿using Assets.src.ScrObj.Ui.interfaces;
+using Assets.src.Ui.Mvc.Items;
+using Assets.src.Ui.Mvc.Popups;
+using Assets.src.Ui.Mvc.Windows.Game;
+using Assets.src.Ui.Mvc.Windows.Menu;
+using Assets.src.Ui.Utils;
+using src.ScrObj.Ui.interfaces;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace src.ScrObj.Ui
+namespace Assets.src.ScrObj.Ui
 {
     [CreateAssetMenu(fileName = "UiPrefabs", menuName = "ScriptableObjects/UiPrefabs")]
     public class UiPrefabs : ScriptableObject, IUiPrefabs

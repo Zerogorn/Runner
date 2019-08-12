@@ -1,11 +1,10 @@
-﻿using src.Ui.Mvc.Items;
-using src.Ui.Mvc.Popups;
-using src.Ui.Mvc.Windows;
-using src.Ui.Mvc.Windows.Menu;
-using src.Ui.Viewers;
+﻿using Assets.src.Ui.Mvc.Items;
+using Assets.src.Ui.Mvc.Popups;
+using Assets.src.Ui.Mvc.Windows.Game;
+using Assets.src.Ui.Mvc.Windows.Menu;
 using UnityEngine;
 
-namespace src.ScrObj.Ui.interfaces
+namespace Assets.src.ScrObj.Ui.interfaces
 {
     public interface IUiPrefabs
     {

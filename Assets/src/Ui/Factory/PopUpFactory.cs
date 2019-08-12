@@ -1,10 +1,10 @@
-﻿using src.ScrObj.Ui;
+﻿using Assets.src.ScrObj.Ui.interfaces;
+using Assets.src.Ui.Models;
+using Assets.src.Ui.Mvc.Popups;
 using src.ScrObj.Ui.interfaces;
-using src.Ui.Models;
-using src.Ui.Mvc.Popups;
 using UnityEngine;
 
-namespace src.Ui.Factory
+namespace Assets.src.Ui.Factory
 {
     public class PopUpFactory
     {
@@ -20,6 +20,7 @@ namespace src.Ui.Factory
         public PopUpViewer PopUp(Transform parent)
         {
             PopUpViewer popUpViewer = _uiPrefabs.Popup(parent);
+            popUpViewer.Initialization(_uiPrefabs);
             PopUpModel popUpModel = _modelContext.PopUpModel;
             
             PopUpPresenter presenter = new PopUpPresenter(popUpViewer, popUpModel);

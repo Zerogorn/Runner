@@ -1,4 +1,4 @@
-﻿namespace src.Ui.Viewers.interfaces
+﻿namespace Assets.src.Ui.Mvc.interfaces
 {
     public interface IWindow : IComponent
     {

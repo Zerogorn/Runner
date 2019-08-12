@@ -1,7 +1,6 @@
-﻿using src.Ui.Models;
-using UniRx;
+﻿using Assets.src.Ui.Models;
 
-namespace src.Ui.Mvc.Windows.Menu
+namespace Assets.src.Ui.Mvc.Windows.Menu
 {
     public class MenuPresenter 
     {
@@ -18,13 +17,8 @@ namespace src.Ui.Mvc.Windows.Menu
 
         private void Binding()
         {
-            _menuModel.ButtonDefault
-                      .ObserveAdd()
-                      .Subscribe(x => _menuViewer.AddItem(x.Value.transform));
-            
-            _menuModel.ButtonDefault
-                      .ObserveRemove()
-                      .Subscribe(x => _menuViewer.RemoveItem(x.Value.transform));
+            _menuViewer.ButtonStart.SetListener(_ => _menuModel.StartExecute());
+            _menuModel.SubscribeStartText(_menuViewer.ButtonStart.SetText);
         }
     }
 }
