@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Assets.src.ScrObj.Ui.interfaces;
+using src.ScrObj.Ui.interfaces;
 using src.Ui.interfaces;
 using UnityEngine;
 

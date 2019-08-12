@@ -1,7 +1,7 @@
 ﻿using src.Ui.Viewers;
 using UnityEngine;
 
-namespace Assets.src.ScrObj.Ui.interfaces
+namespace src.ScrObj.Ui.interfaces
 {
     public interface IUiPrefabs
     {

@@ -1,4 +1,4 @@
-﻿namespace Assets.src.ScrObj.Ui.interfaces
+﻿namespace src.ScrObj.Ui.interfaces
 {
     public interface IItems
     {
