@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464594cd3355ea541b3d019c14d06222, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bccd11504bac4abe8d0ce221ada7cc5, type: 3}
   m_Name: UiPrefabs
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 514125745119949313, guid: 1fa3d4bf0b727984d8a9955ed290eb92, type: 3}
-  _menuViewer: {fileID: 831777815893521140, guid: 28b9d1c5beeb22a4dbb53d818863a2fa,
+  _canvas: {fileID: 514125745119949313, guid: e303b83f90bb8411092f45b61825774d, type: 3}
+  _menuViewer: {fileID: 831777815893521140, guid: 1ba45ce375b314ed2b1ec517b66d566b,
     type: 3}
-  _popUpViewer: {fileID: 5017055207889574466, guid: 1a4db9883e7aef448aa8ca7cbbad35a6,
+  _popUpViewer: {fileID: 5017055207889574466, guid: 59c254366e0e449bb99a757a6b95621e,
     type: 3}
-  _gameContainerViewer: {fileID: -8013847530845492224, guid: 905546042304f7949a06afa17e40dc01,
+  _gameContainerViewer: {fileID: -8013847530845492224, guid: c69af64315b3b4076b14e35d5604267e,
+    type: 3}
+  _container: {fileID: 1047753860169787256, guid: 0018cf17e77f34b14ae87348a4d84d9e,
     type: 3}
