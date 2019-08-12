@@ -1,4 +1,4 @@
-﻿namespace src.Ui.interfaces
+﻿namespace src.Ui.Viewers.Windows.interfaces
 {
     public interface IWindow
     {

@@ -1,23 +1,38 @@
 ﻿using src.Loaders.Resources;
+using src.ScrObj.Ui;
+using src.ScrObj.Ui.interfaces;
 using src.Ui;
+using src.Ui.Layers;
+using UnityEngine;
 
 namespace src.App
 {
     public class AppManager
     {
         private readonly ResourcesManager _resourcesManager;
-        private readonly UiManger _uiManger;
+        
+        private LayerFactory _layerFactory;
+        private UiManger _uiManger;
 
         public AppManager()
         {
             _resourcesManager = new ResourcesManager();
-            _uiManger = new UiManger();
         }
 
         public void Initialization()
         {
             _resourcesManager.LoadResources();
-            _uiManger.Initialization(_resourcesManager.GetUiPrefabs());
+            
+            Lobby();
+        }
+
+        private void Lobby()
+        {
+            IUiPrefabs uiPrefabs = _resourcesManager.GetUiPrefabs();
+            _layerFactory = new LayerFactory(uiPrefabs);
+
+            Canvas canvas = uiPrefabs.Canvas();
+            _uiManger = new UiManger(canvas, _layerFactory);
         }
     }
 }
