@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using Assets.src.Const;
-using Assets.src.Enums;
-using Assets.src.Managers.Ui.interfaces;
 using Assets.src.ScrObj.Ui.interfaces;
+using src.Ui.interfaces;
 using UnityEngine;
 
-namespace Assets.src.Managers.Ui
+namespace src.Ui
 {
     public class UiManger
     {

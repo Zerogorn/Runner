@@ -1,4 +1,4 @@
-﻿namespace Assets.src.Managers.Ui.interfaces
+﻿namespace src.Ui.interfaces
 {
     public interface IPopUp
     {

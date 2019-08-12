@@ -1,4 +1,4 @@
-﻿namespace Assets.src.Enums
+﻿namespace src.Ui
 {
     public enum Window
     {

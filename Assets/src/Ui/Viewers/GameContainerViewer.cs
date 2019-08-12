@@ -1,7 +1,7 @@
-﻿using Assets.src.Managers.Ui.interfaces;
+﻿using src.Ui.interfaces;
 using UnityEngine;
 
-namespace Assets.src.Viewers
+namespace src.Ui.Viewers
 {
     public class GameContainerViewer : MonoBehaviour, IWindow
     {

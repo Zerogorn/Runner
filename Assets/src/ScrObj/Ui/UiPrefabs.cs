@@ -1,8 +1,8 @@
 ﻿using Assets.src.ScrObj.Ui.interfaces;
-using Assets.src.Viewers;
+using src.Ui.Viewers;
 using UnityEngine;
 
-namespace Assets.src.ScrObj.Ui
+namespace src.ScrObj.Ui
 {
     [CreateAssetMenu(fileName = "UiPrefabs", menuName = "ScriptableObjects/UiPrefabs")]
     public class UiPrefabs : ScriptableObject, IUiPrefabs
@@ -54,7 +54,6 @@ namespace Assets.src.ScrObj.Ui
         {
             RectTransform rect = Instantiate(_container,
                                              parent);
-
             rect.name = containerCame;
 
             return rect;

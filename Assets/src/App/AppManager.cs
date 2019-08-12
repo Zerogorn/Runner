@@ -1,6 +1,7 @@
-﻿using Assets.src.Managers.Ui;
+﻿using src.Loaders.Resources;
+using src.Ui;
 
-namespace Assets.src.Managers
+namespace src.App
 {
     public class AppManager
     {

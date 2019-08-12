@@ -1,10 +1,10 @@
 ﻿using System;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
-using UniRx;
 
-namespace Assets.src.Viewers
+namespace src.Ui.Viewers
 {
     public class ButtonDefaultViewer : MonoBehaviour
     {
@@ -16,13 +16,13 @@ namespace Assets.src.Viewers
 
         private void Awake()
         {
-            Debug.Assert(_button is null);
-            Debug.Assert(_text is null);
+            Debug.Assert(_button != null);
+            Debug.Assert(_text != null);
         }
 
         public IDisposable SetListener(Action<Unit> action)
         {
-            return _button?.OnClickAsObservable()
+            return _button.OnClickAsObservable()
                           .Subscribe(action,
                                      Debug.LogError)
                           .AddTo(this);
@@ -30,7 +30,7 @@ namespace Assets.src.Viewers
 
         public void SetText(string text)
         {
-            _text?.SetText(text);
+            _text.SetText(text);
         }
     }
 }

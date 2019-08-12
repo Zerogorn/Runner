@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Assets.src.Managers.Ui.interfaces;
+using src.Ui.interfaces;
 using TMPro;
 using UnityEngine;
 
-namespace Assets.src.Viewers
+namespace src.Ui.Viewers
 {
     public class PopUpViewer : MonoBehaviour, IPopUp
     {
@@ -17,8 +17,8 @@ namespace Assets.src.Viewers
 
         private void Awake()
         {
-            Debug.Assert(!(_description is  null));
-            Debug.Assert(!(_container is null));
+            Debug.Assert(_description != null);
+            Debug.Assert(_container != null);
 
             _items = new List<RectTransform>();
         }

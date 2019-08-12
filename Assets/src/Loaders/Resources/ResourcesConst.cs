@@ -1,4 +1,4 @@
-﻿namespace Assets.src.Const
+﻿namespace src.Loaders.Resources
 {
     public static class ResourcesConst
     {

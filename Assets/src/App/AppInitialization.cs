@@ -1,7 +1,6 @@
-﻿using Assets.src.Managers;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.src.Initialization
+namespace src.App
 {
     public class AppInitialization : MonoBehaviour
     {

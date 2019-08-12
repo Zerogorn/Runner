@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Assets.src.Managers.Ui.interfaces;
+using src.Ui.interfaces;
 using UnityEngine;
 
-namespace Assets.src.Viewers
+namespace src.Ui.Viewers
 {
     public class MenuViewer : MonoBehaviour, IWindow
     {
@@ -13,7 +13,7 @@ namespace Assets.src.Viewers
 
         private void Awake()
         {
-            Debug.Assert(!(_content is null));
+            Debug.Assert(_content != null);
 
             _items = new List<RectTransform>();
         }

@@ -1,6 +1,6 @@
-﻿namespace Assets.src.Const
+﻿namespace src.Ui
 {
-    public class UiConst
+    public static class UiConst
     {
         public const string CONTAINER_WINDOW = "Windows";
         public const string CONTAINER_POPUP = "Popups";

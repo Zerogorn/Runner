@@ -1,9 +1,8 @@
-﻿using Assets.src.Const;
-using Assets.src.ScrObj.Ui;
+﻿using Assets.src.ScrObj.Ui;
 using Assets.src.ScrObj.Ui.interfaces;
-using UnityEngine;
+using src.ScrObj.Ui;
 
-namespace Assets.src.Managers
+namespace src.Loaders.Resources
 {
     public class ResourcesManager
     {
@@ -11,7 +10,7 @@ namespace Assets.src.Managers
 
         public void LoadResources()
         {
-            _uiPrefabs = Resources.Load<UiPrefabs>(ResourcesConst.UI_PREFABS_PATH);
+            _uiPrefabs = UnityEngine.Resources.Load<UiPrefabs>(ResourcesConst.UI_PREFABS_PATH);
         }
 
         public IUiPrefabs GetUiPrefabs()

@@ -1,4 +1,4 @@
-﻿using Assets.src.Viewers;
+﻿using src.Ui.Viewers;
 using UnityEngine;
 
 namespace Assets.src.ScrObj.Ui.interfaces
