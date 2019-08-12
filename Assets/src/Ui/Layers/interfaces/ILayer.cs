@@ -1,11 +1,9 @@
-﻿using UnityEditor;
-
-namespace src.Ui.Layers.interfaces
+﻿namespace src.Ui.Layers.interfaces
 {
 	public interface ILayer
 	{
 		LayersTypes Type { get; }
-		
-		void Show<TKey>(TKey key);
+
+		void SetEnable(string key, bool active);
 	}
 }

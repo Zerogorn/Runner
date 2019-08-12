@@ -1,31 +1,33 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using src.ScrObj.Ui.interfaces;
-using src.Ui.interfaces;
+using src.Ui.Factory;
 using src.Ui.Layers;
 using src.Ui.Layers.interfaces;
-using src.Ui.Viewers.Windows.interfaces;
 using UnityEngine;
 
 namespace src.Ui
 {
     public class UiManger
     {
-        private Canvas _canvas;
-
         private readonly IList<ILayer> _layers;
+        
+        private Canvas _canvas;
+        private ModelContext _modelContext;
 
         private UiManger()
         {
             _layers = new List<ILayer>();
         }
         
-        public UiManger(Canvas canvas, LayerFactory layerFactory)
+        public UiManger(Canvas canvas, ModelContext modelContext, LayerFactory layerFactory)
             : this()
         {
             Canvas(canvas);
-            
-            layerFactory.GetWindows(canvas.transform);
-            layerFactory.GetPopup(canvas.transform);
+
+            _modelContext = modelContext;
+            _layers.Add(layerFactory.GetWindows(canvas.transform));
+            _layers.Add(layerFactory.GetPopup(canvas.transform));
         }
         
         private void Canvas(Canvas canvas)
@@ -34,14 +36,10 @@ namespace src.Ui
             _canvas.worldCamera = Camera.main;
         }
 
-        public void ShowWindow(WindowTypes types)
+        public void SetActive(LayersTypes layer, string key, bool active)
         {
-
-        }
-        
-        public void ShowPopup(PopUpTypes types)
-        {
-            
+            _layers.FirstOrDefault(x => x.Type.Equals(layer))
+                  ?.SetEnable(key, active);
         }
     }
 }

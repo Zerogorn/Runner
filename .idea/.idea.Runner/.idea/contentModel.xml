@@ -309,33 +309,51 @@
             </e>
           </e>
           <e p="Ui" t="Include">
+            <e p="Factory" t="Include">
+              <e p="LayerFactory.cs" t="Include" />
+              <e p="PopUpFactory.cs" t="Include" />
+              <e p="WindowFactory.cs" t="Include" />
+            </e>
             <e p="Layers" t="Include">
               <e p="interfaces" t="Include">
                 <e p="ILayer.cs" t="Include" />
               </e>
               <e p="Layer.cs" t="Include" />
-              <e p="LayerFactory.cs" t="Include" />
             </e>
-            <e p="UiConst.cs" t="Include" />
-            <e p="UiEnums.cs" t="Include" />
-            <e p="UiManger.cs" t="Include" />
-            <e p="Viewers" t="Include">
+            <e p="ModelContext.cs" t="Include" />
+            <e p="Models" t="Include">
+              <e p="GameModel.cs" t="Include" />
+              <e p="MenuModel.cs" t="Include" />
+              <e p="PopUpModel.cs" t="Include" />
+            </e>
+            <e p="Mvc" t="Include">
+              <e p="interfaces" t="Include">
+                <e p="IComponent.cs" t="Include" />
+                <e p="IPopUp.cs" t="Include" />
+                <e p="IWindow.cs" t="Include" />
+              </e>
               <e p="Items" t="Include">
                 <e p="ButtonDefaultViewer.cs" t="Include" />
               </e>
               <e p="Popups" t="Include">
-                <e p="interfaces" t="Include">
-                  <e p="IPopUp.cs" t="Include" />
-                </e>
+                <e p="PopUpPresenter.cs" t="Include" />
                 <e p="PopUpViewer.cs" t="Include" />
               </e>
               <e p="Windows" t="Include">
-                <e p="GameContainerViewer.cs" t="Include" />
-                <e p="interfaces" t="Include">
-                  <e p="IWindow.cs" t="Include" />
+                <e p="Game" t="Include">
+                  <e p="GamePresenter.cs" t="Include" />
+                  <e p="GameViewer.cs" t="Include" />
                 </e>
-                <e p="MenuViewer.cs" t="Include" />
+                <e p="Menu" t="Include">
+                  <e p="MenuPresenter.cs" t="Include" />
+                  <e p="MenuViewer.cs" t="Include" />
+                </e>
               </e>
+            </e>
+            <e p="UiManger.cs" t="Include" />
+            <e p="Utils" t="Include">
+              <e p="UiConst.cs" t="Include" />
+              <e p="UiEnums.cs" t="Include" />
             </e>
           </e>
         </e>

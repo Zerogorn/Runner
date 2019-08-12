@@ -2,7 +2,10 @@
 using src.ScrObj.Ui;
 using src.ScrObj.Ui.interfaces;
 using src.Ui;
+using src.Ui.Factory;
 using src.Ui.Layers;
+using src.Ui.Models;
+using src.Ui.Utils;
 using UnityEngine;
 
 namespace src.App
@@ -11,7 +14,6 @@ namespace src.App
     {
         private readonly ResourcesManager _resourcesManager;
         
-        private LayerFactory _layerFactory;
         private UiManger _uiManger;
 
         public AppManager()
@@ -29,10 +31,15 @@ namespace src.App
         private void Lobby()
         {
             IUiPrefabs uiPrefabs = _resourcesManager.GetUiPrefabs();
-            _layerFactory = new LayerFactory(uiPrefabs);
+
+            ModelContext modelContext = new ModelContext();
+            WindowFactory windowFactory = new WindowFactory(uiPrefabs, modelContext);
+            PopUpFactory popUpFactory = new PopUpFactory(uiPrefabs, modelContext);
+            LayerFactory layerFactory = new LayerFactory(uiPrefabs, windowFactory, popUpFactory);
 
             Canvas canvas = uiPrefabs.Canvas();
-            _uiManger = new UiManger(canvas, _layerFactory);
+            _uiManger = new UiManger(canvas, modelContext, layerFactory);
+            _uiManger.SetActive(LayersTypes.Windows ,UiConst.WINDOW_MAIN, true);
         }
     }
 }

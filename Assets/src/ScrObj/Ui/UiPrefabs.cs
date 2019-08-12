@@ -1,8 +1,13 @@
 ﻿using src.ScrObj.Ui.interfaces;
 using src.Ui;
+using src.Ui.Mvc.Items;
+using src.Ui.Mvc.Popups;
+using src.Ui.Mvc.Windows;
+using src.Ui.Mvc.Windows.Menu;
+using src.Ui.Utils;
 using src.Ui.Viewers;
-using src.Ui.Viewers.Windows;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace src.ScrObj.Ui
 {
@@ -13,6 +18,10 @@ namespace src.ScrObj.Ui
         [SerializeField]
         private Canvas _canvas;
 
+        [SerializeField]
+        [Header("Button Default")]
+        private ButtonDefaultViewer _buttonDefault;
+        
         [Header("Menu Window")]
         [SerializeField]
         private MenuViewer _menuViewer;
@@ -21,9 +30,10 @@ namespace src.ScrObj.Ui
         [Header("PopUp")]
         private PopUpViewer _popUpViewer;
 
+        [FormerlySerializedAs("_gameContainerViewer")]
         [SerializeField]
         [Header("Game Container")]
-        private GameContainerViewer _gameContainerViewer;
+        private GameViewer _gameViewer;
 
         [SerializeField]
         [Header("Container")]
@@ -40,11 +50,21 @@ namespace src.ScrObj.Ui
             
             MenuViewer menuViewer = Instantiate(_menuViewer,
                                                 parent);
-            menuViewer.name = UiConst.MAIN;
+            menuViewer.name = UiConst.WINDOW_MAIN;
 
             return menuViewer;
         }
 
+        public ButtonDefaultViewer ButtonDefault(Transform parent)
+        {
+            _buttonDefault.gameObject.SetActive(false);
+            ButtonDefaultViewer button = Instantiate(_buttonDefault, 
+                                                  parent);
+            button.name = UiConst.BUTTON;
+
+            return button;
+        }
+        
         public PopUpViewer Popup(Transform parent)
         {
             _popUpViewer.gameObject.SetActive(false);
@@ -55,15 +75,15 @@ namespace src.ScrObj.Ui
             return popUpViewer;
         }
 
-        public GameContainerViewer GameContainer(Transform parent)
+        public GameViewer GameContainer(Transform parent)
         {
-            _gameContainerViewer.gameObject.SetActive(false);
+            _gameViewer.gameObject.SetActive(false);
          
-            GameContainerViewer gameContainerViewer = Instantiate(_gameContainerViewer,
+            GameViewer gameViewer = Instantiate(_gameViewer,
                                                                   parent);
-            gameContainerViewer.name = UiConst.GAME;
+            gameViewer.name = UiConst.WINDOW_GAME;
 
-            return gameContainerViewer;
+            return gameViewer;
         }
 
         public RectTransform Container(Transform parent, string containerCame)

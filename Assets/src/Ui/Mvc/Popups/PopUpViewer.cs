@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using src.Ui.interfaces;
+using src.Ui.Viewers.interfaces;
 using TMPro;
 using UnityEngine;
 
-namespace src.Ui.Viewers
+namespace src.Ui.Mvc.Popups
 {
     public class PopUpViewer : MonoBehaviour, IPopUp
     {        
@@ -36,7 +36,7 @@ namespace src.Ui.Viewers
             _items.Add(rect);
         }
 
-        public void SetEnable(bool active)
+        public void SetActive(bool active)
         {
             gameObject.SetActive(active);
         }

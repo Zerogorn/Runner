@@ -61,7 +61,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3953419604289600898}
   - component: {fileID: 3202178200242322246}
-  - component: {fileID: 2918754572496405614}
+  - component: {fileID: 785501206150636504}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -96,7 +96,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5025481202031991688}
   m_CullTransparentMesh: 0
---- !u!114 &2918754572496405614
+--- !u!114 &785501206150636504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5025481202031991688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 1297475563, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -114,9 +114,9 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 10
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4260310603232079661}
   - component: {fileID: 8320680921353643324}
-  - component: {fileID: 5238203081019869390}
+  - component: {fileID: 4205402289553049950}
   m_Layer: 5
   m_Name: Bg
   m_TagString: Untagged
@@ -166,7 +166,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5884241270222892755}
   m_CullTransparentMesh: 0
---- !u!114 &5238203081019869390
+--- !u!114 &4205402289553049950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,11 +175,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5884241270222892755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.9411765}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.96000004}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -195,4 +195,3 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1

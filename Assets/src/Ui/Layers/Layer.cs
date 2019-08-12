@@ -1,20 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using src.Ui.Layers.interfaces;
+using src.Ui.Viewers.interfaces;
 using UnityEngine;
 
 namespace src.Ui.Layers
 {
-	public class Layer <TK, TV>: ILayer
+	public class Layer <T>: ILayer
+		where T : IComponent 
 	{
 		public LayersTypes Type { get;}
-		
+
 		private readonly RectTransform _container;
-		private readonly IList<KeyValuePair<TK, TV>> _windows;
+		private readonly IList<KeyValuePair<string, T>> _elements;
 
 		private Layer()
 		{
-			_windows = new List<KeyValuePair<TK, TV>>();
+			_elements = new List<KeyValuePair<string, T>>();
 		}
 		
 		public Layer(LayersTypes type, RectTransform container)
@@ -24,15 +27,15 @@ namespace src.Ui.Layers
 			_container = container;
 		}
 
-		public void Add(TK key, TV value)
+		public void Add(string key, T value)
 		{
-			_windows.Add(new KeyValuePair<TK, TV>(key, value));
+			_elements.Add(new KeyValuePair<string, T>(key, value));
 		}
-
-		public void Show<TKey>(TKey key)
-			// where TKey : TK
+		
+		public void SetEnable(string key
+							  , bool active)
 		{
-			// _windows.FirstOrDefault(x => x.Key.Equals(key)).Value.;
+			_elements.FirstOrDefault(x => x.Key.Equals(key)).Value.SetActive(active);
 		}
 	}
 }
