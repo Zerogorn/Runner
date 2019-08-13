@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.src.App;
 using src.Units.Bot;
 using UniRx;
 using UnityEngine;
@@ -8,7 +7,9 @@ using UnityEngine;
 namespace Assets.src.Ui.Models
 {
 	public class GameModel
-	{	
+	{
+		private readonly int _skipCounter;
+		
 		private readonly ReactiveProperty<int> _counter;
 		private readonly ReactiveCollection<BotViewer> _bots;
 
@@ -16,7 +17,9 @@ namespace Assets.src.Ui.Models
 		private float _xMax;
 		
 		public GameModel()
-		{	
+		{
+			_skipCounter = 3;
+			
 			_counter = new ReactiveProperty<int>();
 			_bots = new ReactiveCollection<BotViewer>();
 		}
@@ -39,9 +42,9 @@ namespace Assets.src.Ui.Models
 
 		public void AddCounterListener(Action action)
 		{
-			_counter.Subscribe(x =>
+			_counter.Skip(1).Subscribe(x =>
 			{
-				if (!x.Equals(3))
+				if (x < _skipCounter)
 					return;
 
 				action.Invoke();
@@ -110,11 +113,11 @@ namespace Assets.src.Ui.Models
 
 				float deltaShootBot = Vector3.Distance(botViewer.GetPosition(), xPointPosition);
 
-				if (Mathf.Abs(deltaShootBot) < botViewer.GetHitBox())
-				{
-					botViewer.ResetPosition();
-					_counter.Value++;
-				}
+				if (Mathf.Abs(deltaShootBot) > botViewer.GetHitBox())
+					continue;
+
+				botViewer.ResetPosition();
+				_counter.Value = botViewer.GetTrap() ?_skipCounter : _counter.Value++;
 			}
 			
 			enumerator.Dispose();

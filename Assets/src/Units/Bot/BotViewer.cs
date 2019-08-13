@@ -55,5 +55,10 @@ namespace src.Units.Bot
 		{
 			return _botSettings.HitBoxRadius();
 		}
+
+		public bool GetTrap()
+		{
+			return _botSettings.Trap();
+		}
 	}
 }

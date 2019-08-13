@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trap: 0
   _trigger: 100
-  _botObj: {fileID: 8753120858720716482, guid: dfb46e1e781f2c04b97d80eb7053123c, type: 3}
+  _localSale: {x: 1, y: 1, z: 1}
+  _botObj: {fileID: 6824220411900866834, guid: dfb46e1e781f2c04b97d80eb7053123c, type: 3}
   _strategy: 0

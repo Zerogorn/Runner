@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d60ff2a9b3f77a4bb22f035132b4b76, type: 3}
   m_Name: TrapBot
   m_EditorClassIdentifier: 
-  _trap: 0
+  _trap: 1
   _trigger: 100
-  _botObj: {fileID: 1706083927084626817, guid: 2363b63135b497d4cbcb6bce86a4db03, type: 3}
+  _localSale: {x: 100, y: 100, z: 100}
+  _botObj: {fileID: 5392294517850008527, guid: 03175235331f1424a920632b6d75d243, type: 3}
   _strategy: 1
