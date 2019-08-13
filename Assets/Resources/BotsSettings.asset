@@ -10,5 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd756f174f0ca934d9d2e633f3905f9e, type: 3}
-  m_Name: Bots
+  m_Name: BotsSettings
   m_EditorClassIdentifier: 
+  _bots:
+  - {fileID: 11400000, guid: e545c9deeaed56b4b8289d9aff37c08b, type: 2}
+  - {fileID: 11400000, guid: 0d3c5c6c8b5bb7a499bcef6ff941903c, type: 2}
+  - {fileID: 11400000, guid: 45c788f5930cfe54bbf2d36cd47f40a2, type: 2}

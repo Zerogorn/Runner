@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d60ff2a9b3f77a4bb22f035132b4b76, type: 3}
   m_Name: FriendlyBot
   m_EditorClassIdentifier: 
+  _trap: 0
+  _trigger: 100
+  _botObj: {fileID: 8753120858720716482, guid: dfb46e1e781f2c04b97d80eb7053123c, type: 3}
+  _strategy: 0

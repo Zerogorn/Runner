@@ -1,9 +1,11 @@
 ﻿using Assets.src.Loaders.Resources;
+using Assets.src.ScrObj.Bots.interfaces;
 using Assets.src.ScrObj.Ui.interfaces;
 using Assets.src.Ui;
 using Assets.src.Ui.Factory;
 using Assets.src.Ui.Models;
 using Assets.src.Ui.Utils;
+using src.Units.Bot;
 using UnityEngine;
 
 namespace Assets.src.App
@@ -11,42 +13,50 @@ namespace Assets.src.App
     public class AppManager
     {
         private readonly ResourcesManager _resourcesManager;
+        private readonly ModelContext _modelContext;
         
         private UiManger _uiManger;
 
         public AppManager()
         {
             _resourcesManager = new ResourcesManager();
+            _modelContext = new ModelContext();
         }
 
         public void Initialization()
         {
             _resourcesManager.LoadResources();
             
-            Lobby();
+            InitUi();
+            UIiBinding();
+            
+            GameBinding();
+            InitGame();
         }
 
-        private void Lobby()
+        private void InitUi()
         {
             IUiPrefabs uiPrefabs = _resourcesManager.GetUiPrefabs();
 
-            ModelContext modelContext = new ModelContext();
-            WindowFactory windowFactory = new WindowFactory(uiPrefabs, modelContext);
-            PopUpFactory popUpFactory = new PopUpFactory(uiPrefabs, modelContext);
+            WindowFactory windowFactory = new WindowFactory(uiPrefabs, _modelContext);
+            PopUpFactory popUpFactory = new PopUpFactory(uiPrefabs, _modelContext);
             LayerFactory layerFactory = new LayerFactory(uiPrefabs, windowFactory, popUpFactory);
 
             Canvas canvas = uiPrefabs.Canvas();
-            _uiManger = new UiManger(canvas, modelContext, layerFactory);
+            _uiManger = new UiManger(canvas, _modelContext, layerFactory);
             _uiManger.SetActive(LayersTypes.Windows ,UiConst.WINDOW_MAIN, true);
+        }
 
-            modelContext.MenuModel.SubscribeStart(x =>
+        private void UIiBinding()
+        {
+            _modelContext.MenuModel.SubscribeStart(x =>
             {
                 _uiManger.SetActive(LayersTypes.Windows,
                                     UiConst.WINDOW_GAME,
                                     true);
             });
 
-            modelContext.PopUpModel.SubscribeToMenu(x =>
+            _modelContext.PopUpModel.SubscribeToMenu(x =>
             {
                 _uiManger.SetActive(LayersTypes.PopUp,
                                     UiConst.POPUP_TYPE1,
@@ -55,7 +65,8 @@ namespace Assets.src.App
                                     UiConst.WINDOW_MAIN,
                                     true);
             });
-            modelContext.PopUpModel.SubscribeRepeat(x =>
+            
+            _modelContext.PopUpModel.SubscribeRepeat(x =>
             {
                 _uiManger.SetActive(LayersTypes.PopUp,
                                     UiConst.POPUP_TYPE1,
@@ -64,6 +75,19 @@ namespace Assets.src.App
                                     UiConst.WINDOW_GAME,
                                     true);
             });
+        }
+
+        private void InitGame()
+        {
+            IBotsSettingsCollection bots = _resourcesManager.GetBots();
+            
+            BotsFactory botsFactory = new BotsFactory(bots);
+            _modelContext.GameModel.AddBots(botsFactory.GetBots());
+        }
+        
+        private void GameBinding()
+        {
+            
         }
     }
 }
