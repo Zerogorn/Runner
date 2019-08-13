@@ -42,5 +42,10 @@ namespace src.Units.Bot
 			
 			_transform.transform.localPosition = new Vector2(_transform.localPosition.x, y);
 		}
+
+		public Vector2 GetPosition()
+		{
+			return _transform.localPosition;
+		}
 	}
 }

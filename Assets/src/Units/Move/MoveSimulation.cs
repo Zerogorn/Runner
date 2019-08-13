@@ -34,7 +34,7 @@ namespace src.Units.Move
 			Move.SetValueAndForceNotify(_vector *(_speed * Time.deltaTime));
 		}
 
-		public IDisposable AddListener(Action<float> action)
+		public IDisposable Subscribe(Action<float> action)
 		{
 			return Move.Subscribe(action);
 		}

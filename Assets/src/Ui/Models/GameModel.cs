@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using src.Units.Bot;
 using UniRx;
+using UnityEngine;
 
 namespace Assets.src.Ui.Models
 {
 	public class GameModel
 	{
+		private readonly float _lostPosition;
 		private readonly ReactiveCollection<BotViewer> _bots;
 
 		public GameModel()
 		{
+			_lostPosition = -(Screen.height / 2);
 			_bots = new ReactiveCollection<BotViewer>();
 		}
 		
@@ -35,6 +37,18 @@ namespace Assets.src.Ui.Models
 
 			while (enumerator.MoveNext())
 				enumerator.Current?.UpdatePosition(move);
+			
+			enumerator.Dispose();
+		}
+
+		public void ResetBots(Unit unit)
+		{
+			IEnumerator<BotViewer> enumerator = _bots.GetEnumerator();
+
+			while (enumerator.MoveNext())
+				if(enumerator.Current != null 
+				   && enumerator.Current.GetPosition().y.CompareTo(_lostPosition).Equals(-1))
+					enumerator.Current.ResetPosition();
 			
 			enumerator.Dispose();
 		}

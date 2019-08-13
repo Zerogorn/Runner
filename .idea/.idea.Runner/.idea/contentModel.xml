@@ -365,6 +365,9 @@
             <e p="Move" t="Include">
               <e p="MoveSimulation.cs" t="Include" />
             </e>
+            <e p="Validator" t="Include">
+              <e p="BotValidator.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

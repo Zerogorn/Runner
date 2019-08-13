@@ -7,6 +7,7 @@ using Assets.src.Ui.Models;
 using Assets.src.Ui.Utils;
 using src.Units.Bot;
 using src.Units.Move;
+using src.Units.Validator;
 using UnityEngine;
 
 namespace Assets.src.App
@@ -17,6 +18,7 @@ namespace Assets.src.App
         private readonly ModelContext _modelContext;
 
         private readonly MoveSimulation _moveSimulation;
+        private readonly BotValidator _botValidator;
         
         private UiManger _uiManger;
 
@@ -24,7 +26,9 @@ namespace Assets.src.App
         {
             _resourcesManager = new ResourcesManager();
             _modelContext = new ModelContext();
+           
             _moveSimulation = new MoveSimulation();
+            _botValidator = new BotValidator();
         }
 
         public void Initialization()
@@ -60,6 +64,7 @@ namespace Assets.src.App
                                     true);
                 
                 _moveSimulation.Start(-1);
+                _botValidator.Start();
             });
 
             _modelContext.PopUpModel.SubscribeToMenu(x =>
@@ -93,7 +98,8 @@ namespace Assets.src.App
         
         private void GameBinding()
         {
-            _moveSimulation.AddListener(_modelContext.GameModel.UpdatePositions);
+            _moveSimulation.Subscribe(_modelContext.GameModel.UpdatePositions);
+            _botValidator.Subscribe(_modelContext.GameModel.ResetBots);
         }
     }
 }
