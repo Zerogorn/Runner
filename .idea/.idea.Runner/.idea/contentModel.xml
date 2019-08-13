@@ -351,7 +351,13 @@
               <e p="BotViewer.cs" t="Include" />
               <e p="interfaces" t="Include">
                 <e p="IBotSettings.cs" t="Include" />
-                <e p="IState.cs" t="Include" />
+              </e>
+              <e p="States" t="Include">
+                <e p="Ded.cs" t="Include" />
+                <e p="interfaces" t="Include">
+                  <e p="IState.cs" t="Include" />
+                </e>
+                <e p="Live.cs" t="Include" />
               </e>
               <e p="Strategy" t="Include">
                 <e p="DefaultMove.cs" t="Include" />

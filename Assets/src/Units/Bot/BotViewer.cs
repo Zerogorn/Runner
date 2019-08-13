@@ -1,4 +1,5 @@
 ﻿using Assets.src.Units.Bot.interfaces;
+using src.Units.Bot.States;
 using UnityEngine;
 
 namespace src.Units.Bot
@@ -21,6 +22,8 @@ namespace src.Units.Bot
 			_botSettings = botSettings;
 			_startPosition = startPosition;
 			_moveStrategy = moveStrategy;
+			
+			_state = new Live();
 		}
 		
 		public void SetActive(bool active)
@@ -38,8 +41,12 @@ namespace src.Units.Bot
 		
 		public void ResetPosition()
 		{
+			_state.Update();
+			
 			_transform.localPosition = _startPosition;
- 		}
+			
+			_state.Update();
+		}
 		
 		public void UpdatePosition(float move)
 		{
