@@ -16,17 +16,17 @@ namespace Assets.src.App
     public class AppManager
     {
         private readonly ResourcesManager _resourcesManager;
-        private ModelContext _modelContext;
 
         private readonly MoveSimulation _moveSimulation;
         private readonly BotValidator _botValidator;
         
+        private ModelContext _modelContext;
         private UiManger _uiManger;
-        public  static Canvas _canvas;
         
         public AppManager()
         {
             _resourcesManager = new ResourcesManager();
+            _modelContext = new ModelContext();
             _moveSimulation = new MoveSimulation();
             _botValidator = new BotValidator();
         }
@@ -45,14 +45,15 @@ namespace Assets.src.App
         private void InitUi()
         {
             IUiPrefabs uiPrefabs = _resourcesManager.GetUiPrefabs();
-            _canvas = uiPrefabs.Canvas();
+            Canvas canvas = uiPrefabs.Canvas();
 
-            _modelContext = new ModelContext();
+            _modelContext.GameModel.Initialization(canvas);
+            
             WindowFactory windowFactory = new WindowFactory(uiPrefabs, _modelContext);
             PopUpFactory popUpFactory = new PopUpFactory(uiPrefabs, _modelContext);
             LayerFactory layerFactory = new LayerFactory(uiPrefabs, windowFactory, popUpFactory);
 
-            _uiManger = new UiManger(_canvas, _modelContext, layerFactory);
+            _uiManger = new UiManger(canvas, _modelContext, layerFactory);
             _uiManger.SetActive(LayersTypes.Windows ,UiConst.WINDOW_MAIN, true);
         }
 
@@ -86,6 +87,9 @@ namespace Assets.src.App
                 _uiManger.SetActive(LayersTypes.Windows,
                                     UiConst.WINDOW_GAME,
                                     true);
+                
+                _moveSimulation.Start();
+                _botValidator.Start();
             });
         }
 
@@ -103,6 +107,16 @@ namespace Assets.src.App
         {
             _moveSimulation.Subscribe(_modelContext.GameModel.UpdatePositions);
             _botValidator.Subscribe(_modelContext.GameModel.ResetBots);
+            
+            _modelContext.GameModel.AddCounterListener(() =>
+            {
+                _moveSimulation.Stop();
+                _botValidator.Stop();
+                
+                _uiManger.SetActive(LayersTypes.PopUp,
+                                    UiConst.POPUP_TYPE1,
+                                    true);
+            });
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.src.App;
 using src.Units.Bot;
 using UniRx;
@@ -7,18 +8,23 @@ using UnityEngine;
 namespace Assets.src.Ui.Models
 {
 	public class GameModel
-	{
-		private readonly float _yMax;
-		private readonly float _xMax;
-		
+	{	
+		private readonly ReactiveProperty<int> _counter;
 		private readonly ReactiveCollection<BotViewer> _bots;
 
+		private float _yMax;
+		private float _xMax;
+		
 		public GameModel()
 		{	
-			_yMax = Screen.height / AppManager._canvas.scaleFactor;
-			_xMax = Screen.width / AppManager._canvas.scaleFactor;
-			
+			_counter = new ReactiveProperty<int>();
 			_bots = new ReactiveCollection<BotViewer>();
+		}
+
+		public void Initialization(Canvas canvas)
+		{
+			_yMax = Screen.height / canvas.scaleFactor;
+			_xMax = Screen.width / canvas.scaleFactor;			
 		}
 		
 		public void AddBots(IEnumerable<BotViewer> bots)
@@ -31,6 +37,18 @@ namespace Assets.src.Ui.Models
 			enumerator.Dispose();
 		}
 
+		public void AddCounterListener(Action action)
+		{
+			_counter.Subscribe(x =>
+			{
+				if (!x.Equals(3))
+					return;
+
+				action.Invoke();
+				_counter.Value = 0;
+			});
+		}
+		
 		public IReactiveCollection<BotViewer> GetBots()
 		{
 			return _bots;
@@ -91,9 +109,12 @@ namespace Assets.src.Ui.Models
 				BotViewer botViewer = enumerator.Current;
 
 				float deltaShootBot = Vector3.Distance(botViewer.GetPosition(), xPointPosition);
-				
+
 				if (Mathf.Abs(deltaShootBot) < botViewer.GetHitBox())
+				{
 					botViewer.ResetPosition();
+					_counter.Value++;
+				}
 			}
 			
 			enumerator.Dispose();
