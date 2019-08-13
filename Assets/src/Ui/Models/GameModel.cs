@@ -56,11 +56,11 @@ namespace Assets.src.Ui.Models
 					continue;
 
 				bool overMoveY = enumerator.Current.GetPosition().y
-										.CompareTo(-_yMax)
+										.CompareTo(-_yMax * 0.5f)
 										.Equals(-1);
 				
 				bool overMoveX = Mathf.Abs(enumerator.Current.GetPosition().x)
-										.CompareTo(_xMax)
+										.CompareTo(_xMax * 0.5f)
 										.Equals(1);
 				
 				if (overMoveY || overMoveX)
