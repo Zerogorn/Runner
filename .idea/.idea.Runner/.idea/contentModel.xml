@@ -362,6 +362,9 @@
                 <e p="EnumStrategy.cs" t="Include" />
               </e>
             </e>
+            <e p="Move" t="Include">
+              <e p="MoveSimulation.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

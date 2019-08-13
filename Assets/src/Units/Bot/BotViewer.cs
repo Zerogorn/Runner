@@ -36,12 +36,11 @@ namespace src.Units.Bot
 			_transform.localPosition = _startPosition;
  		}
 		
-		public void UpdatePosition(Vector2 move)
+		public void UpdatePosition(float move)
 		{
-			float x = _transform.localPosition.x + move.x;
-			float y = _transform.localPosition.y + move.y;
+			float y = _transform.localPosition.y + move;
 			
-			_transform.transform.localPosition = new Vector2(x, y);
+			_transform.transform.localPosition = new Vector2(_transform.localPosition.x, y);
 		}
 	}
 }

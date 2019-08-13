@@ -28,5 +28,15 @@ namespace Assets.src.Ui.Models
 		{
 			return _bots;
 		}
+
+		public void UpdatePositions(float move)
+		{
+			IEnumerator<BotViewer> enumerator = _bots.GetEnumerator();
+
+			while (enumerator.MoveNext())
+				enumerator.Current?.UpdatePosition(move);
+			
+			enumerator.Dispose();
+		}
 	}
 }

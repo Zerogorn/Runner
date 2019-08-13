@@ -6,6 +6,7 @@ using Assets.src.Ui.Factory;
 using Assets.src.Ui.Models;
 using Assets.src.Ui.Utils;
 using src.Units.Bot;
+using src.Units.Move;
 using UnityEngine;
 
 namespace Assets.src.App
@@ -14,6 +15,8 @@ namespace Assets.src.App
     {
         private readonly ResourcesManager _resourcesManager;
         private readonly ModelContext _modelContext;
+
+        private readonly MoveSimulation _moveSimulation;
         
         private UiManger _uiManger;
 
@@ -21,6 +24,7 @@ namespace Assets.src.App
         {
             _resourcesManager = new ResourcesManager();
             _modelContext = new ModelContext();
+            _moveSimulation = new MoveSimulation();
         }
 
         public void Initialization()
@@ -54,6 +58,8 @@ namespace Assets.src.App
                 _uiManger.SetActive(LayersTypes.Windows,
                                     UiConst.WINDOW_GAME,
                                     true);
+                
+                _moveSimulation.Start(-1);
             });
 
             _modelContext.PopUpModel.SubscribeToMenu(x =>
@@ -87,7 +93,7 @@ namespace Assets.src.App
         
         private void GameBinding()
         {
-            
+            _moveSimulation.AddListener(_modelContext.GameModel.UpdatePositions);
         }
     }
 }
