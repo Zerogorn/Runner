@@ -73,19 +73,25 @@ namespace Assets.src.Ui.Models
 
 			while (enumerator.MoveNext())
 			{
-				if(enumerator.Current == null)
+				BotViewer botViewer = enumerator.Current;
+				
+				if(botViewer == null)
 					continue;
 
-				bool overMoveY = enumerator.Current.GetPosition().y
+				bool overMoveY = botViewer.GetPosition().y
 										.CompareTo(-_yMax * 0.5f)
 										.Equals(-1);
 				
-				bool overMoveX = Mathf.Abs(enumerator.Current.GetPosition().x)
+				bool overMoveX = Mathf.Abs(botViewer.GetPosition().x)
 										.CompareTo(_xMax * 0.5f)
 										.Equals(1);
 				
 				if (overMoveY || overMoveX)
-					enumerator.Current.ResetPosition();
+					botViewer.ResetPosition();
+
+				if (overMoveY && !botViewer.GetTrap())
+					_counter.Value++;
+
 			}
 			
 			enumerator.Dispose();
@@ -117,7 +123,7 @@ namespace Assets.src.Ui.Models
 					continue;
 
 				botViewer.ResetPosition();
-				_counter.Value = botViewer.GetTrap() ?_skipCounter : _counter.Value++;
+				_counter.Value = botViewer.GetTrap() ? _skipCounter : _counter.Value;
 			}
 			
 			enumerator.Dispose();
