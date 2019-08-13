@@ -6,6 +6,7 @@ using Assets.src.Ui.Factory;
 using Assets.src.Ui.Models;
 using Assets.src.Ui.Utils;
 using src.Units.Bot;
+using src.Units.Bot.Strategy;
 using src.Units.Move;
 using src.Units.Validator;
 using UnityEngine;
@@ -63,7 +64,7 @@ namespace Assets.src.App
                                     UiConst.WINDOW_GAME,
                                     true);
                 
-                _moveSimulation.Start(-1);
+                _moveSimulation.Start();
                 _botValidator.Start();
             });
 
@@ -91,8 +92,10 @@ namespace Assets.src.App
         private void InitGame()
         {
             IBotsSettingsCollection bots = _resourcesManager.GetBots();
+            PullMoveStrategy pullMoveStrategy = new PullMoveStrategy();
+
+            BotsFactory botsFactory = new BotsFactory(pullMoveStrategy, bots);
             
-            BotsFactory botsFactory = new BotsFactory(bots);
             _modelContext.GameModel.AddBots(botsFactory.GetBots());
         }
         

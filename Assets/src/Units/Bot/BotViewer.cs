@@ -9,13 +9,18 @@ namespace src.Units.Bot
 		private Vector2 _startPosition;
 
 		private IBotSettings _botSettings;
+		private IMoveStrategy _moveStrategy;
 		private IState _state;
 
-		public void Initialization(Transform botObj, Vector2 startPosition, IBotSettings botSettings)
+		public void Initialization(Transform botObj, 
+								   Vector2 startPosition, 
+								   IBotSettings botSettings,
+								   IMoveStrategy moveStrategy)
 		{
 			_transform = botObj;
 			_botSettings = botSettings;
 			_startPosition = startPosition;
+			_moveStrategy = moveStrategy;
 		}
 		
 		public void SetActive(bool active)
@@ -38,9 +43,7 @@ namespace src.Units.Bot
 		
 		public void UpdatePosition(float move)
 		{
-			float y = _transform.localPosition.y + move;
-			
-			_transform.transform.localPosition = new Vector2(_transform.localPosition.x, y);
+			_moveStrategy.Move(_transform, move);
 		}
 
 		public Vector2 GetPosition()

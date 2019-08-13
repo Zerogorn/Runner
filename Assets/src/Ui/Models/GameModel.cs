@@ -7,12 +7,16 @@ namespace Assets.src.Ui.Models
 {
 	public class GameModel
 	{
-		private readonly float _lostPosition;
+		private readonly float _yMax;
+		private readonly float _xMax;
+		
 		private readonly ReactiveCollection<BotViewer> _bots;
 
 		public GameModel()
 		{
-			_lostPosition = -(Screen.height / 2);
+			_yMax = Screen.height / 2f;
+			_xMax = Screen.width / 2f;
+			
 			_bots = new ReactiveCollection<BotViewer>();
 		}
 		
@@ -46,9 +50,21 @@ namespace Assets.src.Ui.Models
 			IEnumerator<BotViewer> enumerator = _bots.GetEnumerator();
 
 			while (enumerator.MoveNext())
-				if(enumerator.Current != null 
-				   && enumerator.Current.GetPosition().y.CompareTo(_lostPosition).Equals(-1))
+			{
+				if(enumerator.Current == null)
+					continue;
+
+				bool overMoveY = enumerator.Current.GetPosition().y
+										.CompareTo(-_yMax)
+										.Equals(-1);
+				
+				bool overMoveX = Mathf.Abs(enumerator.Current.GetPosition().x)
+										.CompareTo(_xMax)
+										.Equals(1);
+				
+				if (overMoveY || overMoveX)
 					enumerator.Current.ResetPosition();
+			}
 			
 			enumerator.Dispose();
 		}

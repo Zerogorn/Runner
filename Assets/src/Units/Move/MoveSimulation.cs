@@ -7,9 +7,8 @@ namespace src.Units.Move
 	public class MoveSimulation
 	{ 
 		private ReactiveProperty<float> Move { get; }
-
-		private int _vector;
-		private float _speed = 100;
+		
+		private float _speed = 150;
 
 		private IDisposable _disposable;
 		
@@ -18,9 +17,8 @@ namespace src.Units.Move
 			Move = new ReactiveProperty<float>();
 		}
 
-		public void Start(int vector)
+		public void Start()
 		{
-			_vector = vector;
 			_disposable = Observable.EveryUpdate().Subscribe(_ => Update());
 		}
 
@@ -31,7 +29,7 @@ namespace src.Units.Move
 		
 		private void Update()
 		{
-			Move.SetValueAndForceNotify(_vector *(_speed * Time.deltaTime));
+			Move.SetValueAndForceNotify(_speed * Time.deltaTime);
 		}
 
 		public IDisposable Subscribe(Action<float> action)

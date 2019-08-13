@@ -352,10 +352,13 @@
               <e p="interfaces" t="Include">
                 <e p="IBotSettings.cs" t="Include" />
                 <e p="IState.cs" t="Include" />
-                <e p="IStrategy.cs" t="Include" />
               </e>
               <e p="Strategy" t="Include">
                 <e p="DefaultMove.cs" t="Include" />
+                <e p="interfaces" t="Include">
+                  <e p="IMoveStrategy.cs" t="Include" />
+                </e>
+                <e p="PullMoveStrategy.cs" t="Include" />
                 <e p="RandomMove.cs" t="Include" />
               </e>
               <e p="Utils" t="Include">

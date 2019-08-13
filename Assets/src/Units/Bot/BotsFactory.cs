@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Assets.src.ScrObj.Bots.interfaces;
 using Assets.src.Units.Bot.interfaces;
+using src.Units.Bot.Strategy;
 using UnityEngine;
 
 namespace src.Units.Bot
@@ -8,9 +9,12 @@ namespace src.Units.Bot
 	public class BotsFactory
 	{
 		private readonly IBotsSettingsCollection _botsSettingsCollection;
+		private readonly PullMoveStrategy _pullMoveStrategy;
 		
-		public BotsFactory(IBotsSettingsCollection botsSettingsCollection)
+		public BotsFactory(PullMoveStrategy pullMoveStrategy,
+						   IBotsSettingsCollection botsSettingsCollection)
 		{
+			_pullMoveStrategy = pullMoveStrategy;
 			_botsSettingsCollection = botsSettingsCollection;
 		}
 
@@ -28,13 +32,15 @@ namespace src.Units.Bot
 			{
 				IBotSettings botSettings = enumerator.Current;
 
+				Transform botObj =  Object.Instantiate(botSettings?.Transform());
+				
 				xCurrent += xStep;
 				Vector2 startPosition = new Vector2(xCurrent, yStep);
-				
-				Transform botObj =  Object.Instantiate(botSettings?.Transform());
 
 				BotViewer botViewerView = new BotViewer();
-				botViewerView.Initialization(botObj ,startPosition, botSettings);
+
+				IMoveStrategy moveStrategy = _pullMoveStrategy.GetMoveStrategy(botSettings.Strategy());
+				botViewerView.Initialization(botObj ,startPosition, botSettings, moveStrategy);
 				
 				bots.Add(botViewerView);
 			}
