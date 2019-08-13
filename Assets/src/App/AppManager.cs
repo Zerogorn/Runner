@@ -16,18 +16,17 @@ namespace Assets.src.App
     public class AppManager
     {
         private readonly ResourcesManager _resourcesManager;
-        private readonly ModelContext _modelContext;
+        private ModelContext _modelContext;
 
         private readonly MoveSimulation _moveSimulation;
         private readonly BotValidator _botValidator;
         
         private UiManger _uiManger;
-
+        public  static Canvas _canvas;
+        
         public AppManager()
         {
             _resourcesManager = new ResourcesManager();
-            _modelContext = new ModelContext();
-           
             _moveSimulation = new MoveSimulation();
             _botValidator = new BotValidator();
         }
@@ -46,13 +45,14 @@ namespace Assets.src.App
         private void InitUi()
         {
             IUiPrefabs uiPrefabs = _resourcesManager.GetUiPrefabs();
+            _canvas = uiPrefabs.Canvas();
 
+            _modelContext = new ModelContext();
             WindowFactory windowFactory = new WindowFactory(uiPrefabs, _modelContext);
             PopUpFactory popUpFactory = new PopUpFactory(uiPrefabs, _modelContext);
             LayerFactory layerFactory = new LayerFactory(uiPrefabs, windowFactory, popUpFactory);
 
-            Canvas canvas = uiPrefabs.Canvas();
-            _uiManger = new UiManger(canvas, _modelContext, layerFactory);
+            _uiManger = new UiManger(_canvas, _modelContext, layerFactory);
             _uiManger.SetActive(LayersTypes.Windows ,UiConst.WINDOW_MAIN, true);
         }
 

@@ -50,5 +50,10 @@ namespace src.Units.Bot
 		{
 			return _transform.localPosition;
 		}
+		
+		public float GetHitBox()
+		{
+			return _botSettings.HitBoxRadius();
+		}
 	}
 }

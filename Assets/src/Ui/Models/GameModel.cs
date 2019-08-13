@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.src.App;
 using src.Units.Bot;
 using UniRx;
 using UnityEngine;
@@ -13,9 +14,9 @@ namespace Assets.src.Ui.Models
 		private readonly ReactiveCollection<BotViewer> _bots;
 
 		public GameModel()
-		{
-			_yMax = Screen.height / 2f;
-			_xMax = Screen.width / 2f;
+		{	
+			_yMax = Screen.height / AppManager._canvas.scaleFactor;
+			_xMax = Screen.width / AppManager._canvas.scaleFactor;
 			
 			_bots = new ReactiveCollection<BotViewer>();
 		}
@@ -64,6 +65,35 @@ namespace Assets.src.Ui.Models
 				
 				if (overMoveY || overMoveX)
 					enumerator.Current.ResetPosition();
+			}
+			
+			enumerator.Dispose();
+		}
+
+		public void HitBot(Vector3 presPosition)
+		{
+			presPosition = Camera.main.ScreenToViewportPoint(presPosition);
+
+			float x = presPosition.x < 0.5f
+				? (presPosition.x - 0.5f) * _xMax
+				: Mathf.Abs(0.5f - presPosition.x) * _xMax;
+			
+			float y = presPosition.y < 0.5f
+				? (presPosition.y - 0.5f) * _yMax
+				: Mathf.Abs(0.5f - presPosition.y) * _yMax; 
+			
+			Vector2 xPointPosition = new Vector3(x, y);
+			
+			IEnumerator<BotViewer> enumerator = _bots.GetEnumerator();
+
+			while (enumerator.MoveNext())
+			{
+				BotViewer botViewer = enumerator.Current;
+
+				float deltaShootBot = Vector3.Distance(botViewer.GetPosition(), xPointPosition);
+				
+				if (Mathf.Abs(deltaShootBot) < botViewer.GetHitBox())
+					botViewer.ResetPosition();
 			}
 			
 			enumerator.Dispose();

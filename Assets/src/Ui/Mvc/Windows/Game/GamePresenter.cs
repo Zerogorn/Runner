@@ -1,6 +1,7 @@
 ﻿using Assets.src.Ui.Models;
 using UniRx;
 using UniRx.Triggers;
+using UnityEngine;
 
 namespace Assets.src.Ui.Mvc.Windows.Game
 {
@@ -21,10 +22,17 @@ namespace Assets.src.Ui.Mvc.Windows.Game
 		private void Binding()
 		{
 			_gameViewer.gameObject
-					.OnEnableAsObservable()
-					.Subscribe(_ =>
+						.OnEnableAsObservable()
+						.Subscribe(_ =>
 						{
 							_gameViewer.AddBots(_gameModel.GetBots());
+						});
+			
+			_gameViewer.gameObject.AddComponent<ObservablePointerDownTrigger>()
+						.OnPointerDownAsObservable()
+						.Subscribe(x =>
+						{
+							_gameModel.HitBot(Input.mousePosition);
 						});
 		}
 	}

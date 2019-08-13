@@ -28,7 +28,7 @@ namespace Assets.src.ScrObj.Bots
             return _trap;
         }
 
-        public int Trigger()
+        public int HitBoxRadius()
         {
             return _trigger;
         }

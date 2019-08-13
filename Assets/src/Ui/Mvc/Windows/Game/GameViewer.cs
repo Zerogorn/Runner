@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.src.Ui.Mvc.interfaces;
 using src.Units.Bot;
+using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 
 namespace Assets.src.Ui.Mvc.Windows.Game
 {
     public class GameViewer : MonoBehaviour, IWindow
-    {
-        [SerializeField]
-        private RectTransform _rect;
-        
+    {        
         public void SetActive(bool active)
         {
             gameObject.SetActive(active);

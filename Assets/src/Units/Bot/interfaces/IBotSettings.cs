@@ -8,7 +8,7 @@ namespace Assets.src.Units.Bot.interfaces
     public interface IBotSettings
     {
         bool Trap();
-        int Trigger();
+        int HitBoxRadius();
 
         Vector3 LocalScale();
         Transform Transform();
