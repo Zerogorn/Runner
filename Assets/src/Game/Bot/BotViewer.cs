@@ -8,44 +8,29 @@ namespace src.Units.Bot
 	{
 		private readonly Transform _transform;
 		private readonly Vector2 _startPosition;
-
-		private readonly IBotSettings _botSettings;
 		private readonly IMoveStrategy _moveStrategy;
-		private readonly IState _state;
+
+		private IState _state;
 
 		public BotViewer(Transform botObj
 						 , Vector2 startPosition
-						 , IBotSettings botSettings
+						 , IState state
 						 , IMoveStrategy moveStrategy)
 		{
 			_transform = botObj;
-			_botSettings = botSettings;
 			_startPosition = startPosition;
 			_moveStrategy = moveStrategy;
 
-			_state = new Move();
+			_state = state;
 		}
-
-		public void SetActive(bool active)
+		
+		public void UpdateState()
 		{
-			_transform.gameObject.SetActive(active);
-		}
-
-		public void SetParent(Transform parent)
-		{
-			_transform.SetParent(parent);
-			_transform.localScale = _botSettings.LocalScale();
-
-			ResetPosition();
-		}
-
-		public void ResetPosition()
-		{
-			_state.Update();
+			_state = _state.Update();
 
 			_transform.localPosition = _startPosition;
 
-			_state.Update();
+			_state = _state.Update();
 		}
 
 		public void UpdatePosition(float move)
@@ -60,12 +45,12 @@ namespace src.Units.Bot
 
 		public float GetHitBox()
 		{
-			return _botSettings.HitBoxRadius();
+			return _state.HitBoxRadius;
 		}
 
 		public bool GetTrap()
 		{
-			return _botSettings.Trap();
+			return _state.Trap;
 		}
 	}
 }

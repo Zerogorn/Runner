@@ -4,6 +4,7 @@ using Assets.src.ScrObj.Bots.interfaces;
 using Assets.src.Ui.Models;
 using Assets.src.Units.Bot.interfaces;
 using src.Ui.Components.Windows.Game;
+using src.Units.Bot.States;
 using src.Units.Bot.Strategy;
 using UnityEditor;
 using UnityEngine;
@@ -54,7 +55,8 @@ namespace src.Units.Bot
 				Transform botObj =  Object.Instantiate(botSettings?.Transform(), parent);
 				Vector2 startPosition = GetStartPosition(i);
 				IMoveStrategy moveStrategy = _pullMoveStrategy.GetMoveStrategy(botSettings.Strategy());
-				BotViewer botViewerView = new BotViewer(botObj ,startPosition, botSettings, moveStrategy);
+				IState state = new Move(botSettings.Trap(), botSettings.HitBoxRadius()); 
+				BotViewer botViewerView = new BotViewer(botObj ,startPosition, state, moveStrategy);
 				
 				bots.Add(botViewerView);
 				

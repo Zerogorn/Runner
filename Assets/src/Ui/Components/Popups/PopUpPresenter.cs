@@ -23,6 +23,8 @@ namespace src.Ui.Components.Popups
 
             _popUpViewer.ToMenu.SetListener(_ => _popUpModel.ExecuteToMenu());
             _popUpModel.SubscribeToMenuText(_popUpViewer.ToMenu.SetText);
+			
+			_popUpModel.SubscribeDescription(_popUpViewer.SetDescription);
         }
 	}
 }

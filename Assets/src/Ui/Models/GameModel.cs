@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Assets.src.App;
 using src.Units.Bot;
 using UniRx;
+using UnityEditor;
 using UnityEngine;
 
 namespace Assets.src.Ui.Models
@@ -80,7 +81,7 @@ namespace Assets.src.Ui.Models
 										.Equals(1);
 				
 				if (overMoveY || overMoveX)
-					botViewer.ResetPosition();
+					botViewer.UpdateState();
 
 				if (overMoveY && !botViewer.GetTrap())
 					_counter.Value++;
@@ -102,8 +103,23 @@ namespace Assets.src.Ui.Models
 				? (presPosition.y - 0.5f) * AppManager.GetCanvasUtils.Height
 				: Mathf.Abs(0.5f - presPosition.y) * AppManager.GetCanvasUtils.Height; 
 			
-			Vector2 xPointPosition = new Vector3(x, y);
+			Vector2 pointPosition = new Vector3(x, y);
+
+			ChetHitsBot(pointPosition);
+		}
+		
+		public void ResetBotsPosition()
+		{
+			IEnumerator<BotViewer> enumerator = _bots.GetEnumerator();
+
+			while (enumerator.MoveNext())
+				enumerator.Current?.UpdateState();
 			
+			enumerator.Dispose();
+		}
+
+		private void ChetHitsBot(Vector2 xPointPosition)
+		{
 			IEnumerator<BotViewer> enumerator = _bots.GetEnumerator();
 
 			while (enumerator.MoveNext())
@@ -115,20 +131,8 @@ namespace Assets.src.Ui.Models
 				if (Mathf.Abs(deltaShootBot) > botViewer.GetHitBox())
 					continue;
 
-				botViewer.ResetPosition();
+				botViewer.UpdateState();
 				_counter.Value = botViewer.GetTrap() ? _skipCounter : _counter.Value;
-			}
-			
-			enumerator.Dispose();
-		}
-		
-		public void ResetBotsPosition()
-		{
-			IEnumerator<BotViewer> enumerator = _bots.GetEnumerator();
-
-			while (enumerator.MoveNext())
-			{
-				enumerator.Current?.ResetPosition();
 			}
 			
 			enumerator.Dispose();

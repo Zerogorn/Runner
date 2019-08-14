@@ -20,14 +20,7 @@ namespace src.Ui.Components.Windows.Game
 		}
 
 		private void Binding()
-		{
-			_gameViewer.gameObject
-						.OnEnableAsObservable()
-						.Subscribe(_ =>
-						{
-							_gameViewer.AddBots(_gameModel.GetBots());
-						});
-			
+		{			
 			_gameViewer.gameObject.AddComponent<ObservablePointerDownTrigger>()
 						.OnPointerDownAsObservable()
 						.Subscribe(x =>
