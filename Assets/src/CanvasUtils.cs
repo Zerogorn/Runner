@@ -19,8 +19,8 @@ namespace src
 			Height = Screen.height / UiCanvas.scaleFactor;
 			Width = Screen.width / UiCanvas.scaleFactor;
 
-			XMax = Width / 2;
-			YMax = Height / 2;
+			XMax = Width * 0.5f;
+			YMax = Height * 0.5f;
 		}
 	}
 }

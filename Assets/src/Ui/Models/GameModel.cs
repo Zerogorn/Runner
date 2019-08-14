@@ -14,9 +14,6 @@ namespace Assets.src.Ui.Models
 		private readonly ReactiveProperty<int> _counter;
 		private readonly ReactiveCollection<BotViewer> _bots;
 
-		// private float _yMax;
-		// private float _xMax;
-		//
 		public GameModel()
 		{
 			_skipCounter = 3;
@@ -24,12 +21,6 @@ namespace Assets.src.Ui.Models
 			_counter = new ReactiveProperty<int>();
 			_bots = new ReactiveCollection<BotViewer>();
 		}
-		//
-		// public void Initialization(Canvas canvas)
-		// {
-		// 	_yMax = Screen.height / canvas.scaleFactor;
-		// 	_xMax = Screen.width / canvas.scaleFactor;			
-		// }
 		
 		public void AddBots(IEnumerable<BotViewer> bots)
 		{
@@ -48,8 +39,9 @@ namespace Assets.src.Ui.Models
 				if (x < _skipCounter)
 					return;
 
-				action.Invoke();
 				_counter.Value = 0;
+				ResetBots();
+				action.Invoke();
 			});
 		}
 		
@@ -67,8 +59,8 @@ namespace Assets.src.Ui.Models
 			
 			enumerator.Dispose();
 		}
-
-		public void ResetBots(Unit unit)
+		
+		public void ResetBotsUnderCanvas(Unit unit)
 		{
 			IEnumerator<BotViewer> enumerator = _bots.GetEnumerator();
 
@@ -103,12 +95,12 @@ namespace Assets.src.Ui.Models
 			presPosition = Camera.main.ScreenToViewportPoint(presPosition);
 
 			float x = presPosition.x < 0.5f
-				? (presPosition.x - 0.5f) * AppManager.GetCanvasUtils.XMax
-				: Mathf.Abs(0.5f - presPosition.x) * AppManager.GetCanvasUtils.XMax;
+				? (presPosition.x - 0.5f) * AppManager.GetCanvasUtils.Width
+				: Mathf.Abs(0.5f - presPosition.x) * AppManager.GetCanvasUtils.Width;
 			
 			float y = presPosition.y < 0.5f
-				? (presPosition.y - 0.5f) * AppManager.GetCanvasUtils.YMax
-				: Mathf.Abs(0.5f - presPosition.y) * AppManager.GetCanvasUtils.YMax; 
+				? (presPosition.y - 0.5f) * AppManager.GetCanvasUtils.Height
+				: Mathf.Abs(0.5f - presPosition.y) * AppManager.GetCanvasUtils.Height; 
 			
 			Vector2 xPointPosition = new Vector3(x, y);
 			
@@ -125,6 +117,18 @@ namespace Assets.src.Ui.Models
 
 				botViewer.ResetPosition();
 				_counter.Value = botViewer.GetTrap() ? _skipCounter : _counter.Value;
+			}
+			
+			enumerator.Dispose();
+		}
+		
+		private void ResetBots()
+		{
+			IEnumerator<BotViewer> enumerator = _bots.GetEnumerator();
+
+			while (enumerator.MoveNext())
+			{
+				enumerator.Current?.ResetPosition();
 			}
 			
 			enumerator.Dispose();

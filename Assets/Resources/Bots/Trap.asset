@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Trap
   m_EditorClassIdentifier: 
   _trap: 1
-  _trigger: 100
+  _trigger: 50
   _localSale: {x: 100, y: 100, z: 100}
   _botObj: {fileID: 5392294517850008527, guid: 03175235331f1424a920632b6d75d243, type: 3}
   _strategy: 1
