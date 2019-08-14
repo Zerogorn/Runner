@@ -32,7 +32,7 @@ namespace Assets.src.Ui.Models
 			enumerator.Dispose();
 		}
 
-		public void AddCounterListener(Action action)
+		public void AddLoseCounterListener(Action action)
 		{
 			_counter.Skip(1).Subscribe(x =>
 			{
@@ -50,7 +50,7 @@ namespace Assets.src.Ui.Models
 			return _bots;
 		}
 
-		public void UpdatePositions(float move)
+		public void UpdateBotPositions(float move)
 		{
 			IEnumerator<BotViewer> enumerator = _bots.GetEnumerator();
 

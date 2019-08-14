@@ -6,14 +6,14 @@ namespace src.Units.Bot
 {
 	internal sealed class BotViewer
 	{
-		private Transform _transform;		
-		private Vector2 _startPosition;
+		private readonly Transform _transform;		
+		private readonly Vector2 _startPosition;
 
-		private IBotSettings _botSettings;
-		private IMoveStrategy _moveStrategy;
-		private IState _state;
+		private readonly IBotSettings _botSettings;
+		private readonly IMoveStrategy _moveStrategy;
+		private readonly IState _state;
 
-		public void Initialization(Transform botObj, 
+		public BotViewer(Transform botObj, 
 								   Vector2 startPosition, 
 								   IBotSettings botSettings,
 								   IMoveStrategy moveStrategy)

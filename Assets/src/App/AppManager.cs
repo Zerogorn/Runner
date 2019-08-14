@@ -123,10 +123,10 @@ namespace Assets.src.App
         
         private void GameBinding()
         {
-            _moveSimulation.Subscribe(_modelContext.GameModel.UpdatePositions);
+            _moveSimulation.Subscribe(_modelContext.GameModel.UpdateBotPositions);
             _botValidator.Subscribe(_modelContext.GameModel.ResetBotsUnderCanvas);
             
-            _modelContext.GameModel.AddCounterListener(() =>
+            _modelContext.GameModel.AddLoseCounterListener(() =>
             {
                 _moveSimulation.Stop();
                 _botValidator.Stop();
