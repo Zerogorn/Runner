@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace Assets.src.Units.Bot.Strategy
 {
-    public class RandomMove : IMoveStrategy
+    internal sealed class RandomMove : IMoveStrategy
     {
         private readonly IList<Func<float, Vector2>> _vectors;
 

@@ -1,10 +1,10 @@
-﻿using Assets.src.Loaders.Resources;
-using Assets.src.ScrObj.Bots.interfaces;
+﻿using Assets.src.ScrObj.Bots.interfaces;
 using Assets.src.ScrObj.Ui.interfaces;
 using Assets.src.Ui;
 using Assets.src.Ui.Factory;
 using Assets.src.Ui.Models;
 using Assets.src.Ui.Utils;
+using src.Loaders;
 using src.Units.Bot;
 using src.Units.Bot.Strategy;
 using src.Units.Simulation;
@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace Assets.src.App
 {
-    public class AppManager
+    internal sealed class AppManager
     {
         private readonly ResourcesManager _resourcesManager;
 

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace src.Ui.Components.Windows.Game
 {
-    public class GameViewer : MonoBehaviour, IWindow
+    internal sealed class GameViewer : MonoBehaviour, IWindow
     {        
         public void SetActive(bool active)
         {

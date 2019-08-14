@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.src.Units.Bot.interfaces
 {
-    public interface IBotSettings
+    internal interface IBotSettings
     {
         bool Trap();
         int HitBoxRadius();

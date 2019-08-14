@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.src.Ui
 {
-    public class UiManger
+    internal sealed class UiManger
     {
         private readonly IList<ILayer> _layers;
         

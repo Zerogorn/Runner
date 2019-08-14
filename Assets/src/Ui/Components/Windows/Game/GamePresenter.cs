@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace src.Ui.Components.Windows.Game
 {
-	public class GamePresenter
+	internal sealed class GamePresenter
 	{
 		private readonly GameViewer _gameViewer;
 		private readonly GameModel _gameModel;

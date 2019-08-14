@@ -1,6 +1,6 @@
 ﻿namespace src.Ui.Components.interfaces
 {
-	public interface IComponent
+	internal interface IComponent
 	{
 		void SetActive(bool active);
 	}

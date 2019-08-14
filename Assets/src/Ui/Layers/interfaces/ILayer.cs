@@ -2,7 +2,7 @@
 
 namespace Assets.src.Ui.Layers.interfaces
 {
-	public interface ILayer
+	internal interface ILayer
 	{
 		LayersTypes Type { get; }
 

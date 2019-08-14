@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Assets.src.ScrObj.Bots
 {
     [CreateAssetMenu(fileName = "Bots Settings", menuName = "ScriptableObjects/Bot")]
-    public class BotSettings : ScriptableObject, IBotSettings
+    internal sealed class BotSettings : ScriptableObject, IBotSettings
     {
         [SerializeField]
         private bool _trap;

@@ -2,19 +2,19 @@
 using Assets.src.ScrObj.Bots.interfaces;
 using Assets.src.ScrObj.Ui;
 using Assets.src.ScrObj.Ui.interfaces;
-using src.Loaders.Resources;
+using UnityEngine;
 
-namespace Assets.src.Loaders.Resources
+namespace src.Loaders
 {
-    public class ResourcesManager
+    internal sealed class ResourcesManager
     {
         private IUiPrefabs _uiPrefabs;
         private IBotsPull _botsPull;
         
         public void LoadResources()
         {
-            _uiPrefabs = UnityEngine.Resources.Load<UiPrefabs>(ResourcesConst.UI_PREFABS_PATH);
-            _botsPull = UnityEngine.Resources.Load<BotsPull>(ResourcesConst.BOTS_SETTINGS);
+            _uiPrefabs = Resources.Load<UiPrefabs>(ResourcesConst.UI_PREFABS_PATH);
+            _botsPull = Resources.Load<BotsPull>(ResourcesConst.BOTS_SETTINGS);
         }
 
         public IUiPrefabs GetUiPrefabs()

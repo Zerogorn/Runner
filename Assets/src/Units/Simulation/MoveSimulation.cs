@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace src.Units.Simulation
 {
-	public class MoveSimulation
+	internal sealed class MoveSimulation
 	{ 
 		private ReactiveProperty<float> Move { get; }
 		

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.src.Ui.Factory
 {
-    public class LayerFactory
+    internal sealed class LayerFactory
     {   
         private readonly IUiPrefabs _prefabs;
         private readonly WindowFactory _windowFactory;

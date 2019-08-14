@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.src.ScrObj.Ui.interfaces
 {
-    public interface IUiPrefabs
+    internal interface IUiPrefabs
     {
         Canvas Canvas();
         ButtonViewer ButtonDefault(Transform parent);

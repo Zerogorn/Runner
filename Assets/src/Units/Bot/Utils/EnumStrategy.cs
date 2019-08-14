@@ -1,6 +1,6 @@
 ﻿namespace Assets.src.Units.Bot.Utils
 {
-    public enum EnumStrategy
+    internal enum EnumStrategy
     {
         Default,
         Random

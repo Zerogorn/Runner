@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace src.Units.Bot
 {
-	public class BotsFactory
+	internal sealed class BotsFactory
 	{
 		private readonly IBotsPull _botsPull;
 		private readonly PullMoveStrategy _pullMoveStrategy;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace src.Ui.Components.Items
 {
-    public class ButtonViewer : MonoBehaviour
+    internal sealed class ButtonViewer : MonoBehaviour
     {
         [SerializeField]
         private Button _button;

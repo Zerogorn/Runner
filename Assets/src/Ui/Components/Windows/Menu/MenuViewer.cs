@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace src.Ui.Components.Windows.Menu
 {
-    public class MenuViewer : MonoBehaviour, IWindow
+    internal sealed class MenuViewer : MonoBehaviour, IWindow
     {        
         [SerializeField]
         private RectTransform _content;

@@ -2,7 +2,7 @@
 
 namespace Assets.src.App
 {
-    public class AppInitialization : MonoBehaviour
+    internal sealed class AppInitialization : MonoBehaviour
     {
         public void Start()
         {

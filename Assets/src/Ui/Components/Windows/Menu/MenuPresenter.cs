@@ -2,7 +2,7 @@
 
 namespace src.Ui.Components.Windows.Menu
 {
-    public class MenuPresenter 
+    internal sealed class MenuPresenter 
     {
         private readonly MenuViewer _menuViewer;
         private readonly MenuModel _menuModel;

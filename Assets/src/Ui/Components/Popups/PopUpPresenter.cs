@@ -2,7 +2,7 @@
 
 namespace src.Ui.Components.Popups
 {
-	public class PopUpPresenter
+	internal sealed class PopUpPresenter
 	{
 		private readonly PopUpViewer _popUpViewer;
 		private readonly PopUpModel _popUpModel;

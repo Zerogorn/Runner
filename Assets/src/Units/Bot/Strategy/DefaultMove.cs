@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.src.Units.Bot.Strategy
 {
-    public class DefaultMove : IMoveStrategy
+	internal sealed class DefaultMove : IMoveStrategy
     {
         public void Move(Transform transform
                          , float move)

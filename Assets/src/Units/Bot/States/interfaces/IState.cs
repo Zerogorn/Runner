@@ -1,6 +1,6 @@
 ﻿namespace Assets.src.Units.Bot.interfaces
 {
-    public interface IState
+    internal interface IState
     {
         IState Update();
     }

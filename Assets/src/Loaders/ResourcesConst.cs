@@ -1,6 +1,6 @@
-﻿namespace src.Loaders.Resources
+﻿namespace src.Loaders
 {
-    public static class ResourcesConst
+    internal static class ResourcesConst
     {
         public const string UI_PREFABS_PATH = "UiPrefabs";
         public const string BOTS_SETTINGS = "BotsSettings";

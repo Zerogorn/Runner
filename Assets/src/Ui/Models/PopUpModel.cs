@@ -3,7 +3,7 @@ using UniRx;
 
 namespace Assets.src.Ui.Models
 {
-    public class PopUpModel
+    internal sealed class PopUpModel
     {
         private const string REPEAT = "Repiat";
         private const string TO_MENU = "to Menu";

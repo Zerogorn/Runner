@@ -1,6 +1,6 @@
 ﻿namespace Assets.src.Ui.Utils
 {
-    public static class UiConst
+    internal static class UiConst
     {
         // Layers
         public const string CONTAINER_WINDOW = "Windows";

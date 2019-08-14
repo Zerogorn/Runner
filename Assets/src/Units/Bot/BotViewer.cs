@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace src.Units.Bot
 {
-	public class BotViewer
+	internal sealed class BotViewer
 	{
 		private Transform _transform;		
 		private Vector2 _startPosition;

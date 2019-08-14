@@ -2,7 +2,7 @@
 
 namespace Assets.src.Units.Bot.interfaces
 {
-    public interface IMoveStrategy
+    internal interface IMoveStrategy
     {
         void Move(Transform transform, float move);
     }

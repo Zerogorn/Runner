@@ -3,7 +3,7 @@ using UniRx;
 
 namespace Assets.src.Ui.Models
 {
-	public class MenuModel
+    internal sealed class MenuModel
     {
         private const string START = "start";
         

@@ -7,7 +7,7 @@ using Assets.src.Units.Bot.Utils;
 
 namespace src.Units.Bot.Strategy
 {
-	public class PullMoveStrategy
+	internal sealed class PullMoveStrategy
 	{
 		private readonly IList<KeyValuePair<EnumStrategy, Type>> _strategyPull;
 

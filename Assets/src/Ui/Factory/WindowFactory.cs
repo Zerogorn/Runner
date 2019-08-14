@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.src.Ui.Factory
 {
-	public class WindowFactory
+	internal sealed class WindowFactory
 	{
 		private readonly IUiPrefabs _uiPrefabs;
 		private readonly ModelContext _modelContext;

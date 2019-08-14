@@ -1,6 +1,6 @@
 ﻿namespace Assets.src.Ui.Utils
 {
-    public enum LayersTypes
+    internal enum LayersTypes
     {
         Windows,
         PopUp

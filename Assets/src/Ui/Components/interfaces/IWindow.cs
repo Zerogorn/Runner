@@ -1,6 +1,6 @@
 ﻿namespace src.Ui.Components.interfaces
 {
-    public interface IWindow : IComponent
+    internal interface IWindow : IComponent
     {
         
     }

@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 namespace Assets.src.ScrObj.Ui
 {
     [CreateAssetMenu(fileName = "UiPrefabs", menuName = "ScriptableObjects/UiPrefabs")]
-    public class UiPrefabs : ScriptableObject, IUiPrefabs
+    internal sealed class UiPrefabs : ScriptableObject, IUiPrefabs
     {
         [Header("Main Canvas")]
         [SerializeField]

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.src.Ui.Factory
 {
-    public class PopUpFactory
+    internal sealed class PopUpFactory
     {
         private readonly IUiPrefabs _uiPrefabs;
         private readonly ModelContext _modelContext;

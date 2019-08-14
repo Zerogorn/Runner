@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace src.Ui.Components.Popups
 {
-    public class PopUpViewer : MonoBehaviour, IPopUp
+    internal sealed class PopUpViewer : MonoBehaviour, IPopUp
     {        
         [SerializeField]
         private TextMeshProUGUI _description;

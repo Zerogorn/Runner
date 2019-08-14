@@ -1,6 +1,6 @@
 ﻿namespace Assets.src.Ui.Models
 {
-	public class ModelContext
+	internal sealed class ModelContext
 	{
 		public MenuModel MenuModel { get; }
 		public GameModel GameModel { get; }

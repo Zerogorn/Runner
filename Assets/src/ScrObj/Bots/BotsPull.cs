@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Assets.src.ScrObj.Bots
 {
     [CreateAssetMenu(fileName = "Bots Pull", menuName = "ScriptableObjects/BotsPull")]
-    public class BotsPull : ScriptableObject, IBotsPull
+    internal sealed class BotsPull : ScriptableObject, IBotsPull
     {
         [Header("Bots")]
         [SerializeField]

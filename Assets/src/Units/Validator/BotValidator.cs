@@ -3,7 +3,7 @@ using UniRx;
 
 namespace src.Units.Validator
 {
-    public class BotValidator
+	internal sealed class BotValidator
 	{
 		private readonly int _time;
 		private readonly ReactiveCommand _resetCmd;

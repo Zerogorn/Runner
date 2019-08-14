@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.src.Ui.Models
 {
-	public class GameModel
+	internal sealed class GameModel
 	{
 		private readonly int _skipCounter;
 		

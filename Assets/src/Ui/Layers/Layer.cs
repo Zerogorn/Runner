@@ -6,7 +6,7 @@ using src.Ui.Components.interfaces;
 
 namespace Assets.src.Ui.Layers
 {
-	public class Layer <T>: ILayer
+	internal sealed class Layer <T>: ILayer
 		where T : IComponent 
 	{
 		public LayersTypes Type { get;}

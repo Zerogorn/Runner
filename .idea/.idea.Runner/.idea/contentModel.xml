@@ -277,10 +277,8 @@
             <e p="AppManager.cs" t="Include" />
           </e>
           <e p="Loaders" t="Include">
-            <e p="Resources" t="Include">
-              <e p="ResourcesConst.cs" t="Include" />
-              <e p="ResourcesManager.cs" t="Include" />
-            </e>
+            <e p="ResourcesConst.cs" t="Include" />
+            <e p="ResourcesManager.cs" t="Include" />
           </e>
           <e p="ScrObj" t="Include">
             <e p="Bots" t="Include">

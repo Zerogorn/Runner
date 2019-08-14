@@ -2,7 +2,7 @@
 
 namespace src.Units.Bot.States
 {
-	public class Ded : IState
+	internal sealed class Ded : IState
 	{
 		public IState Update()
 		{
