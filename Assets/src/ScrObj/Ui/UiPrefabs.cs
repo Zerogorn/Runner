@@ -12,10 +12,6 @@ namespace Assets.src.ScrObj.Ui
     [CreateAssetMenu(fileName = "UiPrefabs", menuName = "ScriptableObjects/UiPrefabs")]
     internal sealed class UiPrefabs : ScriptableObject, IUiPrefabs
     {
-        [Header("Main Canvas")]
-        [SerializeField]
-        private Canvas _canvas;
-
         [FormerlySerializedAs("_buttonDefault")]
         [SerializeField]
         [Header("Button Default")]
@@ -37,11 +33,6 @@ namespace Assets.src.ScrObj.Ui
         [SerializeField]
         [Header("Container")]
         private RectTransform _container;
-
-        public Canvas Canvas()
-        {
-            return Instantiate(_canvas);
-        }
 
         public MenuViewer Menu(Transform parent)
         {

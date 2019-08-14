@@ -4,6 +4,7 @@ using Assets.src.Ui;
 using Assets.src.Ui.Factory;
 using Assets.src.Ui.Models;
 using Assets.src.Ui.Utils;
+using src;
 using src.Loaders;
 using src.Units.Bot;
 using src.Units.Bot.Strategy;
@@ -15,45 +16,60 @@ namespace Assets.src.App
 {
     internal sealed class AppManager
     {
-        private readonly ResourcesManager _resourcesManager;
+        public static CanvasUtils GetCanvasUtils { get; private set; }
 
+        private readonly ResourcesManager _resourcesManager;
         private readonly MoveSimulation _moveSimulation;
-        private readonly BotValidator _botValidator;
-        
+        private readonly BotValidator _botValidator;        
         private readonly ModelContext _modelContext;
-        private UiManger _uiManger;
         
-        public AppManager()
+        private IUiPrefabs _uiPrefabs;
+        private IBotsPull _bots;
+        
+        private UiManger _uiManger;
+
+        private AppManager()
         {
+            
             _resourcesManager = new ResourcesManager();
             _modelContext = new ModelContext();
             _moveSimulation = new MoveSimulation();
             _botValidator = new BotValidator();
         }
+        
+        public AppManager(Canvas uiCanvas)
+            : this()
+        {
+            GetCanvasUtils = new CanvasUtils(uiCanvas);
+        }
 
         public void Initialization()
         {
-            _resourcesManager.LoadResources();
+            InitBase();
             
             InitUi();
             UIiBinding();
             
-            GameBinding();
             InitGame();
+            GameBinding();
         }
 
-        private void InitUi()
+        private void InitBase()
         {
-            IUiPrefabs uiPrefabs = _resourcesManager.GetUiPrefabs();
-            Canvas canvas = uiPrefabs.Canvas();
+            _resourcesManager.LoadResources();
+            _uiPrefabs = _resourcesManager.GetUiPrefabs();
+            _bots = _resourcesManager.GetBots();
+        }
+        
+#region Ui
 
-            _modelContext.GameModel.Initialization(canvas);
-            
-            WindowFactory windowFactory = new WindowFactory(uiPrefabs, _modelContext);
-            PopUpFactory popUpFactory = new PopUpFactory(uiPrefabs, _modelContext);
-            LayerFactory layerFactory = new LayerFactory(uiPrefabs, windowFactory, popUpFactory);
+        private void InitUi()
+        {            
+            WindowFactory windowFactory = new WindowFactory(_uiPrefabs, _modelContext);
+            PopUpFactory popUpFactory = new PopUpFactory(_uiPrefabs, _modelContext);
+            LayerFactory layerFactory = new LayerFactory(_uiPrefabs, windowFactory, popUpFactory);
 
-            _uiManger = new UiManger(canvas, layerFactory);
+            _uiManger = new UiManger(GetCanvasUtils.UiCanvas, layerFactory);
             _uiManger.SetActive(LayersTypes.Windows ,UiConst.WINDOW_MAIN, true);
         }
 
@@ -92,13 +108,15 @@ namespace Assets.src.App
                 _botValidator.Start();
             });
         }
-
+        
+#endregion End Ui
+        
+#region Game
+        
         private void InitGame()
         {
-            IBotsPull bots = _resourcesManager.GetBots();
             PullMoveStrategy pullMoveStrategy = new PullMoveStrategy();
-
-            BotsFactory botsFactory = new BotsFactory(pullMoveStrategy, bots);
+            BotsFactory botsFactory = new BotsFactory(pullMoveStrategy, _bots);
             
             _modelContext.GameModel.AddBots(botsFactory.GetBots());
         }
@@ -118,5 +136,8 @@ namespace Assets.src.App
                                     true);
             });
         }
+        
+#endregion End Game
+        
     }
 }

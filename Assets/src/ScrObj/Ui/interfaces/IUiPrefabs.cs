@@ -8,7 +8,6 @@ namespace Assets.src.ScrObj.Ui.interfaces
 {
     internal interface IUiPrefabs
     {
-        Canvas Canvas();
         ButtonViewer ButtonDefault(Transform parent);
         MenuViewer Menu(Transform parent);
         PopUpViewer Popup(Transform parent);

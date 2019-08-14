@@ -276,6 +276,7 @@
             <e p="AppInitialization.cs" t="Include" />
             <e p="AppManager.cs" t="Include" />
           </e>
+          <e p="CanvasUtils.cs" t="Include" />
           <e p="Loaders" t="Include">
             <e p="ResourcesConst.cs" t="Include" />
             <e p="ResourcesManager.cs" t="Include" />

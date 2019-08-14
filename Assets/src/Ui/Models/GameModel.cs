@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.src.App;
 using src.Units.Bot;
 using UniRx;
 using UnityEngine;
@@ -13,9 +14,9 @@ namespace Assets.src.Ui.Models
 		private readonly ReactiveProperty<int> _counter;
 		private readonly ReactiveCollection<BotViewer> _bots;
 
-		private float _yMax;
-		private float _xMax;
-		
+		// private float _yMax;
+		// private float _xMax;
+		//
 		public GameModel()
 		{
 			_skipCounter = 3;
@@ -23,12 +24,12 @@ namespace Assets.src.Ui.Models
 			_counter = new ReactiveProperty<int>();
 			_bots = new ReactiveCollection<BotViewer>();
 		}
-
-		public void Initialization(Canvas canvas)
-		{
-			_yMax = Screen.height / canvas.scaleFactor;
-			_xMax = Screen.width / canvas.scaleFactor;			
-		}
+		//
+		// public void Initialization(Canvas canvas)
+		// {
+		// 	_yMax = Screen.height / canvas.scaleFactor;
+		// 	_xMax = Screen.width / canvas.scaleFactor;			
+		// }
 		
 		public void AddBots(IEnumerable<BotViewer> bots)
 		{
@@ -79,11 +80,11 @@ namespace Assets.src.Ui.Models
 					continue;
 
 				bool overMoveY = botViewer.GetPosition().y
-										.CompareTo(-_yMax * 0.5f)
+										.CompareTo(-AppManager.GetCanvasUtils.YMax)
 										.Equals(-1);
 				
 				bool overMoveX = Mathf.Abs(botViewer.GetPosition().x)
-										.CompareTo(_xMax * 0.5f)
+										.CompareTo(AppManager.GetCanvasUtils.XMax)
 										.Equals(1);
 				
 				if (overMoveY || overMoveX)
@@ -102,12 +103,12 @@ namespace Assets.src.Ui.Models
 			presPosition = Camera.main.ScreenToViewportPoint(presPosition);
 
 			float x = presPosition.x < 0.5f
-				? (presPosition.x - 0.5f) * _xMax
-				: Mathf.Abs(0.5f - presPosition.x) * _xMax;
+				? (presPosition.x - 0.5f) * AppManager.GetCanvasUtils.XMax
+				: Mathf.Abs(0.5f - presPosition.x) * AppManager.GetCanvasUtils.XMax;
 			
 			float y = presPosition.y < 0.5f
-				? (presPosition.y - 0.5f) * _yMax
-				: Mathf.Abs(0.5f - presPosition.y) * _yMax; 
+				? (presPosition.y - 0.5f) * AppManager.GetCanvasUtils.YMax
+				: Mathf.Abs(0.5f - presPosition.y) * AppManager.GetCanvasUtils.YMax; 
 			
 			Vector2 xPointPosition = new Vector3(x, y);
 			
