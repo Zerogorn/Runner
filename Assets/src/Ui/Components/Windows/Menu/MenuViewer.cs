@@ -1,16 +1,16 @@
 ﻿using Assets.src.ScrObj.Ui.interfaces;
-using Assets.src.Ui.Mvc.interfaces;
-using Assets.src.Ui.Mvc.Items;
+using src.Ui.Components.interfaces;
+using src.Ui.Components.Items;
 using UnityEngine;
 
-namespace Assets.src.Ui.Mvc.Windows.Menu
+namespace src.Ui.Components.Windows.Menu
 {
     public class MenuViewer : MonoBehaviour, IWindow
     {        
         [SerializeField]
         private RectTransform _content;
 
-        public ButtonDefaultViewer ButtonStart { get; private set; }
+        public ButtonViewer ButtonStart { get; private set; }
 
         private void Awake()
         {

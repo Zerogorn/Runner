@@ -2,7 +2,7 @@
 using UniRx;
 using UnityEngine;
 
-namespace src.Units.Move
+namespace src.Units.Simulation
 {
 	public class MoveSimulation
 	{ 

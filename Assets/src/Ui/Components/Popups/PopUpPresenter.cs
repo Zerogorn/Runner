@@ -1,6 +1,6 @@
 ﻿using Assets.src.Ui.Models;
 
-namespace Assets.src.Ui.Mvc.Popups
+namespace src.Ui.Components.Popups
 {
 	public class PopUpPresenter
 	{

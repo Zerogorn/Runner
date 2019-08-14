@@ -1,4 +1,4 @@
-﻿namespace Assets.src.Ui.Mvc.interfaces
+﻿namespace src.Ui.Components.interfaces
 {
 	public interface IComponent
 	{

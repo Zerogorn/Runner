@@ -1,6 +1,6 @@
 ﻿using Assets.src.Ui.Models;
 
-namespace Assets.src.Ui.Mvc.Windows.Menu
+namespace src.Ui.Components.Windows.Menu
 {
     public class MenuPresenter 
     {

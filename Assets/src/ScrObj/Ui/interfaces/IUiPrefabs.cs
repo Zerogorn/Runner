@@ -1,7 +1,7 @@
-﻿using Assets.src.Ui.Mvc.Items;
-using Assets.src.Ui.Mvc.Popups;
-using Assets.src.Ui.Mvc.Windows.Game;
-using Assets.src.Ui.Mvc.Windows.Menu;
+﻿using src.Ui.Components.Items;
+using src.Ui.Components.Popups;
+using src.Ui.Components.Windows.Game;
+using src.Ui.Components.Windows.Menu;
 using UnityEngine;
 
 namespace Assets.src.ScrObj.Ui.interfaces
@@ -9,7 +9,7 @@ namespace Assets.src.ScrObj.Ui.interfaces
     public interface IUiPrefabs
     {
         Canvas Canvas();
-        ButtonDefaultViewer ButtonDefault(Transform parent);
+        ButtonViewer ButtonDefault(Transform parent);
         MenuViewer Menu(Transform parent);
         PopUpViewer Popup(Transform parent);
         GameViewer GameContainer(Transform parent);

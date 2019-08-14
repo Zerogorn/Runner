@@ -1,9 +1,9 @@
 ﻿using Assets.src.ScrObj.Ui.interfaces;
-using Assets.src.Ui.Mvc.Items;
-using Assets.src.Ui.Mvc.Popups;
-using Assets.src.Ui.Mvc.Windows.Game;
-using Assets.src.Ui.Mvc.Windows.Menu;
 using Assets.src.Ui.Utils;
+using src.Ui.Components.Items;
+using src.Ui.Components.Popups;
+using src.Ui.Components.Windows.Game;
+using src.Ui.Components.Windows.Menu;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -16,9 +16,10 @@ namespace Assets.src.ScrObj.Ui
         [SerializeField]
         private Canvas _canvas;
 
+        [FormerlySerializedAs("_buttonDefault")]
         [SerializeField]
         [Header("Button Default")]
-        private ButtonDefaultViewer _buttonDefault;
+        private ButtonViewer _button;
         
         [Header("Menu Window")]
         [SerializeField]
@@ -53,10 +54,10 @@ namespace Assets.src.ScrObj.Ui
             return menuViewer;
         }
 
-        public ButtonDefaultViewer ButtonDefault(Transform parent)
+        public ButtonViewer ButtonDefault(Transform parent)
         {
-            _buttonDefault.gameObject.SetActive(false);
-            ButtonDefaultViewer button = Instantiate(_buttonDefault, 
+            _button.gameObject.SetActive(false);
+            ButtonViewer button = Instantiate(_button, 
                                                   parent);
             button.name = UiConst.BUTTON;
 

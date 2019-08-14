@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.src.Ui.Layers.interfaces;
-using Assets.src.Ui.Mvc.interfaces;
 using Assets.src.Ui.Utils;
+using src.Ui.Components.interfaces;
 
 namespace Assets.src.Ui.Layers
 {

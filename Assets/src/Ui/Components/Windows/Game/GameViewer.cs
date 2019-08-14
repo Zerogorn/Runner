@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Assets.src.Ui.Mvc.interfaces;
+﻿using System.Collections.Generic;
+using src.Ui.Components.interfaces;
 using src.Units.Bot;
-using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
 
-namespace Assets.src.Ui.Mvc.Windows.Game
+namespace src.Ui.Components.Windows.Game
 {
     public class GameViewer : MonoBehaviour, IWindow
     {        

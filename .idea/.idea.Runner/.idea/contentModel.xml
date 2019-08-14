@@ -285,9 +285,9 @@
           <e p="ScrObj" t="Include">
             <e p="Bots" t="Include">
               <e p="BotSettings.cs" t="Include" />
-              <e p="BotsSettingsCollection.cs" t="Include" />
+              <e p="BotsPull.cs" t="Include" />
               <e p="interfaces" t="Include">
-                <e p="IBotsSettingsCollection.cs" t="Include" />
+                <e p="IBotsPull.cs" t="Include" />
               </e>
             </e>
             <e p="Ui" t="Include">
@@ -298,6 +298,30 @@
             </e>
           </e>
           <e p="Ui" t="Include">
+            <e p="Components" t="Include">
+              <e p="interfaces" t="Include">
+                <e p="IComponent.cs" t="Include" />
+                <e p="IPopUp.cs" t="Include" />
+                <e p="IWindow.cs" t="Include" />
+              </e>
+              <e p="Items" t="Include">
+                <e p="ButtonViewer.cs" t="Include" />
+              </e>
+              <e p="Popups" t="Include">
+                <e p="PopUpPresenter.cs" t="Include" />
+                <e p="PopUpViewer.cs" t="Include" />
+              </e>
+              <e p="Windows" t="Include">
+                <e p="Game" t="Include">
+                  <e p="GamePresenter.cs" t="Include" />
+                  <e p="GameViewer.cs" t="Include" />
+                </e>
+                <e p="Menu" t="Include">
+                  <e p="MenuPresenter.cs" t="Include" />
+                  <e p="MenuViewer.cs" t="Include" />
+                </e>
+              </e>
+            </e>
             <e p="Factory" t="Include">
               <e p="LayerFactory.cs" t="Include" />
               <e p="PopUpFactory.cs" t="Include" />
@@ -314,30 +338,6 @@
               <e p="MenuModel.cs" t="Include" />
               <e p="ModelContext.cs" t="Include" />
               <e p="PopUpModel.cs" t="Include" />
-            </e>
-            <e p="Mvc" t="Include">
-              <e p="interfaces" t="Include">
-                <e p="IComponent.cs" t="Include" />
-                <e p="IPopUp.cs" t="Include" />
-                <e p="IWindow.cs" t="Include" />
-              </e>
-              <e p="Items" t="Include">
-                <e p="ButtonDefaultViewer.cs" t="Include" />
-              </e>
-              <e p="Popups" t="Include">
-                <e p="PopUpPresenter.cs" t="Include" />
-                <e p="PopUpViewer.cs" t="Include" />
-              </e>
-              <e p="Windows" t="Include">
-                <e p="Game" t="Include">
-                  <e p="GamePresenter.cs" t="Include" />
-                  <e p="GameViewer.cs" t="Include" />
-                </e>
-                <e p="Menu" t="Include">
-                  <e p="MenuPresenter.cs" t="Include" />
-                  <e p="MenuViewer.cs" t="Include" />
-                </e>
-              </e>
             </e>
             <e p="UiManger.cs" t="Include" />
             <e p="Utils" t="Include">
@@ -371,7 +371,7 @@
                 <e p="EnumStrategy.cs" t="Include" />
               </e>
             </e>
-            <e p="Move" t="Include">
+            <e p="Simulation" t="Include">
               <e p="MoveSimulation.cs" t="Include" />
             </e>
             <e p="Validator" t="Include">

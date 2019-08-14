@@ -29,7 +29,8 @@ namespace Assets.src.Units.Bot.Strategy
             _currentMove = MoveBottom;
         }
         
-        public void Move(Transform transform, float move)
+        public void Move(Transform transform,
+                         float move)
         {
             if(_disposableTimer == null) 
                 UpdateVector();

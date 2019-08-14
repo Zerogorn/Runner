@@ -2,7 +2,7 @@
 
 namespace Assets.src.ScrObj.Bots.interfaces
 {
-    public interface IBotsSettingsCollection
+    public interface IBotsPull
     {
         List<BotSettings> GetBotsSettings();
     }

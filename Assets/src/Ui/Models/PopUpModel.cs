@@ -5,6 +5,9 @@ namespace Assets.src.Ui.Models
 {
     public class PopUpModel
     {
+        private const string REPEAT = "Repiat";
+        private const string TO_MENU = "to Menu";
+        
         private readonly ReactiveCommand _repeat;
         private readonly ReactiveProperty<string> _repeatText;
 
@@ -14,10 +17,10 @@ namespace Assets.src.Ui.Models
         public PopUpModel()
         {
             _repeat = new ReactiveCommand();
-            _repeatText = new ReactiveProperty<string>("repeat");
+            _repeatText = new ReactiveProperty<string>(REPEAT);
 
             _toMenu = new ReactiveCommand();
-            _toMenuText = new ReactiveProperty<string>("to Menu");
+            _toMenuText = new ReactiveProperty<string>(TO_MENU);
         }
 
         public void ExecuteRepeat()

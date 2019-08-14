@@ -9,12 +9,12 @@ namespace Assets.src.Loaders.Resources
     public class ResourcesManager
     {
         private IUiPrefabs _uiPrefabs;
-        private IBotsSettingsCollection _botsSettingsCollection;
+        private IBotsPull _botsPull;
         
         public void LoadResources()
         {
             _uiPrefabs = UnityEngine.Resources.Load<UiPrefabs>(ResourcesConst.UI_PREFABS_PATH);
-            _botsSettingsCollection = UnityEngine.Resources.Load<BotsSettingsCollection>(ResourcesConst.BOTS_SETTINGS);
+            _botsPull = UnityEngine.Resources.Load<BotsPull>(ResourcesConst.BOTS_SETTINGS);
         }
 
         public IUiPrefabs GetUiPrefabs()
@@ -22,9 +22,9 @@ namespace Assets.src.Loaders.Resources
             return _uiPrefabs;
         }
         
-        public IBotsSettingsCollection GetBots()
+        public IBotsPull GetBots()
         {
-            return _botsSettingsCollection;
+            return _botsPull;
         }
     }
 }

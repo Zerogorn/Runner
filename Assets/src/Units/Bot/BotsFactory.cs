@@ -8,25 +8,25 @@ namespace src.Units.Bot
 {
 	public class BotsFactory
 	{
-		private readonly IBotsSettingsCollection _botsSettingsCollection;
+		private readonly IBotsPull _botsPull;
 		private readonly PullMoveStrategy _pullMoveStrategy;
 		
 		public BotsFactory(PullMoveStrategy pullMoveStrategy,
-						   IBotsSettingsCollection botsSettingsCollection)
+						   IBotsPull botsPull)
 		{
 			_pullMoveStrategy = pullMoveStrategy;
-			_botsSettingsCollection = botsSettingsCollection;
+			_botsPull = botsPull;
 		}
 
 		public IList<BotViewer> GetBots()
 		{
 			int xCurrent = - (Screen.width / 2);
-			int xStep = Screen.width  / (_botsSettingsCollection.GetBotsSettings().Count + 1);
+			int xStep = Screen.width  / (_botsPull.GetBotsSettings().Count + 1);
 			int yStep = Screen.height / 2;
 			
 			IList<BotViewer> bots = new List<BotViewer>();
 			
-			IEnumerator<IBotSettings> enumerator = _botsSettingsCollection.GetBotsSettings().GetEnumerator();
+			IEnumerator<IBotSettings> enumerator = _botsPull.GetBotsSettings().GetEnumerator();
 
 			while (enumerator.MoveNext())
 			{

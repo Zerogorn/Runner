@@ -1,10 +1,10 @@
 ﻿using Assets.src.ScrObj.Ui.interfaces;
-using Assets.src.Ui.Mvc.interfaces;
-using Assets.src.Ui.Mvc.Items;
+using src.Ui.Components.interfaces;
+using src.Ui.Components.Items;
 using TMPro;
 using UnityEngine;
 
-namespace Assets.src.Ui.Mvc.Popups
+namespace src.Ui.Components.Popups
 {
     public class PopUpViewer : MonoBehaviour, IPopUp
     {        
@@ -14,8 +14,8 @@ namespace Assets.src.Ui.Mvc.Popups
         [SerializeField]
         private RectTransform _container;
 
-        public ButtonDefaultViewer Repeat { get; private set; }
-        public ButtonDefaultViewer ToMenu { get; private set; }
+        public ButtonViewer Repeat { get; private set; }
+        public ButtonViewer ToMenu { get; private set; }
 
         private void Awake()
         {

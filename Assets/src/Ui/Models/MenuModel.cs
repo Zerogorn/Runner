@@ -5,13 +5,15 @@ namespace Assets.src.Ui.Models
 {
 	public class MenuModel
     {
+        private const string START = "start";
+        
         private readonly ReactiveCommand _star;
         private readonly ReactiveProperty<string> _startText;
         
         public MenuModel()
         {
             _star = new ReactiveCommand();
-            _startText = new ReactiveProperty<string>("start");
+            _startText = new ReactiveProperty<string>(START);
         }
 
         public void StartExecute()

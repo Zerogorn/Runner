@@ -13,19 +13,17 @@ namespace Assets.src.Ui
         private readonly IList<ILayer> _layers;
         
         private Canvas _canvas;
-        private ModelContext _modelContext;
 
         private UiManger()
         {
             _layers = new List<ILayer>();
         }
         
-        public UiManger(Canvas canvas, ModelContext modelContext, LayerFactory layerFactory)
+        public UiManger(Canvas canvas, LayerFactory layerFactory)
             : this()
         {
             Canvas(canvas);
 
-            _modelContext = modelContext;
             _layers.Add(layerFactory.GetWindows(canvas.transform));
             _layers.Add(layerFactory.GetPopup(canvas.transform));
         }

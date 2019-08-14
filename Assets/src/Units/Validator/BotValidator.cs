@@ -19,8 +19,8 @@ namespace src.Units.Validator
 		public void Start()
 		{
 			_disposable = Observable.Timer(TimeSpan.FromSeconds(_time))
-											.Repeat()
-											.Subscribe(_ => ResetBot());
+									.Repeat()
+									.Subscribe(_ => ResetBot());
 		}
 
 		public void Stop()

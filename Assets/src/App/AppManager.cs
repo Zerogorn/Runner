@@ -7,7 +7,7 @@ using Assets.src.Ui.Models;
 using Assets.src.Ui.Utils;
 using src.Units.Bot;
 using src.Units.Bot.Strategy;
-using src.Units.Move;
+using src.Units.Simulation;
 using src.Units.Validator;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ namespace Assets.src.App
         private readonly MoveSimulation _moveSimulation;
         private readonly BotValidator _botValidator;
         
-        private ModelContext _modelContext;
+        private readonly ModelContext _modelContext;
         private UiManger _uiManger;
         
         public AppManager()
@@ -53,7 +53,7 @@ namespace Assets.src.App
             PopUpFactory popUpFactory = new PopUpFactory(uiPrefabs, _modelContext);
             LayerFactory layerFactory = new LayerFactory(uiPrefabs, windowFactory, popUpFactory);
 
-            _uiManger = new UiManger(canvas, _modelContext, layerFactory);
+            _uiManger = new UiManger(canvas, layerFactory);
             _uiManger.SetActive(LayersTypes.Windows ,UiConst.WINDOW_MAIN, true);
         }
 
@@ -95,7 +95,7 @@ namespace Assets.src.App
 
         private void InitGame()
         {
-            IBotsSettingsCollection bots = _resourcesManager.GetBots();
+            IBotsPull bots = _resourcesManager.GetBots();
             PullMoveStrategy pullMoveStrategy = new PullMoveStrategy();
 
             BotsFactory botsFactory = new BotsFactory(pullMoveStrategy, bots);

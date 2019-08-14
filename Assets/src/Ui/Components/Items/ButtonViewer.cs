@@ -4,9 +4,9 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.src.Ui.Mvc.Items
+namespace src.Ui.Components.Items
 {
-    public class ButtonDefaultViewer : MonoBehaviour
+    public class ButtonViewer : MonoBehaviour
     {
         [SerializeField]
         private Button _button;

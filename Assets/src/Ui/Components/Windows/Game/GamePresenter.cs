@@ -3,7 +3,7 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 
-namespace Assets.src.Ui.Mvc.Windows.Game
+namespace src.Ui.Components.Windows.Game
 {
 	public class GamePresenter
 	{

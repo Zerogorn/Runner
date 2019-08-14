@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace Assets.src.ScrObj.Bots
 {
-    [CreateAssetMenu(fileName = "Bots Settings", menuName = "ScriptableObjects/BotsSettings")]
-    public class BotsSettingsCollection : ScriptableObject, IBotsSettingsCollection
+    [CreateAssetMenu(fileName = "Bots Pull", menuName = "ScriptableObjects/BotsPull")]
+    public class BotsPull : ScriptableObject, IBotsPull
     {
         [Header("Bots")]
         [SerializeField]

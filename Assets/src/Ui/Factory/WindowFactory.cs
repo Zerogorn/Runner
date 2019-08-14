@@ -1,7 +1,7 @@
 ﻿using Assets.src.ScrObj.Ui.interfaces;
 using Assets.src.Ui.Models;
-using Assets.src.Ui.Mvc.Windows.Game;
-using Assets.src.Ui.Mvc.Windows.Menu;
+using src.Ui.Components.Windows.Game;
+using src.Ui.Components.Windows.Menu;
 using UnityEngine;
 
 namespace Assets.src.Ui.Factory
