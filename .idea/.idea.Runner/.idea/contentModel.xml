@@ -277,6 +277,46 @@
             <e p="AppManager.cs" t="Include" />
           </e>
           <e p="CanvasUtils.cs" t="Include" />
+          <e p="Game" t="Include">
+            <e p="Bot" t="Include">
+              <e p="BotViewer.cs" t="Include" />
+              <e p="GameFactory.cs" t="Include" />
+              <e p="interfaces" t="Include">
+                <e p="IBotSettings.cs" t="Include" />
+              </e>
+              <e p="States" t="Include">
+                <e p="Ded.cs" t="Include" />
+                <e p="interfaces" t="Include">
+                  <e p="IState.cs" t="Include" />
+                </e>
+                <e p="Move.cs" t="Include" />
+              </e>
+              <e p="Strategy" t="Include">
+                <e p="DefaultMove.cs" t="Include" />
+                <e p="interfaces" t="Include">
+                  <e p="IMoveStrategy.cs" t="Include" />
+                </e>
+                <e p="PullMoveStrategy.cs" t="Include" />
+                <e p="RandomMove.cs" t="Include" />
+              </e>
+              <e p="Utils" t="Include">
+                <e p="EnumStrategy.cs" t="Include" />
+              </e>
+            </e>
+            <e p="GameManager.cs" t="Include" />
+            <e p="Simulation" t="Include">
+              <e p="interfaces" t="Include">
+                <e p="IMoveSimulation.cs" t="Include" />
+              </e>
+              <e p="MoveSimulation.cs" t="Include" />
+            </e>
+            <e p="Validator" t="Include">
+              <e p="BotValidator.cs" t="Include" />
+              <e p="interfaces" t="Include">
+                <e p="IBotvalidator.cs" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="Loaders" t="Include">
             <e p="ResourcesConst.cs" t="Include" />
             <e p="ResourcesManager.cs" t="Include" />
@@ -284,9 +324,9 @@
           <e p="ScrObj" t="Include">
             <e p="Bots" t="Include">
               <e p="BotSettings.cs" t="Include" />
-              <e p="BotsPull.cs" t="Include" />
+              <e p="GamePrefabs.cs" t="Include" />
               <e p="interfaces" t="Include">
-                <e p="IBotsPull.cs" t="Include" />
+                <e p="IGamePrefabs.cs" t="Include" />
               </e>
             </e>
             <e p="Ui" t="Include">
@@ -342,39 +382,6 @@
             <e p="Utils" t="Include">
               <e p="UiConst.cs" t="Include" />
               <e p="UiEnums.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Units" t="Include">
-            <e p="Bot" t="Include">
-              <e p="BotsFactory.cs" t="Include" />
-              <e p="BotViewer.cs" t="Include" />
-              <e p="interfaces" t="Include">
-                <e p="IBotSettings.cs" t="Include" />
-              </e>
-              <e p="States" t="Include">
-                <e p="Ded.cs" t="Include" />
-                <e p="interfaces" t="Include">
-                  <e p="IState.cs" t="Include" />
-                </e>
-                <e p="Live.cs" t="Include" />
-              </e>
-              <e p="Strategy" t="Include">
-                <e p="DefaultMove.cs" t="Include" />
-                <e p="interfaces" t="Include">
-                  <e p="IMoveStrategy.cs" t="Include" />
-                </e>
-                <e p="PullMoveStrategy.cs" t="Include" />
-                <e p="RandomMove.cs" t="Include" />
-              </e>
-              <e p="Utils" t="Include">
-                <e p="EnumStrategy.cs" t="Include" />
-              </e>
-            </e>
-            <e p="Simulation" t="Include">
-              <e p="MoveSimulation.cs" t="Include" />
-            </e>
-            <e p="Validator" t="Include">
-              <e p="BotValidator.cs" t="Include" />
             </e>
           </e>
         </e>

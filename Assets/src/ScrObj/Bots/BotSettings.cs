@@ -40,6 +40,8 @@ namespace Assets.src.ScrObj.Bots
 
         public Transform Transform()
         {
+            _botObj.gameObject.SetActive(true);
+            
             return _botObj;
         }
 

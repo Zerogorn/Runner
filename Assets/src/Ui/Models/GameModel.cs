@@ -40,7 +40,7 @@ namespace Assets.src.Ui.Models
 					return;
 
 				_counter.Value = 0;
-				ResetBots();
+				ResetBotsPosition();
 				action.Invoke();
 			});
 		}
@@ -122,7 +122,7 @@ namespace Assets.src.Ui.Models
 			enumerator.Dispose();
 		}
 		
-		private void ResetBots()
+		public void ResetBotsPosition()
 		{
 			IEnumerator<BotViewer> enumerator = _bots.GetEnumerator();
 

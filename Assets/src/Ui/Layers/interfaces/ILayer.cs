@@ -6,6 +6,7 @@ namespace Assets.src.Ui.Layers.interfaces
 	{
 		LayersTypes Type { get; }
 
+		void HideOpen();
 		void SetEnable(string key, bool active);
 	}
 }

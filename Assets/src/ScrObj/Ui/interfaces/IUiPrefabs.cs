@@ -11,7 +11,6 @@ namespace Assets.src.ScrObj.Ui.interfaces
         ButtonViewer ButtonDefault(Transform parent);
         MenuViewer Menu(Transform parent);
         PopUpViewer Popup(Transform parent);
-        GameViewer GameContainer(Transform parent);
         RectTransform Container(Transform parent, string containerCame);
     }
 }

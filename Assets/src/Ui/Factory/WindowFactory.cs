@@ -27,15 +27,5 @@ namespace Assets.src.Ui.Factory
 			
 			return menuViewer;
 		}
-		
-		public GameViewer Game(Transform parent)
-		{
-			GameViewer game = _uiPrefabs.GameContainer(parent);
-			GameModel gameModel = _modelContext.GameModel;
-			
-			GamePresenter presenter = new GamePresenter(game, gameModel);
-			
-			return game;
-		}
 	}
 }

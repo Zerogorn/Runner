@@ -1,9 +1,10 @@
 ﻿using System;
+using src.Game.Validator.interfaces;
 using UniRx;
 
 namespace src.Units.Validator
 {
-	internal sealed class BotValidator
+	internal sealed class BotValidator : IBotValidator
 	{
 		private readonly int _time;
 		private readonly ReactiveCommand _resetCmd;
@@ -25,7 +26,7 @@ namespace src.Units.Validator
 
 		public void Stop()
 		{
-			_disposable.Dispose();
+			_disposable?.Dispose();
 		}
 		
 		private void ResetBot()

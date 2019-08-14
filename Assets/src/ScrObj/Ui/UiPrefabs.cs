@@ -25,11 +25,6 @@ namespace Assets.src.ScrObj.Ui
         [Header("PopUp")]
         private PopUpViewer _popUpViewer;
 
-        [FormerlySerializedAs("_gameContainerViewer")]
-        [SerializeField]
-        [Header("Game Container")]
-        private GameViewer _gameViewer;
-
         [SerializeField]
         [Header("Container")]
         private RectTransform _container;
@@ -63,17 +58,6 @@ namespace Assets.src.ScrObj.Ui
             popUpViewer.name = UiConst.POPUP_TYPE1;
 
             return popUpViewer;
-        }
-
-        public GameViewer GameContainer(Transform parent)
-        {
-            _gameViewer.gameObject.SetActive(false);
-         
-            GameViewer gameViewer = Instantiate(_gameViewer,
-                                                                  parent);
-            gameViewer.name = UiConst.WINDOW_GAME;
-
-            return gameViewer;
         }
 
         public RectTransform Container(Transform parent, string containerCame)

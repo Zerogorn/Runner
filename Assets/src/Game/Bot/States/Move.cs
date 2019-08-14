@@ -2,7 +2,7 @@
 
 namespace src.Units.Bot.States
 {
-	internal sealed class Live : IState
+	internal sealed class Move : IState
 	{
 		public IState Update()
 		{

@@ -5,11 +5,13 @@ using Assets.src.Ui.Factory;
 using Assets.src.Ui.Models;
 using Assets.src.Ui.Utils;
 using src;
+using src.Game;
 using src.Loaders;
 using src.Units.Bot;
 using src.Units.Bot.Strategy;
 using src.Units.Simulation;
 using src.Units.Validator;
+using UnityEditor;
 using UnityEngine;
 
 namespace Assets.src.App
@@ -18,23 +20,19 @@ namespace Assets.src.App
     {
         public static CanvasUtils GetCanvasUtils { get; private set; }
 
-        private readonly ResourcesManager _resourcesManager;
-        private readonly MoveSimulation _moveSimulation;
-        private readonly BotValidator _botValidator;        
+        private readonly ResourcesManager _resourcesManager;        
         private readonly ModelContext _modelContext;
         
         private IUiPrefabs _uiPrefabs;
-        private IBotsPull _bots;
+        private IGamePrefabs _gamePrefabs;
         
         private UiManger _uiManger;
+        private GameManager _gameManager;
 
         private AppManager()
         {
-            
             _resourcesManager = new ResourcesManager();
             _modelContext = new ModelContext();
-            _moveSimulation = new MoveSimulation();
-            _botValidator = new BotValidator();
         }
         
         public AppManager(Canvas uiCanvas)
@@ -58,7 +56,7 @@ namespace Assets.src.App
         {
             _resourcesManager.LoadResources();
             _uiPrefabs = _resourcesManager.GetUiPrefabs();
-            _bots = _resourcesManager.GetBots();
+            _gamePrefabs = _resourcesManager.GetBots();
         }
         
 #region Ui
@@ -70,26 +68,23 @@ namespace Assets.src.App
             LayerFactory layerFactory = new LayerFactory(_uiPrefabs, windowFactory, popUpFactory);
 
             _uiManger = new UiManger(GetCanvasUtils.UiCanvas, layerFactory);
+            
             _uiManger.SetActive(LayersTypes.Windows ,UiConst.WINDOW_MAIN, true);
         }
 
         private void UIiBinding()
         {
             _modelContext.MenuModel.SubscribeStart(x =>
-            {
-                _uiManger.SetActive(LayersTypes.Windows,
-                                    UiConst.WINDOW_GAME,
-                                    true);
+            {                
+                _uiManger.HideOpenWindows();
                 
-                _moveSimulation.Start();
-                _botValidator.Start();
+                _gameManager.StartGame();
             });
 
             _modelContext.PopUpModel.SubscribeToMenu(x =>
             {
-                _uiManger.SetActive(LayersTypes.PopUp,
-                                    UiConst.POPUP_TYPE1,
-                                    false);
+                _uiManger.HideOpenPopup();
+                
                 _uiManger.SetActive(LayersTypes.Windows,
                                     UiConst.WINDOW_MAIN,
                                     true);
@@ -97,15 +92,9 @@ namespace Assets.src.App
             
             _modelContext.PopUpModel.SubscribeRepeat(x =>
             {
-                _uiManger.SetActive(LayersTypes.PopUp,
-                                    UiConst.POPUP_TYPE1,
-                                    false);
-                _uiManger.SetActive(LayersTypes.Windows,
-                                    UiConst.WINDOW_GAME,
-                                    true);
+                _uiManger.HideOpenPopup();
                 
-                _moveSimulation.Start();
-                _botValidator.Start();
+                _gameManager.StartGame();
             });
         }
         
@@ -115,21 +104,23 @@ namespace Assets.src.App
         
         private void InitGame()
         {
-            PullMoveStrategy pullMoveStrategy = new PullMoveStrategy();
-            BotsFactory botsFactory = new BotsFactory(pullMoveStrategy, _bots);
+            MoveSimulation moveSimulation = new MoveSimulation();
+            BotValidator botValidator = new BotValidator();
             
-            _modelContext.GameModel.AddBots(botsFactory.GetBots());
+            PullMoveStrategy pullMoveStrategy = new PullMoveStrategy();
+            GameFactory gameFactory = new GameFactory(_modelContext, pullMoveStrategy, _gamePrefabs);
+            
+            _gameManager = new GameManager(_modelContext, moveSimulation, botValidator, gameFactory);
         }
         
         private void GameBinding()
         {
-            _moveSimulation.Subscribe(_modelContext.GameModel.UpdateBotPositions);
-            _botValidator.Subscribe(_modelContext.GameModel.ResetBotsUnderCanvas);
+            _gameManager.GetMoveSimulation().SubscribeUpdate(_modelContext.GameModel.UpdateBotPositions);
+            _gameManager.GetBotValidator().Subscribe(_modelContext.GameModel.ResetBotsUnderCanvas);
             
             _modelContext.GameModel.AddLoseCounterListener(() =>
             {
-                _moveSimulation.Stop();
-                _botValidator.Stop();
+                _gameManager.StopGame();
                 
                 _uiManger.SetActive(LayersTypes.PopUp,
                                     UiConst.POPUP_TYPE1,

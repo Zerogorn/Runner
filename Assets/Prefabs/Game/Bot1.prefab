@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 4841636910226769900}
   - component: {fileID: 6859199926099486120}
   m_Layer: 5
-  m_Name: BotSprite
+  m_Name: Bot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6824220411900866834
 RectTransform:
   m_ObjectHideFlags: 0

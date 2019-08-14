@@ -6,7 +6,7 @@ namespace src.Units.Bot.States
 	{
 		public IState Update()
 		{
-			return new Live();
+			return new Move();
 		}
 	}
 }

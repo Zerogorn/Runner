@@ -6,26 +6,26 @@ namespace src.Units.Bot
 {
 	internal sealed class BotViewer
 	{
-		private readonly Transform _transform;		
+		private readonly Transform _transform;
 		private readonly Vector2 _startPosition;
 
 		private readonly IBotSettings _botSettings;
 		private readonly IMoveStrategy _moveStrategy;
 		private readonly IState _state;
 
-		public BotViewer(Transform botObj, 
-								   Vector2 startPosition, 
-								   IBotSettings botSettings,
-								   IMoveStrategy moveStrategy)
+		public BotViewer(Transform botObj
+						 , Vector2 startPosition
+						 , IBotSettings botSettings
+						 , IMoveStrategy moveStrategy)
 		{
 			_transform = botObj;
 			_botSettings = botSettings;
 			_startPosition = startPosition;
 			_moveStrategy = moveStrategy;
-			
-			_state = new Live();
+
+			_state = new Move();
 		}
-		
+
 		public void SetActive(bool active)
 		{
 			_transform.gameObject.SetActive(active);
@@ -38,16 +38,16 @@ namespace src.Units.Bot
 
 			ResetPosition();
 		}
-		
+
 		public void ResetPosition()
 		{
 			_state.Update();
-			
+
 			_transform.localPosition = _startPosition;
-			
+
 			_state.Update();
 		}
-		
+
 		public void UpdatePosition(float move)
 		{
 			_moveStrategy.Move(_transform, move);
@@ -57,7 +57,7 @@ namespace src.Units.Bot
 		{
 			return _transform.localPosition;
 		}
-		
+
 		public float GetHitBox()
 		{
 			return _botSettings.HitBoxRadius();

@@ -9,12 +9,12 @@ namespace src.Loaders
     internal sealed class ResourcesManager
     {
         private IUiPrefabs _uiPrefabs;
-        private IBotsPull _botsPull;
+        private IGamePrefabs _gamePrefabs;
         
         public void LoadResources()
         {
             _uiPrefabs = Resources.Load<UiPrefabs>(ResourcesConst.UI_PREFABS_PATH);
-            _botsPull = Resources.Load<BotsPull>(ResourcesConst.BOTS_SETTINGS);
+            _gamePrefabs = Resources.Load<GamePrefabs>(ResourcesConst.GAME_PREFABS_PATH);
         }
 
         public IUiPrefabs GetUiPrefabs()
@@ -22,9 +22,9 @@ namespace src.Loaders
             return _uiPrefabs;
         }
         
-        public IBotsPull GetBots()
+        public IGamePrefabs GetBots()
         {
-            return _botsPull;
+            return _gamePrefabs;
         }
     }
 }

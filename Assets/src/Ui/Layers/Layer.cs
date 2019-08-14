@@ -29,7 +29,12 @@ namespace Assets.src.Ui.Layers
 		{
 			_elements.Add(new KeyValuePair<string, T>(key, value));
 		}
-		
+
+		public void HideOpen()
+		{
+			_active.SetActive(false);
+		}
+
 		public void SetEnable(string key
 							  , bool active)
 		{

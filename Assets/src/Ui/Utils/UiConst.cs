@@ -8,7 +8,6 @@
         
         // Windows
         public const string WINDOW_MAIN = "Main";
-        public const string WINDOW_GAME = "Game";
         
         // PopUps
         public const string POPUP_TYPE1 = "Type1";

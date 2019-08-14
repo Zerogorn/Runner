@@ -39,5 +39,17 @@ namespace Assets.src.Ui
             _layers.FirstOrDefault(x => x.Type.Equals(layer))
                   ?.SetEnable(key, active);
         }
+
+        public void HideOpenWindows()
+        {
+            _layers.FirstOrDefault(x => x.Type.Equals(LayersTypes.Windows))
+                ?.HideOpen();
+        }
+        
+        public void HideOpenPopup()
+        {
+            _layers.FirstOrDefault(x => x.Type.Equals(LayersTypes.PopUp))
+                  ?.HideOpen();
+        }
     }
 }

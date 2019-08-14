@@ -29,7 +29,6 @@ namespace Assets.src.Ui.Factory
             Layer<IComponent> windows = new Layer<IComponent>(LayersTypes.Windows);
 
             windows.Add(UiConst.WINDOW_MAIN, _windowFactory.Menu(container));
-            windows.Add(UiConst.WINDOW_GAME, _windowFactory.Game(container));
             
             return windows;
         }
