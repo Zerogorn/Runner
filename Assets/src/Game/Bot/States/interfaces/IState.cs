@@ -1,11 +1,9 @@
-﻿using UnityEngine;
-
-namespace Assets.src.Units.Bot.interfaces
+﻿namespace Assets.src.Units.Bot.interfaces
 {
     internal interface IState
     {
         bool Trap { get; }
-        int HitBoxRadius{ get; }
+        int HitBoxRadius { get; }
 
         IState Update();
     }

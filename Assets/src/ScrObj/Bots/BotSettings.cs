@@ -6,7 +6,8 @@ using UnityEngine;
 namespace Assets.src.ScrObj.Bots
 {
     [CreateAssetMenu(fileName = "Bots Settings", menuName = "ScriptableObjects/Bot")]
-    internal sealed class BotSettings : ScriptableObject, IBotSettings
+    internal sealed class BotSettings : ScriptableObject
+                                        , IBotSettings
     {
         [SerializeField]
         private bool _trap;
@@ -14,9 +15,6 @@ namespace Assets.src.ScrObj.Bots
         [SerializeField]
         private int _trigger;
 
-        [SerializeField]
-        private Vector3 _localSale;
-        
         [SerializeField]
         private Transform _botObj;
 
@@ -33,15 +31,10 @@ namespace Assets.src.ScrObj.Bots
             return _trigger;
         }
 
-        public Vector3 LocalScale()
-        {
-            return _localSale;
-        }
-
         public Transform Transform()
         {
             _botObj.gameObject.SetActive(true);
-            
+
             return _botObj;
         }
 

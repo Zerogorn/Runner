@@ -1,6 +1,4 @@
-﻿using Assets.src.Units.Bot.Strategy;
-using Assets.src.Units.Bot.Utils;
-using src.Units.Bot;
+﻿using Assets.src.Units.Bot.Utils;
 using UnityEngine;
 
 namespace Assets.src.Units.Bot.interfaces
@@ -10,8 +8,7 @@ namespace Assets.src.Units.Bot.interfaces
         bool Trap();
         int HitBoxRadius();
 
-        Vector3 LocalScale();
         Transform Transform();
         EnumStrategy Strategy();
-    } 
+    }
 }

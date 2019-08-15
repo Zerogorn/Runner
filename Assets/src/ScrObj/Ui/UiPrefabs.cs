@@ -10,13 +10,14 @@ using UnityEngine.Serialization;
 namespace Assets.src.ScrObj.Ui
 {
     [CreateAssetMenu(fileName = "UiPrefabs", menuName = "ScriptableObjects/UiPrefabs")]
-    internal sealed class UiPrefabs : ScriptableObject, IUiPrefabs
+    internal sealed class UiPrefabs : ScriptableObject
+                                      , IUiPrefabs
     {
         [FormerlySerializedAs("_buttonDefault")]
         [SerializeField]
         [Header("Button Default")]
         private ButtonViewer _button;
-        
+
         [Header("Menu Window")]
         [SerializeField]
         private MenuViewer _menuViewer;
@@ -32,9 +33,8 @@ namespace Assets.src.ScrObj.Ui
         public MenuViewer Menu(Transform parent)
         {
             _menuViewer.gameObject.SetActive(false);
-            
-            MenuViewer menuViewer = Instantiate(_menuViewer,
-                                                parent);
+
+            MenuViewer menuViewer = Instantiate(_menuViewer, parent);
             menuViewer.name = UiConst.WINDOW_MAIN;
 
             return menuViewer;
@@ -43,29 +43,27 @@ namespace Assets.src.ScrObj.Ui
         public ButtonViewer ButtonDefault(Transform parent)
         {
             _button.gameObject.SetActive(false);
-            ButtonViewer button = Instantiate(_button, 
-                                                  parent);
+            ButtonViewer button = Instantiate(_button, parent);
             button.name = UiConst.BUTTON;
 
             return button;
         }
-        
+
         public PopUpViewer Popup(Transform parent)
         {
             _popUpViewer.gameObject.SetActive(false);
-            PopUpViewer popUpViewer = Instantiate(_popUpViewer, 
-                                                  parent);
+            PopUpViewer popUpViewer = Instantiate(_popUpViewer, parent);
             popUpViewer.name = UiConst.POPUP_TYPE1;
 
             return popUpViewer;
         }
 
-        public RectTransform Container(Transform parent, string containerCame)
+        public RectTransform Container(Transform parent
+                                       , string containerCame)
         {
             _container.gameObject.SetActive(false);
-          
-            RectTransform rect = Instantiate(_container,
-                                             parent);
+
+            RectTransform rect = Instantiate(_container, parent);
             rect.name = containerCame;
 
             return rect;

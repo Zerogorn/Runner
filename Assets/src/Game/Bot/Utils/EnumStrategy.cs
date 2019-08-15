@@ -2,7 +2,7 @@
 {
     internal enum EnumStrategy
     {
-        Default,
-        Random
+        Default
+        , Random
     }
 }

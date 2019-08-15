@@ -10,7 +10,7 @@ namespace src.Loaders
     {
         private IUiPrefabs _uiPrefabs;
         private IGamePrefabs _gamePrefabs;
-        
+
         public void LoadResources()
         {
             _uiPrefabs = Resources.Load<UiPrefabs>(ResourcesConst.UI_PREFABS_PATH);
@@ -21,7 +21,7 @@ namespace src.Loaders
         {
             return _uiPrefabs;
         }
-        
+
         public IGamePrefabs GetBots()
         {
             return _gamePrefabs;

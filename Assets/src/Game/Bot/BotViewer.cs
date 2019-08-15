@@ -23,7 +23,7 @@ namespace src.Units.Bot
 
 			_state = state;
 		}
-		
+
 		public void UpdateState()
 		{
 			_state = _state.Update();

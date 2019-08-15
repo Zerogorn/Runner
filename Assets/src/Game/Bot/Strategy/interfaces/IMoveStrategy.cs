@@ -4,6 +4,7 @@ namespace Assets.src.Units.Bot.interfaces
 {
     internal interface IMoveStrategy
     {
-        void Move(Transform transform, float move);
+        void Move(Transform transform
+                  , float move);
     }
 }

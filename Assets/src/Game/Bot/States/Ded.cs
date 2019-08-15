@@ -13,7 +13,7 @@ namespace src.Units.Bot.States
 			Trap = trap;
 			HitBoxRadius = hitBoxRadius;
 		}
-		
+
 		public IState Update()
 		{
 			return new Move(Trap, HitBoxRadius);

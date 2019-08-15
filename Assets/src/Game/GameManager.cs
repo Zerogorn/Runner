@@ -21,11 +21,11 @@ namespace src.Game
 		private readonly GameFactory _gameFactory;
 
 		private GameViewer _gameViewer;
-		
-		public GameManager(ModelContext modelContext,
-						   MoveSimulation moveSimulation, 
-						   BotValidator botValidator,
-						   GameFactory gameFactory)
+
+		public GameManager(ModelContext modelContext
+						   , MoveSimulation moveSimulation
+						   , BotValidator botValidator
+						   , GameFactory gameFactory)
 		{
 			_modelContext = modelContext;
 			_moveSimulation = moveSimulation;
@@ -41,7 +41,7 @@ namespace src.Game
 			_moveSimulation.Start();
 			_botValidator.Start();
 		}
-		
+
 		public void StopGame()
 		{
 			_moveSimulation.Stop();
@@ -52,7 +52,7 @@ namespace src.Game
 		{
 			return _moveSimulation;
 		}
-		
+
 		public IBotValidator GetBotValidator()
 		{
 			return _botValidator;
@@ -62,7 +62,7 @@ namespace src.Game
 		{
 			_gameViewer = _gameFactory.GameContainer();
 		}
-		
+
 		private void CreateBots()
 		{
 			IList<BotViewer> bots = _gameFactory.GetBots(_gameViewer.transform);

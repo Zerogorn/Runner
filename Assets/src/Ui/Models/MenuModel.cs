@@ -6,10 +6,10 @@ namespace Assets.src.Ui.Models
     internal sealed class MenuModel
     {
         private const string START = "start";
-        
+
         private readonly ReactiveCommand _star;
         private readonly ReactiveProperty<string> _startText;
-        
+
         public MenuModel()
         {
             _star = new ReactiveCommand();

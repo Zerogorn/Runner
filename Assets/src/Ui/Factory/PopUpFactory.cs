@@ -10,7 +10,8 @@ namespace Assets.src.Ui.Factory
         private readonly IUiPrefabs _uiPrefabs;
         private readonly ModelContext _modelContext;
 
-        public PopUpFactory(IUiPrefabs uiPrefabs, ModelContext modelContext)
+        public PopUpFactory(IUiPrefabs uiPrefabs
+                            , ModelContext modelContext)
         {
             _uiPrefabs = uiPrefabs;
             _modelContext = modelContext;
@@ -21,9 +22,9 @@ namespace Assets.src.Ui.Factory
             PopUpViewer popUpViewer = _uiPrefabs.Popup(parent);
             popUpViewer.Initialization(_uiPrefabs);
             PopUpModel popUpModel = _modelContext.PopUpModel;
-            
+
             PopUpPresenter presenter = new PopUpPresenter(popUpViewer, popUpModel);
-            
+
             return popUpViewer;
         }
     }

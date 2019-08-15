@@ -21,17 +21,19 @@ namespace src.Units.Bot.Strategy
 
 		public IMoveStrategy GetMoveStrategy(EnumStrategy key)
 		{
-			Type strategyType = _strategyPull.FirstOrDefault(x => x.Key.Equals(key)).Value;
-						
+			Type strategyType = _strategyPull.FirstOrDefault(x => x.Key.Equals(key))
+										  .Value;
+
 			return (IMoveStrategy)Activator.CreateInstance(strategyType);
 		}
 
-		private void AddToken(EnumStrategy key, Type strategy)
+		private void AddToken(EnumStrategy key
+							  , Type strategy)
 		{
-			KeyValuePair<EnumStrategy, Type> token = 
+			KeyValuePair<EnumStrategy, Type> token =
 				new KeyValuePair<EnumStrategy, Type>(key, strategy);
-			
+
 			_strategyPull.Add(token);
-		} 
+		}
 	}
 }

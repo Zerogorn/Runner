@@ -2,7 +2,7 @@
 {
     internal enum LayersTypes
     {
-        Windows,
-        PopUp
+        Windows
+        , PopUp
     }
 }

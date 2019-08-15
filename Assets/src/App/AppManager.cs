@@ -20,12 +20,12 @@ namespace Assets.src.App
     {
         public static CanvasUtils GetCanvasUtils { get; private set; }
 
-        private readonly ResourcesManager _resourcesManager;        
+        private readonly ResourcesManager _resourcesManager;
         private readonly ModelContext _modelContext;
-        
+
         private IUiPrefabs _uiPrefabs;
         private IGamePrefabs _gamePrefabs;
-        
+
         private UiManger _uiManger;
         private GameManager _gameManager;
 
@@ -34,7 +34,7 @@ namespace Assets.src.App
             _resourcesManager = new ResourcesManager();
             _modelContext = new ModelContext();
         }
-        
+
         public AppManager(Canvas uiCanvas)
             : this()
         {
@@ -44,10 +44,10 @@ namespace Assets.src.App
         public void Initialization()
         {
             InitBase();
-            
+
             InitUi();
             UIiBinding();
-            
+
             InitGame();
             GameBinding();
         }
@@ -58,77 +58,75 @@ namespace Assets.src.App
             _uiPrefabs = _resourcesManager.GetUiPrefabs();
             _gamePrefabs = _resourcesManager.GetBots();
         }
-        
+
 #region Ui
 
         private void InitUi()
-        {            
+        {
             WindowFactory windowFactory = new WindowFactory(_uiPrefabs, _modelContext);
             PopUpFactory popUpFactory = new PopUpFactory(_uiPrefabs, _modelContext);
             LayerFactory layerFactory = new LayerFactory(_uiPrefabs, windowFactory, popUpFactory);
 
             _uiManger = new UiManger(GetCanvasUtils.UiCanvas, layerFactory);
-            
-            _uiManger.SetActive(LayersTypes.Windows ,UiConst.WINDOW_MAIN, true);
+
+            _uiManger.SetActive(LayersTypes.Windows, UiConst.WINDOW_MAIN, true);
         }
 
         private void UIiBinding()
         {
             _modelContext.MenuModel.SubscribeStart(x =>
-            {                
+            {
                 _uiManger.HideOpenWindows();
-                
+
                 _gameManager.StartGame();
             });
 
             _modelContext.PopUpModel.SubscribeToMenu(x =>
             {
                 _uiManger.HideOpenPopup();
-                
-                _uiManger.SetActive(LayersTypes.Windows,
-                                    UiConst.WINDOW_MAIN,
-                                    true);
+
+                _uiManger.SetActive(LayersTypes.Windows, UiConst.WINDOW_MAIN, true);
             });
-            
+
             _modelContext.PopUpModel.SubscribeRepeat(x =>
             {
                 _uiManger.HideOpenPopup();
-                
+
                 _gameManager.StartGame();
             });
         }
-        
+
 #endregion End Ui
-        
+
 #region Game
-        
+
         private void InitGame()
         {
             MoveSimulation moveSimulation = new MoveSimulation();
             BotValidator botValidator = new BotValidator();
-            
+
             PullMoveStrategy pullMoveStrategy = new PullMoveStrategy();
             GameFactory gameFactory = new GameFactory(_modelContext, pullMoveStrategy, _gamePrefabs);
-            
+
             _gameManager = new GameManager(_modelContext, moveSimulation, botValidator, gameFactory);
         }
-        
+
         private void GameBinding()
         {
-            _gameManager.GetMoveSimulation().SubscribeUpdate(_modelContext.GameModel.UpdateBotPositions);
-            _gameManager.GetBotValidator().Subscribe(_modelContext.GameModel.ResetBotsUnderCanvas);
-            
+            _gameManager.GetMoveSimulation()
+                        .SubscribeUpdate(_modelContext.GameModel.UpdateBotPositions);
+
+            _gameManager.GetBotValidator()
+                        .Subscribe(_modelContext.GameModel.ResetBotsUnderCanvas);
+
             _modelContext.GameModel.AddLoseCounterListener(() =>
             {
                 _gameManager.StopGame();
-                
-                _uiManger.SetActive(LayersTypes.PopUp,
-                                    UiConst.POPUP_TYPE1,
-                                    true);
+
+                _uiManger.SetActive(LayersTypes.PopUp, UiConst.POPUP_TYPE1, true);
             });
         }
-        
+
 #endregion End Game
-        
     }
 }

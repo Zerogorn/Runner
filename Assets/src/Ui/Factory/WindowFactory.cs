@@ -10,21 +10,22 @@ namespace Assets.src.Ui.Factory
 	{
 		private readonly IUiPrefabs _uiPrefabs;
 		private readonly ModelContext _modelContext;
-		
-		public WindowFactory(IUiPrefabs uiPrefabs, ModelContext modelContext)
+
+		public WindowFactory(IUiPrefabs uiPrefabs
+							 , ModelContext modelContext)
 		{
 			_uiPrefabs = uiPrefabs;
 			_modelContext = modelContext;
 		}
-		
+
 		public MenuViewer Menu(Transform parent)
 		{
 			MenuViewer menuViewer = _uiPrefabs.Menu(parent);
-            menuViewer.Initialization(_uiPrefabs);
+			menuViewer.Initialization(_uiPrefabs);
 
-            MenuModel menuModel = _modelContext.MenuModel;
-            MenuPresenter presenter = new MenuPresenter(menuViewer, menuModel);
-			
+			MenuModel menuModel = _modelContext.MenuModel;
+			MenuPresenter presenter = new MenuPresenter(menuViewer, menuModel);
+
 			return menuViewer;
 		}
 	}

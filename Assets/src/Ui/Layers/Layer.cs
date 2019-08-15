@@ -6,26 +6,27 @@ using src.Ui.Components.interfaces;
 
 namespace Assets.src.Ui.Layers
 {
-	internal sealed class Layer <T>: ILayer
-		where T : IComponent 
+	internal sealed class Layer<T> : ILayer
+		where T : IComponent
 	{
-		public LayersTypes Type { get;}
+		public LayersTypes Type { get; }
 
-        private readonly IList<KeyValuePair<string, T>> _elements;
-        private IComponent _active;
+		private readonly IList<KeyValuePair<string, T>> _elements;
+		private IComponent _active;
 
 		private Layer()
 		{
 			_elements = new List<KeyValuePair<string, T>>();
 		}
-		
+
 		public Layer(LayersTypes type)
 			: this()
 		{
 			Type = type;
-        }
+		}
 
-		public void Add(string key, T value)
+		public void Add(string key
+						, T value)
 		{
 			_elements.Add(new KeyValuePair<string, T>(key, value));
 		}
@@ -38,9 +39,12 @@ namespace Assets.src.Ui.Layers
 		public void SetEnable(string key
 							  , bool active)
 		{
-            _active?.SetActive(false);
-            _active = _elements.FirstOrDefault(x => x.Key.Equals(key)).Value;
-            _active.SetActive(active);
-        }
+			_active?.SetActive(false);
+
+			_active = _elements.FirstOrDefault(x => x.Key.Equals(key))
+							.Value;
+
+			_active.SetActive(active);
+		}
 	}
 }

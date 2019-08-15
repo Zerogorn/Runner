@@ -6,7 +6,7 @@ namespace Assets.src.App
     {
         [SerializeField]
         private Canvas _uiCanvas;
-        
+
         public void Start()
         {
             AppManager appManager = new AppManager(_uiCanvas);

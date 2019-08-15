@@ -16,82 +16,86 @@ namespace Assets.src.Units.Bot.Strategy
         private IDisposable _disposableTimer;
 
         private Transform _transform;
-        
+
         public RandomMove()
         {
             _vectors = new List<Func<float, Vector2>>()
             {
-                MoveLeft,
-                MoveRight,
-                MoveBottom
+                MoveLeft
+                , MoveRight
+                , MoveBottom
             };
 
             _currentMove = MoveBottom;
         }
-        
-        public void Move(Transform transform,
-                         float move)
+
+        public void Move(Transform transform
+                         , float move)
         {
-            if(_disposableTimer == null) 
+            if (_disposableTimer == null)
                 UpdateVector();
 
             _transform = transform;
-            
+
             Vector2 position = _currentMove.Invoke(move);
-			
+
             _transform.localPosition = position;
         }
 
 #region Vector X
-        
+
         private Vector2 MoveLeft(float move)
         {
-            return MoveX(-1, move);
+            return MoveX(- 1, move);
         }
-        
+
         private Vector2 MoveRight(float move)
         {
             return MoveX(1, move);
         }
-        
-        private Vector2 MoveX(int vector, float move)
+
+        private Vector2 MoveX(int vector
+                              , float move)
         {
             float x = _transform.localPosition.x + move * vector;
+
             return new Vector2(x, _transform.localPosition.y);
         }
 
 #endregion Vector Y
-        
+
 #region MyRegion
 
         private Vector2 MoveBottom(float move)
         {
-            return MoveY(-1, move);
+            return MoveY(- 1, move);
         }
-        
-        private Vector2 MoveY(int vector, float move)
+
+        private Vector2 MoveY(int vector
+                              , float move)
         {
             float y = _transform.localPosition.y + move * vector;
-            return new Vector2(_transform.localPosition.x,  y);
+
+            return new Vector2(_transform.localPosition.x, y);
         }
-        
+
 #endregion
 
         private void UpdateVector()
         {
             float from = Random.Range(100f, 1000f);
             float to = Random.Range(100f, 1000f);
-            
+
             float timeToUpdate = Random.Range(from, to);
 
             _disposableTimer = Observable.Timer(TimeSpan.FromMilliseconds(timeToUpdate))
-                                          .Subscribe(_ =>
-                                           {
-                                               int i = Random.Range(0, _vectors.Count);
-                                               _currentMove = _vectors[i];
+                                         .Subscribe(_ =>
+                                          {
+                                              int i = Random.Range(0, _vectors.Count);
+                                              _currentMove = _vectors[i];
 
-                                               _disposableTimer = null;
-                                           });
+                                              _disposableTimer = null;
+                                          });
         }
     }
 }
