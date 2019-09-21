@@ -1,6 +1,6 @@
 ﻿using Assets.src.ScrObj.Ui.interfaces;
+using Assets.src.Ui.Components.Popups;
 using Assets.src.Ui.Models;
-using src.Ui.Components.Popups;
 using UnityEngine;
 
 namespace Assets.src.Ui.Factory

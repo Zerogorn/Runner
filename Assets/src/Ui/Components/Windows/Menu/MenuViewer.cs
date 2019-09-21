@@ -1,12 +1,12 @@
 ﻿using Assets.src.ScrObj.Ui.interfaces;
-using src.Ui.Components.interfaces;
-using src.Ui.Components.Items;
+using Assets.src.Ui.Components.interfaces;
+using Assets.src.Ui.Components.Items;
 using UnityEngine;
 
-namespace src.Ui.Components.Windows.Menu
+namespace Assets.src.Ui.Components.Windows.Menu
 {
     internal sealed class MenuViewer : MonoBehaviour, IWindow
-    {        
+    {
         [SerializeField]
         private RectTransform _content;
 

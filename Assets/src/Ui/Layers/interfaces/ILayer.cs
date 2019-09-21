@@ -2,13 +2,13 @@
 
 namespace Assets.src.Ui.Layers.interfaces
 {
-	internal interface ILayer
-	{
-		LayersTypes Type { get; }
+    internal interface ILayer
+    {
+        LayersTypes Type { get; }
 
-		void HideOpen();
+        void HideOpen();
 
-		void SetEnable(string key
-					   , bool active);
-	}
+        void SetEnable(string key
+                       , bool active);
+    }
 }

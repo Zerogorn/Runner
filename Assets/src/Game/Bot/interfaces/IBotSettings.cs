@@ -1,7 +1,7 @@
-﻿using Assets.src.Units.Bot.Utils;
+﻿using Assets.src.Game.Bot.Utils;
 using UnityEngine;
 
-namespace Assets.src.Units.Bot.interfaces
+namespace Assets.src.Game.Bot.interfaces
 {
     internal interface IBotSettings
     {

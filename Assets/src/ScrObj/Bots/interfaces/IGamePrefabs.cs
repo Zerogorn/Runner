@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using src.Ui.Components.Windows.Game;
+using Assets.src.Ui.Components.Windows.Game;
 using UnityEngine;
 
 namespace Assets.src.ScrObj.Bots.interfaces

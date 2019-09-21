@@ -1,22 +1,22 @@
-﻿using Assets.src.Units.Bot.interfaces;
+﻿using Assets.src.Game.Bot.States.interfaces;
 
-namespace src.Units.Bot.States
+namespace Assets.src.Game.Bot.States
 {
-	internal sealed class Move : IState
-	{
-		public bool Trap { get; }
-		public int HitBoxRadius { get; }
+    internal sealed class Move : IState
+    {
+        public bool Trap { get; }
+        public int HitBoxRadius { get; }
 
-		public Move(bool trap
-					, int hitBoxRadius)
-		{
-			Trap = trap;
-			HitBoxRadius = hitBoxRadius;
-		}
+        public Move(bool trap
+                    , int hitBoxRadius)
+        {
+            Trap = trap;
+            HitBoxRadius = hitBoxRadius;
+        }
 
-		public IState Update()
-		{
-			return new Ded(Trap, HitBoxRadius);
-		}
-	}
+        public IState Update()
+        {
+            return new Ded(Trap, HitBoxRadius);
+        }
+    }
 }

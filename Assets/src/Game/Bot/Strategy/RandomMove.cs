@@ -5,7 +5,7 @@ using UniRx;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Assets.src.Units.Bot.Strategy
+namespace Assets.src.Game.Bot.Strategy
 {
     internal sealed class RandomMove : IMoveStrategy
     {
@@ -42,11 +42,11 @@ namespace Assets.src.Units.Bot.Strategy
             _transform.localPosition = position;
         }
 
-#region Vector X
+        #region Vector X
 
         private Vector2 MoveLeft(float move)
         {
-            return MoveX(- 1, move);
+            return MoveX(-1, move);
         }
 
         private Vector2 MoveRight(float move)
@@ -62,13 +62,13 @@ namespace Assets.src.Units.Bot.Strategy
             return new Vector2(x, _transform.localPosition.y);
         }
 
-#endregion Vector Y
+        #endregion Vector Y
 
-#region MyRegion
+        #region MyRegion
 
         private Vector2 MoveBottom(float move)
         {
-            return MoveY(- 1, move);
+            return MoveY(-1, move);
         }
 
         private Vector2 MoveY(int vector
@@ -79,7 +79,7 @@ namespace Assets.src.Units.Bot.Strategy
             return new Vector2(_transform.localPosition.x, y);
         }
 
-#endregion
+        #endregion
 
         private void UpdateVector()
         {

@@ -1,4 +1,4 @@
-﻿namespace Assets.src.Units.Bot.Utils
+﻿namespace Assets.src.Game.Bot.Utils
 {
     internal enum EnumStrategy
     {

@@ -4,7 +4,7 @@ using Assets.src.ScrObj.Ui;
 using Assets.src.ScrObj.Ui.interfaces;
 using UnityEngine;
 
-namespace src.Loaders
+namespace Assets.src.Loaders
 {
     internal sealed class ResourcesManager
     {

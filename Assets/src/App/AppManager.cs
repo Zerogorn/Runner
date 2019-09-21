@@ -1,17 +1,15 @@
-﻿using Assets.src.ScrObj.Bots.interfaces;
+﻿using Assets.src.Game;
+using Assets.src.Game.Bot;
+using Assets.src.Game.Bot.Strategy;
+using Assets.src.Game.Simulation;
+using Assets.src.Game.Validator;
+using Assets.src.Loaders;
+using Assets.src.ScrObj.Bots.interfaces;
 using Assets.src.ScrObj.Ui.interfaces;
 using Assets.src.Ui;
 using Assets.src.Ui.Factory;
 using Assets.src.Ui.Models;
 using Assets.src.Ui.Utils;
-using src;
-using src.Game;
-using src.Loaders;
-using src.Units.Bot;
-using src.Units.Bot.Strategy;
-using src.Units.Simulation;
-using src.Units.Validator;
-using UnityEditor;
 using UnityEngine;
 
 namespace Assets.src.App
@@ -59,7 +57,7 @@ namespace Assets.src.App
             _gamePrefabs = _resourcesManager.GetBots();
         }
 
-#region Ui
+        #region Ui
 
         private void InitUi()
         {
@@ -96,9 +94,9 @@ namespace Assets.src.App
             });
         }
 
-#endregion End Ui
+        #endregion End Ui
 
-#region Game
+        #region Game
 
         private void InitGame()
         {
@@ -127,6 +125,6 @@ namespace Assets.src.App
             });
         }
 
-#endregion End Game
+        #endregion End Game
     }
 }

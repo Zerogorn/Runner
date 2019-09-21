@@ -1,6 +1,6 @@
 ﻿using Assets.src.Ui.Models;
 
-namespace src.Ui.Components.Windows.Menu
+namespace Assets.src.Ui.Components.Windows.Menu
 {
     internal sealed class MenuPresenter
     {

@@ -1,6 +1,5 @@
-﻿using Assets.src.Units.Bot.interfaces;
-using Assets.src.Units.Bot.Utils;
-using src.Units.Bot;
+﻿using Assets.src.Game.Bot.interfaces;
+using Assets.src.Game.Bot.Utils;
 using UnityEngine;
 
 namespace Assets.src.ScrObj.Bots

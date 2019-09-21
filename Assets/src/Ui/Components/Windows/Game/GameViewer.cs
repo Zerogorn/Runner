@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using src.Ui.Components.interfaces;
-using src.Units.Bot;
+﻿using Assets.src.Ui.Components.interfaces;
 using UnityEngine;
 
-namespace src.Ui.Components.Windows.Game
+namespace Assets.src.Ui.Components.Windows.Game
 {
     internal sealed class GameViewer : MonoBehaviour, IWindow
-    {        
+    {
         public void SetActive(bool active)
         {
             gameObject.SetActive(active);

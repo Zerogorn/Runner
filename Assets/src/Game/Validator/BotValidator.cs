@@ -2,41 +2,41 @@
 using src.Game.Validator.interfaces;
 using UniRx;
 
-namespace src.Units.Validator
+namespace Assets.src.Game.Validator
 {
-	internal sealed class BotValidator : IBotValidator
-	{
-		private readonly int _time;
-		private readonly ReactiveCommand _resetCmd;
+    internal sealed class BotValidator : IBotValidator
+    {
+        private readonly int _time;
+        private readonly ReactiveCommand _resetCmd;
 
-		private IDisposable _disposable;
+        private IDisposable _disposable;
 
-		public BotValidator()
-		{
-			_time = 1;
-			_resetCmd = new ReactiveCommand();
-		}
+        public BotValidator()
+        {
+            _time = 1;
+            _resetCmd = new ReactiveCommand();
+        }
 
-		public void Start()
-		{
-			_disposable = Observable.Timer(TimeSpan.FromSeconds(_time))
-								 .Repeat()
-								 .Subscribe(_ => ResetBot());
-		}
+        public void Start()
+        {
+            _disposable = Observable.Timer(TimeSpan.FromSeconds(_time))
+                                 .Repeat()
+                                 .Subscribe(_ => ResetBot());
+        }
 
-		public void Stop()
-		{
-			_disposable?.Dispose();
-		}
+        public void Stop()
+        {
+            _disposable?.Dispose();
+        }
 
-		private void ResetBot()
-		{
-			_resetCmd.Execute();
-		}
+        private void ResetBot()
+        {
+            _resetCmd.Execute();
+        }
 
-		public IDisposable Subscribe(Action<Unit> action)
-		{
-			return _resetCmd.Subscribe(action);
-		}
-	}
+        public IDisposable Subscribe(Action<Unit> action)
+        {
+            return _resetCmd.Subscribe(action);
+        }
+    }
 }

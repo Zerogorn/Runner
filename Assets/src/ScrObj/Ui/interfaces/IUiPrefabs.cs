@@ -1,7 +1,6 @@
-﻿using src.Ui.Components.Items;
-using src.Ui.Components.Popups;
-using src.Ui.Components.Windows.Game;
-using src.Ui.Components.Windows.Menu;
+﻿using Assets.src.Ui.Components.Items;
+using Assets.src.Ui.Components.Popups;
+using Assets.src.Ui.Components.Windows.Menu;
 using UnityEngine;
 
 namespace Assets.src.ScrObj.Ui.interfaces

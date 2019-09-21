@@ -1,13 +1,13 @@
 ﻿using Assets.src.ScrObj.Ui.interfaces;
-using src.Ui.Components.interfaces;
-using src.Ui.Components.Items;
+using Assets.src.Ui.Components.interfaces;
+using Assets.src.Ui.Components.Items;
 using TMPro;
 using UnityEngine;
 
-namespace src.Ui.Components.Popups
+namespace Assets.src.Ui.Components.Popups
 {
     internal sealed class PopUpViewer : MonoBehaviour, IPopUp
-    {        
+    {
         [SerializeField]
         private TextMeshProUGUI _description;
 
