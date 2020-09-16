@@ -33,7 +33,9 @@ namespace Assets.src.Game.Bot.Strategy
                          , float move)
         {
             if (_disposableTimer == null)
+            {
                 UpdateVector();
+            }                
 
             _transform = transform;
 
@@ -41,9 +43,7 @@ namespace Assets.src.Game.Bot.Strategy
 
             _transform.localPosition = position;
         }
-
-        #region Vector X
-
+       
         private Vector2 MoveLeft(float move)
         {
             return MoveX(-1, move);
@@ -61,11 +61,7 @@ namespace Assets.src.Game.Bot.Strategy
 
             return new Vector2(x, _transform.localPosition.y);
         }
-
-        #endregion Vector Y
-
-        #region MyRegion
-
+        
         private Vector2 MoveBottom(float move)
         {
             return MoveY(-1, move);
@@ -78,8 +74,6 @@ namespace Assets.src.Game.Bot.Strategy
 
             return new Vector2(_transform.localPosition.x, y);
         }
-
-        #endregion
 
         private void UpdateVector()
         {

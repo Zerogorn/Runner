@@ -30,9 +30,8 @@ namespace Assets.src.Game.Bot
             _gamePrefabs = gamePrefabs;
 
             _xStep = AppManager.GetCanvasUtils.Width
-                     / (_gamePrefabs.GetBotsSettings()
-                                 .Count
-                        + 1);
+                     / (_gamePrefabs.GetBotsSettings().Count
+                     + 1);
         }
 
         public GameViewer GameContainer()

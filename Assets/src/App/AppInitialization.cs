@@ -7,10 +7,16 @@ namespace Assets.src.App
         [SerializeField]
         private Canvas _uiCanvas;
 
+        private AppManager _appManager;
+
+        private void Awake()
+        {
+            _appManager = new AppManager(_uiCanvas);
+        }
+
         public void Start()
         {
-            AppManager appManager = new AppManager(_uiCanvas);
-            appManager.Initialization();
+            _appManager.Initialization();
         }
     }
 }

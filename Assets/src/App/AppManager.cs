@@ -21,8 +21,10 @@ namespace Assets.src.App
         private readonly ResourcesManager _resourcesManager;
         private readonly ModelContext _modelContext;
 
+        // todo remove to model.
         private IUiPrefabs _uiPrefabs;
         private IGamePrefabs _gamePrefabs;
+        //
 
         private UiManger _uiManger;
         private GameManager _gameManager;
