@@ -1,8 +1,8 @@
-﻿using Assets.src.Game.Bot.States.interfaces;
-using Assets.src.Units.Bot.interfaces;
+﻿using Game.Bot.States.interfaces;
+using Game.Bot.Strategy.interfaces;
 using UnityEngine;
 
-namespace Assets.src.Game.Bot
+namespace Game.Bot
 {
     internal sealed class BotViewer
     {
@@ -13,9 +13,9 @@ namespace Assets.src.Game.Bot
         private IState _state;
 
         public BotViewer(Transform botObj
-                         , Vector2 startPosition
-                         , IState state
-                         , IMoveStrategy moveStrategy)
+                         ,Vector2 startPosition
+                         ,IState state
+                         ,IMoveStrategy moveStrategy)
         {
             _transform = botObj;
             _startPosition = startPosition;

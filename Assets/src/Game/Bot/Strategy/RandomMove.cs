@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.src.Units.Bot.interfaces;
+using Game.Bot.Strategy.interfaces;
 using UniRx;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Assets.src.Game.Bot.Strategy
+namespace Game.Bot.Strategy
 {
     internal sealed class RandomMove : IMoveStrategy
     {

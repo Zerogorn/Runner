@@ -1,9 +1,9 @@
-﻿using Assets.src.Ui.Components.Items;
-using Assets.src.Ui.Components.Popups;
-using Assets.src.Ui.Components.Windows.Menu;
+﻿using Ui.Components.Items;
+using Ui.Components.Popups;
+using Ui.Components.Windows.Menu;
 using UnityEngine;
 
-namespace Assets.src.ScrObj.Ui.interfaces
+namespace ScrObj.Ui.interfaces
 {
     internal interface IUiPrefabs
     {
@@ -11,7 +11,8 @@ namespace Assets.src.ScrObj.Ui.interfaces
         MenuViewer Menu(Transform parent);
         PopUpViewer Popup(Transform parent);
 
-        RectTransform Container(Transform parent
-                                , string containerCame);
+        RectTransform Container(Transform parent,
+                                string containerCame);
+        Canvas Canvas(string containerCame);
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
-using src.Game.Simulation.interfaces;
+using Game.Simulation.interfaces;
 using UniRx;
 using UnityEngine;
 
-namespace Assets.src.Game.Simulation
+namespace Game.Simulation
 {
     internal sealed class MoveSimulation : IMoveSimulation
     {
@@ -21,7 +21,7 @@ namespace Assets.src.Game.Simulation
         public void Start()
         {
             _disposable = Observable.EveryUpdate()
-                                 .Subscribe(_ => Update());
+                                    .Subscribe(_ => Update());
         }
 
         public void Stop()

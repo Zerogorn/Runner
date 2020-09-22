@@ -1,17 +1,17 @@
-﻿using Assets.src.Ui.Models;
+﻿using Ui.Models;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 
-namespace Assets.src.Ui.Components.Windows.Game
+namespace Ui.Components.Windows.Game
 {
     internal sealed class GamePresenter
     {
         private readonly GameViewer _gameViewer;
         private readonly GameModel _gameModel;
 
-        public GamePresenter(GameViewer game
-                             , GameModel gameModel)
+        public GamePresenter(GameViewer game,
+                             GameModel gameModel)
         {
             _gameViewer = game;
             _gameModel = gameModel;

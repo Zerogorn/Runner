@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Random
   m_EditorClassIdentifier: 
   _trap: 0
-  _trigger: 80
-  _botObj: {fileID: 1185572935647282219, guid: 43140127e723545c192f6dc5698e926a, type: 3}
+  _trigger: 50
+  _botObj: {fileID: 5392294517850008527, guid: 03175235331f1424a920632b6d75d243, type: 3}
   _strategy: 1

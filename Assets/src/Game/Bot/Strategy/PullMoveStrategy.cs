@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.src.Game.Bot.Utils;
-using Assets.src.Units.Bot.interfaces;
-using Assets.src.Units.Bot.Strategy;
+using Game.Bot.Strategy.interfaces;
+using Game.Bot.Utils;
 
-namespace Assets.src.Game.Bot.Strategy
+namespace Game.Bot.Strategy
 {
     internal sealed class PullMoveStrategy
     {
@@ -30,8 +29,7 @@ namespace Assets.src.Game.Bot.Strategy
         private void AddToken(EnumStrategy key
                               , Type strategy)
         {
-            KeyValuePair<EnumStrategy, Type> token =
-                new KeyValuePair<EnumStrategy, Type>(key, strategy);
+            KeyValuePair<EnumStrategy, Type> token = new KeyValuePair<EnumStrategy, Type>(key, strategy);
 
             _strategyPull.Add(token);
         }

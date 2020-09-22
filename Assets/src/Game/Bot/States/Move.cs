@@ -1,6 +1,6 @@
-﻿using Assets.src.Game.Bot.States.interfaces;
+﻿using Game.Bot.States.interfaces;
 
-namespace Assets.src.Game.Bot.States
+namespace Game.Bot.States
 {
     internal sealed class Move : IState
     {

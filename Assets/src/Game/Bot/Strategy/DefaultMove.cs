@@ -1,7 +1,7 @@
-﻿using Assets.src.Units.Bot.interfaces;
+﻿using Game.Bot.Strategy.interfaces;
 using UnityEngine;
 
-namespace Assets.src.Units.Bot.Strategy
+namespace Game.Bot.Strategy
 {
 	internal sealed class DefaultMove : IMoveStrategy
 	{

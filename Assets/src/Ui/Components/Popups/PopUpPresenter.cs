@@ -1,6 +1,6 @@
-﻿using Assets.src.Ui.Models;
+﻿using Ui.Models;
 
-namespace Assets.src.Ui.Components.Popups
+namespace Ui.Components.Popups
 {
     internal sealed class PopUpPresenter
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UniRx;
 
-namespace src.Game.Validator.interfaces
+namespace Game.Validator.interfaces
 {
 	internal interface IBotValidator
 	{

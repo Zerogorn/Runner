@@ -1,4 +1,4 @@
-﻿namespace Assets.src.Ui.Models
+﻿namespace Ui.Models
 {
     internal sealed class ModelContext
     {

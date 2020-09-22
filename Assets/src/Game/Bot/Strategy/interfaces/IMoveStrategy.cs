@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.src.Units.Bot.interfaces
+namespace Game.Bot.Strategy.interfaces
 {
     internal interface IMoveStrategy
     {

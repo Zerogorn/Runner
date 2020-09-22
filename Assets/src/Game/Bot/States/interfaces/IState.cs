@@ -1,4 +1,4 @@
-﻿namespace Assets.src.Game.Bot.States.interfaces
+﻿namespace Game.Bot.States.interfaces
 {
     internal interface IState
     {

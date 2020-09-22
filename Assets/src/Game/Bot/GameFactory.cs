@@ -1,55 +1,51 @@
 ﻿using System.Collections.Generic;
-using Assets.src.App;
-using Assets.src.Game.Bot.interfaces;
-using Assets.src.Game.Bot.States;
-using Assets.src.Game.Bot.States.interfaces;
-using Assets.src.Game.Bot.Strategy;
-using Assets.src.ScrObj.Bots.interfaces;
-using Assets.src.Ui.Components.Windows.Game;
-using Assets.src.Ui.Models;
-using Assets.src.Units.Bot.interfaces;
+using App;
+using Context.Mangers.Canvas;
+using Context.Mangers.Resources;
+using Game.Bot.interfaces;
+using Game.Bot.States;
+using Game.Bot.States.interfaces;
+using Game.Bot.Strategy;
+using Game.Bot.Strategy.interfaces;
+using Ui.Components.Windows.Game;
+using Ui.Models;
 using UnityEngine;
 
-namespace Assets.src.Game.Bot
+namespace Game.Bot
 {
     internal sealed class GameFactory
     {
-        private readonly ModelContext _modelContext;
-        private readonly IGamePrefabs _gamePrefabs;
+        private readonly GameModel _gameModel;
         private readonly PullMoveStrategy _pullMoveStrategy;
 
-        private readonly float _xStep;
         private readonly float _ySpace = 1.4f;
 
-        public GameFactory(ModelContext modelContext
-                           , PullMoveStrategy pullMoveStrategy
-                           , IGamePrefabs gamePrefabs)
+        public GameFactory(GameModel gameModel, PullMoveStrategy pullMoveStrategy)
         {
-            _modelContext = modelContext;
+            _gameModel = gameModel;
             _pullMoveStrategy = pullMoveStrategy;
-            _gamePrefabs = gamePrefabs;
-
-            _xStep = AppManager.GetCanvasUtils.Width
-                     / (_gamePrefabs.GetBotsSettings().Count
-                     + 1);
         }
+
+        private IManagerCanvas managerCanvas => AppManagerProvider.Get().ContextManagers.ManagerCanvas.Instance();
+        private IResourcesManager resourcesManager => AppManagerProvider.Get().ContextManagers.ResourcesManager.Instance();
 
         public GameViewer GameContainer()
         {
-            GameViewer game = _gamePrefabs.GameContainer(AppManager.GetCanvasUtils.UiCanvas.transform);
-            GameModel gameModel = _modelContext.GameModel;
+            GameViewer game = resourcesManager.GamePrefabs.GameContainer(managerCanvas.CurrentСanvas.transform);
 
-            GamePresenter presenter = new GamePresenter(game, gameModel);
+            GamePresenter presenter = new GamePresenter(game, _gameModel);
 
             return game;
         }
 
         public IList<BotViewer> GetBots(Transform parent)
         {
+
             IList<BotViewer> bots = new List<BotViewer>();
 
-            IEnumerator<IBotSettings> enumerator = _gamePrefabs.GetBotsSettings()
-                                                            .GetEnumerator();
+            IEnumerator<IBotSettings> enumerator = resourcesManager.GamePrefabs
+                                                                   .GetBotsSettings()
+                                                                   .GetEnumerator();
 
             int i = 1;
 
@@ -75,8 +71,13 @@ namespace Assets.src.Game.Bot
 
         private Vector2 GetStartPosition(int i)
         {
-            float x = -AppManager.GetCanvasUtils.XMax + i * _xStep;
-            float y = AppManager.GetCanvasUtils.YMax * _ySpace;
+
+            float xStep = managerCanvas.Width
+                   / (resourcesManager.GamePrefabs.GetBotsSettings().Count
+                    + 1);
+
+            float x = -managerCanvas.XMax + i * xStep;
+            float y = managerCanvas.YMax * _ySpace;
 
             return new Vector2(x, y);
         }

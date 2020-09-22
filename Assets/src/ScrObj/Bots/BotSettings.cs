@@ -1,24 +1,24 @@
-﻿using Assets.src.Game.Bot.interfaces;
-using Assets.src.Game.Bot.Utils;
+﻿using Game.Bot.interfaces;
+using Game.Bot.Utils;
 using UnityEngine;
 
-namespace Assets.src.ScrObj.Bots
+namespace ScrObj.Bots
 {
     [CreateAssetMenu(fileName = "Bots Settings", menuName = "ScriptableObjects/Bot")]
     internal sealed class BotSettings : ScriptableObject
                                         , IBotSettings
     {
         [SerializeField]
-        private bool _trap;
+        private bool _trap = false;
 
         [SerializeField]
-        private int _trigger;
+        private int _trigger = 0;
 
         [SerializeField]
-        private Transform _botObj;
+        private Transform _botObj = null;
 
         [SerializeField]
-        private EnumStrategy _strategy;
+        private EnumStrategy _strategy = EnumStrategy.Default;
 
         public bool Trap()
         {

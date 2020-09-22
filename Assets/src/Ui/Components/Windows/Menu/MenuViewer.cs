@@ -1,9 +1,9 @@
-﻿using Assets.src.ScrObj.Ui.interfaces;
-using Assets.src.Ui.Components.interfaces;
-using Assets.src.Ui.Components.Items;
+﻿using ScrObj.Ui.interfaces;
+using Ui.Components.interfaces;
+using Ui.Components.Items;
 using UnityEngine;
 
-namespace Assets.src.Ui.Components.Windows.Menu
+namespace Ui.Components.Windows.Menu
 {
     internal sealed class MenuViewer : MonoBehaviour, IWindow
     {

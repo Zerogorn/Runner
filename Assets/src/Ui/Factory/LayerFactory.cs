@@ -1,30 +1,32 @@
-﻿using Assets.src.ScrObj.Ui.interfaces;
-using Assets.src.Ui.Components.interfaces;
-using Assets.src.Ui.Layers;
-using Assets.src.Ui.Layers.interfaces;
-using Assets.src.Ui.Utils;
+﻿using App;
+using Context.Mangers.Resources;
+using Context.Mangers.Ui.Layers;
+using ScrObj.Ui.interfaces;
+using Ui.Components.interfaces;
+using Ui.Utils;
 using UnityEngine;
+using Utils.Container.interfaces;
 
-namespace Assets.src.Ui.Factory
+namespace Ui.Factory
 {
     internal sealed class LayerFactory
     {
-        private readonly IUiPrefabs _prefabs;
         private readonly WindowFactory _windowFactory;
         private readonly PopUpFactory _popUpFactory;
 
-        public LayerFactory(IUiPrefabs prefabs
-                            , WindowFactory windowFactory
-                            , PopUpFactory popUpFactory)
+        public LayerFactory(WindowFactory windowFactory,
+                            PopUpFactory popUpFactory)
         {
-            _prefabs = prefabs;
             _windowFactory = windowFactory;
             _popUpFactory = popUpFactory;
         }
 
+        private IContextContainer<ResourcesManager, IResourcesManager> resourcesManager => AppManagerProvider.Get().ContextManagers.ResourcesManager;
+
         public ILayer GetWindows(Transform parent)
         {
-            RectTransform container = _prefabs.Container(parent, UiConst.CONTAINER_WINDOW);
+            IUiPrefabs prefabs = resourcesManager.Instance().UiPrefabs;
+            RectTransform container = prefabs.Container(parent, UiConst.CONTAINER_WINDOW);
             container.gameObject.SetActive(true);
             Layer<IComponent> windows = new Layer<IComponent>(LayersTypes.Windows);
 
@@ -35,7 +37,8 @@ namespace Assets.src.Ui.Factory
 
         public ILayer GetPopup(Transform parent)
         {
-            RectTransform container = _prefabs.Container(parent, UiConst.CONTAINER_POPUP);
+            IUiPrefabs prefabs = resourcesManager.Instance().UiPrefabs;
+            RectTransform container = prefabs.Container(parent, UiConst.CONTAINER_POPUP);
             container.gameObject.SetActive(true);
             Layer<IComponent> popup = new Layer<IComponent>(LayersTypes.PopUp);
 

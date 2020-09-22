@@ -1,16 +1,16 @@
-﻿using Assets.src.ScrObj.Ui.interfaces;
-using Assets.src.Ui.Components.Items;
-using Assets.src.Ui.Components.Popups;
-using Assets.src.Ui.Components.Windows.Menu;
-using Assets.src.Ui.Utils;
+﻿using ScrObj.Ui.interfaces;
+using Ui.Components.Items;
+using Ui.Components.Popups;
+using Ui.Components.Windows.Menu;
+using Ui.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Assets.src.ScrObj.Ui
+namespace ScrObj.Ui
 {
     [CreateAssetMenu(fileName = "UiPrefabs", menuName = "ScriptableObjects/UiPrefabs")]
-    internal sealed class UiPrefabs : ScriptableObject
-                                      , IUiPrefabs
+    internal sealed class UiPrefabs : ScriptableObject, 
+                                      IUiPrefabs
     {
         [FormerlySerializedAs("_buttonDefault")]
         [SerializeField]
@@ -29,10 +29,12 @@ namespace Assets.src.ScrObj.Ui
         [Header("Container")]
         private RectTransform _container;
 
+        [SerializeField]
+        [Header("Container")]
+        private Canvas _canvasUi;
+
         public MenuViewer Menu(Transform parent)
         {
-            _menuViewer.gameObject.SetActive(false);
-
             MenuViewer menuViewer = Instantiate(_menuViewer, parent);
             menuViewer.name = UiConst.WINDOW_MAIN;
 
@@ -41,7 +43,6 @@ namespace Assets.src.ScrObj.Ui
 
         public ButtonViewer ButtonDefault(Transform parent)
         {
-            _button.gameObject.SetActive(false);
             ButtonViewer button = Instantiate(_button, parent);
             button.name = UiConst.BUTTON;
 
@@ -50,22 +51,27 @@ namespace Assets.src.ScrObj.Ui
 
         public PopUpViewer Popup(Transform parent)
         {
-            _popUpViewer.gameObject.SetActive(false);
             PopUpViewer popUpViewer = Instantiate(_popUpViewer, parent);
             popUpViewer.name = UiConst.POPUP_TYPE1;
 
             return popUpViewer;
         }
 
-        public RectTransform Container(Transform parent
-                                       , string containerCame)
+        public RectTransform Container(Transform parent,
+                                       string containerCame)
         {
-            _container.gameObject.SetActive(false);
-
             RectTransform rect = Instantiate(_container, parent);
             rect.name = containerCame;
 
             return rect;
+        }
+
+        public Canvas Canvas(string containerCame)
+        {
+            Canvas canvas = Instantiate(_canvasUi);
+            canvas.name = containerCame;
+
+            return canvas;
         }
     }
 }

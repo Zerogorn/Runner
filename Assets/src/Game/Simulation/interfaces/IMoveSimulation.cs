@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace src.Game.Simulation.interfaces
+namespace Game.Simulation.interfaces
 {
 	internal interface IMoveSimulation
 	{

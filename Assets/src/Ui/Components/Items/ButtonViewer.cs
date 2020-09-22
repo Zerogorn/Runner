@@ -4,7 +4,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.src.Ui.Components.Items
+namespace Ui.Components.Items
 {
     internal sealed class ButtonViewer : MonoBehaviour
     {

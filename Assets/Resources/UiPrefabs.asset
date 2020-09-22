@@ -12,14 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464594cd3355ea541b3d019c14d06222, type: 3}
   m_Name: UiPrefabs
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 514125745119949313, guid: 1fa3d4bf0b727984d8a9955ed290eb92, type: 3}
-  _buttonDefault: {fileID: 2981160224738043127, guid: 7d6e4d5a2dce28645844320ec86230c0,
-    type: 3}
-  _menuViewer: {fileID: 831777815893521140, guid: 0b5c4e3e8b8817c4bae8388d0d980f60,
-    type: 3}
-  _popUpViewer: {fileID: 5017055207889574466, guid: 8bc60c7354b95684d894f3925d9c55ee,
-    type: 3}
-  _gameViewer: {fileID: -8013847530845492224, guid: 31900819843f99b4d80dbcb750c0c8f9,
-    type: 3}
-  _container: {fileID: 1047753860169787256, guid: 7af3661f48ff17c4a8abc494bdf875dc,
-    type: 3}
+  _button: {fileID: 2981160224738043127, guid: 7d6e4d5a2dce28645844320ec86230c0, type: 3}
+  _menuViewer: {fileID: 831777815893521140, guid: 0b5c4e3e8b8817c4bae8388d0d980f60, type: 3}
+  _popUpViewer: {fileID: 5017055207889574466, guid: 8bc60c7354b95684d894f3925d9c55ee, type: 3}
+  _container: {fileID: 1047753860169787256, guid: 7af3661f48ff17c4a8abc494bdf875dc, type: 3}
+  _canvasUi: {fileID: 4799043121671462582, guid: 893509fa23acc224a9fd7dceff6a254b, type: 3}

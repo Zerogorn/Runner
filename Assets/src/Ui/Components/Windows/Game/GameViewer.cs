@@ -1,7 +1,7 @@
-﻿using Assets.src.Ui.Components.interfaces;
+﻿using Ui.Components.interfaces;
 using UnityEngine;
 
-namespace Assets.src.Ui.Components.Windows.Game
+namespace Ui.Components.Windows.Game
 {
     internal sealed class GameViewer : MonoBehaviour, IWindow
     {

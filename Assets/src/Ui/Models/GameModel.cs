@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.src.App;
-using Assets.src.Game.Bot;
+using App;
+using Context.Mangers.Canvas;
+using Game.Bot;
 using UniRx;
 using UnityEngine;
 
-namespace Assets.src.Ui.Models
+namespace Ui.Models
 {
     internal sealed class GameModel
     {
@@ -21,6 +22,8 @@ namespace Assets.src.Ui.Models
             _counter = new ReactiveProperty<int>();
             _bots = new ReactiveCollection<BotViewer>();
         }
+
+        private IManagerCanvas managerCanvas => AppManagerProvider.Get().ContextManagers.ManagerCanvas.Instance();
 
         public void AddBots(IEnumerable<BotViewer> bots)
         {
@@ -74,12 +77,12 @@ namespace Assets.src.Ui.Models
 
                 bool overMoveY = botViewer.GetPosition()
                                        .y
-                                       .CompareTo(-AppManager.GetCanvasUtils.YMax)
+                                       .CompareTo(-managerCanvas.YMax)
                                        .Equals(-1);
 
                 bool overMoveX = Mathf.Abs(botViewer.GetPosition()
                                                  .x)
-                                   .CompareTo(AppManager.GetCanvasUtils.XMax)
+                                   .CompareTo(managerCanvas.XMax)
                                    .Equals(1);
 
                 if (overMoveY || overMoveX)
@@ -97,12 +100,12 @@ namespace Assets.src.Ui.Models
             presPosition = Camera.main.ScreenToViewportPoint(presPosition);
 
             float x = presPosition.x < 0.5f
-                ? (presPosition.x - 0.5f) * AppManager.GetCanvasUtils.Width
-                : Mathf.Abs(0.5f - presPosition.x) * AppManager.GetCanvasUtils.Width;
+                ? (presPosition.x - 0.5f) * managerCanvas.Width
+                : Mathf.Abs(0.5f - presPosition.x) * managerCanvas.Width;
 
             float y = presPosition.y < 0.5f
-                ? (presPosition.y - 0.5f) * AppManager.GetCanvasUtils.Height
-                : Mathf.Abs(0.5f - presPosition.y) * AppManager.GetCanvasUtils.Height;
+                ? (presPosition.y - 0.5f) * managerCanvas.Height
+                : Mathf.Abs(0.5f - presPosition.y) * managerCanvas.Height;
 
             Vector2 pointPosition = new Vector3(x, y);
 

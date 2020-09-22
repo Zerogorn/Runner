@@ -1,4 +1,4 @@
-﻿namespace Assets.src.Ui.Components.interfaces
+﻿namespace Ui.Components.interfaces
 {
     internal interface IPopUp : IComponent
     {

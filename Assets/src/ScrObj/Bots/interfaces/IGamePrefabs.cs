@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Assets.src.Ui.Components.Windows.Game;
+using Ui.Components.Windows.Game;
 using UnityEngine;
 
-namespace Assets.src.ScrObj.Bots.interfaces
+namespace ScrObj.Bots.interfaces
 {
     internal interface IGamePrefabs
     {

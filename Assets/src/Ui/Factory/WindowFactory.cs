@@ -1,28 +1,34 @@
-﻿using Assets.src.ScrObj.Ui.interfaces;
-using Assets.src.Ui.Components.Windows.Menu;
-using Assets.src.Ui.Models;
+﻿using App;
+using Context.Mangers.Game;
+using Context.Mangers.Resources;
+using Context.Mangers.Ui;
+using ScrObj.Ui.interfaces;
+using Ui.Components.Windows.Menu;
+using Ui.Models;
 using UnityEngine;
+using Utils.Container.interfaces;
 
-namespace Assets.src.Ui.Factory
+namespace Ui.Factory
 {
     internal sealed class WindowFactory
     {
-        private readonly IUiPrefabs _uiPrefabs;
-        private readonly ModelContext _modelContext;
-
-        public WindowFactory(IUiPrefabs uiPrefabs
-                             , ModelContext modelContext)
-        {
-            _uiPrefabs = uiPrefabs;
-            _modelContext = modelContext;
-        }
+        private IContextContainer<ResourcesManager, IResourcesManager> resourcesManager => AppManagerProvider.Get().ContextManagers.ResourcesManager;
+        private IContextContainer<ManagerGame, IManagerGame> managerGame => AppManagerProvider.Get().ContextManagers.ManagerGame;
+        private IContextContainer<ManagerUi, IManagerUi> managerUi => AppManagerProvider.Get().ContextManagers.ManagerUi;
 
         public MenuViewer Menu(Transform parent)
         {
-            MenuViewer menuViewer = _uiPrefabs.Menu(parent);
-            menuViewer.Initialization(_uiPrefabs);
+            IUiPrefabs uiPrefabs = resourcesManager.Instance().UiPrefabs;
+            MenuViewer menuViewer = uiPrefabs.Menu(parent);
+            menuViewer.Initialization(uiPrefabs);
 
-            MenuModel menuModel = _modelContext.MenuModel;
+            MenuModel menuModel = new MenuModel();
+            menuModel.SubscribeStart(x =>
+            {
+                managerUi.Instance().HideOpenWindows();
+                managerGame.Instance().StartGame();
+            });
+
             MenuPresenter presenter = new MenuPresenter(menuViewer, menuModel);
 
             return menuViewer;

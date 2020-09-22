@@ -1,27 +1,40 @@
-﻿using Assets.src.ScrObj.Ui.interfaces;
-using Assets.src.Ui.Components.Popups;
-using Assets.src.Ui.Models;
+﻿using App;
+using Context.Mangers.Game;
+using Context.Mangers.Resources;
+using Context.Mangers.Ui;
+using ScrObj.Ui.interfaces;
+using Ui.Components.Popups;
+using Ui.Models;
+using Ui.Utils;
 using UnityEngine;
+using Utils.Container.interfaces;
 
-namespace Assets.src.Ui.Factory
+namespace Ui.Factory
 {
     internal sealed class PopUpFactory
     {
-        private readonly IUiPrefabs _uiPrefabs;
-        private readonly ModelContext _modelContext;
-
-        public PopUpFactory(IUiPrefabs uiPrefabs
-                            , ModelContext modelContext)
-        {
-            _uiPrefabs = uiPrefabs;
-            _modelContext = modelContext;
-        }
+        private IContextContainer<ResourcesManager, IResourcesManager> resourcesManager => AppManagerProvider.Get().ContextManagers.ResourcesManager;
+        private IContextContainer<ManagerGame, IManagerGame> managerGame => AppManagerProvider.Get().ContextManagers.ManagerGame;
+        private IContextContainer<ManagerUi, IManagerUi> managerUi => AppManagerProvider.Get().ContextManagers.ManagerUi;
 
         public PopUpViewer PopUp(Transform parent)
         {
-            PopUpViewer popUpViewer = _uiPrefabs.Popup(parent);
-            popUpViewer.Initialization(_uiPrefabs);
-            PopUpModel popUpModel = _modelContext.PopUpModel;
+            IUiPrefabs uiPrefabs = resourcesManager.Instance().UiPrefabs;
+
+            PopUpViewer popUpViewer = resourcesManager.Instance().UiPrefabs.Popup(parent);
+            popUpViewer.Initialization(uiPrefabs);
+            
+            PopUpModel popUpModel = new PopUpModel();
+            popUpModel.SubscribeToMenu(x =>
+            {
+                managerUi.Instance().HideOpenPopup();
+                managerUi.Instance().SetActive(LayersTypes.Windows, UiConst.WINDOW_MAIN, true);
+            });
+            popUpModel.SubscribeRepeat(x =>
+            {
+                managerUi.Instance().HideOpenPopup();
+                managerGame.Instance().StartGame();
+            });
 
             PopUpPresenter presenter = new PopUpPresenter(popUpViewer, popUpModel);
 

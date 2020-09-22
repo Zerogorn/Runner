@@ -1,10 +1,10 @@
-﻿using Assets.src.ScrObj.Ui.interfaces;
-using Assets.src.Ui.Components.interfaces;
-using Assets.src.Ui.Components.Items;
+﻿using ScrObj.Ui.interfaces;
 using TMPro;
+using Ui.Components.interfaces;
+using Ui.Components.Items;
 using UnityEngine;
 
-namespace Assets.src.Ui.Components.Popups
+namespace Ui.Components.Popups
 {
     internal sealed class PopUpViewer : MonoBehaviour, IPopUp
     {

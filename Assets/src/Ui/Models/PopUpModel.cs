@@ -1,7 +1,7 @@
 ﻿using System;
 using UniRx;
 
-namespace Assets.src.Ui.Models
+namespace Ui.Models
 {
     internal sealed class PopUpModel
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Assets.src.ScrObj.Bots.interfaces;
-using Assets.src.Ui.Components.Windows.Game;
+using ScrObj.Bots.interfaces;
+using Ui.Components.Windows.Game;
 using UnityEngine;
 
-namespace Assets.src.ScrObj.Bots
+namespace ScrObj.Bots
 {
     [CreateAssetMenu(fileName = "Bots Pull", menuName = "ScriptableObjects/BotsPull")]
     internal sealed class GamePrefabs : ScriptableObject
@@ -11,11 +11,11 @@ namespace Assets.src.ScrObj.Bots
     {
         [SerializeField]
         [Header("Game Container")]
-        private GameViewer _gameViewer;
+        private GameViewer _gameViewer = null;
 
         [Header("Bots")]
         [SerializeField]
-        private List<BotSettings> _bots;
+        private List<BotSettings> _bots = null;
 
         public GameViewer GameContainer(Transform parent)
         {
